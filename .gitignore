@@ -9,3 +9,6 @@
 # System specific files
 Thumbs.db
 .DS_Store
+
+*_MACOSX/
+.DS_Store
