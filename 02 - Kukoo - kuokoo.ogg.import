@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://72mi4a6e5xoc"
+path="res://.godot/imported/02 - Kukoo - kuokoo.ogg-9b1011d52b6b598468cc32249f5f8699.oggvorbisstr"
+
+[deps]
+
+source_file="res://02 - Kukoo - kuokoo.ogg"
+dest_files=["res://.godot/imported/02 - Kukoo - kuokoo.ogg-9b1011d52b6b598468cc32249f5f8699.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

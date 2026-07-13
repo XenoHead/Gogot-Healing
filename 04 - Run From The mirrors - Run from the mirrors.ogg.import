@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bfvv0ecc3v27c"
+path="res://.godot/imported/04 - Run From The mirrors - Run from the mirrors.ogg-ad25706252c9bd052fa2d2826fa95efd.oggvorbisstr"
+
+[deps]
+
+source_file="res://04 - Run From The mirrors - Run from the mirrors.ogg"
+dest_files=["res://.godot/imported/04 - Run From The mirrors - Run from the mirrors.ogg-ad25706252c9bd052fa2d2826fa95efd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

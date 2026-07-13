@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bklskrd0oo8a7"]
+
+[ext_resource type="Script" uid="uid://dbpxk5cgdkvbg" path="res://examples/app_settings/main.gd" id="1_l7l8l"]
+[ext_resource type="PackedScene" uid="uid://dab7oxwpsfa4l" path="res://examples/app_settings/settings/container.tscn" id="2_xtbvl"]
+
+[node name="main" type="PanelContainer" unique_id=1674141806 node_paths=PackedStringArray("_tab_container", "_apply_button", "_cancel_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l7l8l")
+_settings_container = ExtResource("2_xtbvl")
+_tab_container = NodePath("margin_container/v_box_container/tab_container")
+_apply_button = NodePath("margin_container/v_box_container/h_box_container/apply_button")
+_cancel_button = NodePath("margin_container/v_box_container/h_box_container/cancel_button")
+
+[node name="margin_container" type="MarginContainer" parent="." unique_id=991258071]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="v_box_container" type="VBoxContainer" parent="margin_container" unique_id=903867512]
+layout_mode = 2
+
+[node name="tab_container" type="TabContainer" parent="margin_container/v_box_container" unique_id=993436056]
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 1
+
+[node name="h_box_container" type="HBoxContainer" parent="margin_container/v_box_container" unique_id=1026299686]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="apply_button" type="Button" parent="margin_container/v_box_container/h_box_container" unique_id=2130806333]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Apply"
+
+[node name="cancel_button" type="Button" parent="margin_container/v_box_container/h_box_container" unique_id=1702507799]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Cancel"

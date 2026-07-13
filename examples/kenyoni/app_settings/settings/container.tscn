@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://dab7oxwpsfa4l"]
+
+[ext_resource type="Script" uid="uid://fn2po3jtfb7k" path="res://examples/app_settings/settings/container.gd" id="1_uli4m"]
+
+[node name="container" type="ScrollContainer" node_paths=PackedStringArray("_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_uli4m")
+_container = NodePath("margin_container/h_box_container/grid_container")
+
+[node name="margin_container" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="h_box_container" type="HBoxContainer" parent="margin_container"]
+layout_mode = 2
+
+[node name="control" type="Control" parent="margin_container/h_box_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="grid_container" type="GridContainer" parent="margin_container/h_box_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 32
+columns = 3
+
+[node name="control_2" type="Control" parent="margin_container/h_box_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3

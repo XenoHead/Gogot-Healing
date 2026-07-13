@@ -1,0 +1,40 @@
+{
+	"categories": [
+		{
+			"uuid": "5e10103c-020f-4bce-8cab-1bad6fc35d90",
+			"title": "Task",
+			"color": "569eff"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "f7fe62b1-8a77-43a5-874b-cf401fe75cdd",
+			"title": "Todo",
+			"tasks": []
+		},
+		{
+			"uuid": "08ca3ca6-4c10-4afb-923a-8671c1f97288",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "1e09cc9f-745c-43c9-bf6a-af2e218b22b8",
+			"title": "Done",
+			"tasks": []
+		}
+	],
+	"tasks": [],
+	"layout": {
+		"columns": [
+			[
+				"f7fe62b1-8a77-43a5-874b-cf401fe75cdd"
+			],
+			[
+				"08ca3ca6-4c10-4afb-923a-8671c1f97288"
+			],
+			[
+				"1e09cc9f-745c-43c9-bf6a-af2e218b22b8"
+			]
+		]
+	}
+}

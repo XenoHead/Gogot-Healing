@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://blaovb2ainbo7"
+path="res://.godot/imported/10 - a formula - A Formula (2021_01_29 05_31_01 UTC).ogg-a23f2995946cac795f73d93506d40dcb.oggvorbisstr"
+
+[deps]
+
+source_file="res://10 - a formula - A Formula (2021_01_29 05_31_01 UTC).ogg"
+dest_files=["res://.godot/imported/10 - a formula - A Formula (2021_01_29 05_31_01 UTC).ogg-a23f2995946cac795f73d93506d40dcb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
