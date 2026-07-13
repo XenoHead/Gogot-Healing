@@ -1,0 +1,11 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+*.translation
+
+# Dialogic specific local editor history
+.dialogic_history/
+
+# System specific files
+Thumbs.db
+.DS_Store
