@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 Dialogic="*uid://ds2q0uclmolvu"
 BootSplashPlus="*uid://dokddwtktku65"
-_mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 
 [dialogic]
 
@@ -74,7 +73,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/QuickAudioPreview/plugin.cfg", "res://addons/boot_splash_plus/plugin.cfg", "res://addons/cgheven/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/footstepper/plugin.cfg", "res://addons/godot_ai/plugin.cfg", "res://addons/godot_whisper/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/kenyoni/app_settings/plugin.cfg", "res://addons/log/plugin.cfg", "res://addons/nodes_plus/plugin.cfg", "res://addons/reactive_ui/plugin.cfg", "res://addons/reactive_ui_editor/plugin.cfg", "res://addons/reload_current_scene/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/ui_builder/plugin.cfg")
+enabled=PackedStringArray("res://addons/boot_splash_plus/plugin.cfg", "res://addons/cgheven/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/kenyoni/app_settings/plugin.cfg", "res://addons/log/plugin.cfg", "res://addons/nodes_plus/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/ui_builder/plugin.cfg")
 
 [input]
 

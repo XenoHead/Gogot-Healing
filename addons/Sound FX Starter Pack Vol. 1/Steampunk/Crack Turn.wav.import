@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b88ov0o2pskae"
+path="res://.godot/imported/Crack Turn.wav-021aa83029f420ff3679253a58edd9dc.sample"
+
+[deps]
+
+source_file="res://addons/Sound FX Starter Pack Vol. 1/Steampunk/Crack Turn.wav"
+dest_files=["res://.godot/imported/Crack Turn.wav-021aa83029f420ff3679253a58edd9dc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

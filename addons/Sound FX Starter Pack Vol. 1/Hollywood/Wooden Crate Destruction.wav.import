@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d34hrr675g560"
+path="res://.godot/imported/Wooden Crate Destruction.wav-1138c0c9c8b30b28c2276bd7cd18138a.sample"
+
+[deps]
+
+source_file="res://addons/Sound FX Starter Pack Vol. 1/Hollywood/Wooden Crate Destruction.wav"
+dest_files=["res://.godot/imported/Wooden Crate Destruction.wav-1138c0c9c8b30b28c2276bd7cd18138a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bughmu473x5jv"
+path="res://.godot/imported/Water Attack.wav-037eacf51058fca87f088b40b32b0c92.sample"
+
+[deps]
+
+source_file="res://addons/Sound FX Starter Pack Vol. 1/Magic/Water Attack.wav"
+dest_files=["res://.godot/imported/Water Attack.wav-037eacf51058fca87f088b40b32b0c92.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
