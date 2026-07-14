@@ -1,8 +1,0 @@
-cursed photo of Character 1 (The Mother)
-Full body shot, 24-year-old woman, photorealistic 3D game asset, standing on tropical beach sand at night, cinematic moonlight, high-fidelity PBR skin texture, detailed pores and skin imperfections, wearing a realistic fabric textured bikini, wind-swept realistic hair, wet-sand shader, realistic lighting, octane render, depth of field, 8k resolution, Unreal Engine 5 aesthetic, detailed facial anatomy, soft moonlight highlighting skin contours.  (seed:::248540230)
-
-Character 2 (The Daughter)
-Full body shot, 12 year old, young girl, slim build, photorealistic 3D game asset, standing in a cozy bedroom at night, soft moonlit atmosphere, high-fidelity PBR skin texture, detailed skin pores and imperfections, clean clothes and skin, realistic silk tank top with cloth simulation, short blond spiked hair with realistic texture, green eyes with realistic subsurface scattering, soft ambient bedroom lighting, cinematic composition, octane render, 8k resolution, Unreal Engine 5 aesthetic, detailed facial anatomy. (seed:::248540230)
-
-
-Prompt: A photorealistic, high-fidelity 3D game asset scene of an old, used apartment stairwell. The scene is filled with trash, discarded items, and thick cobwebs. Cinematic, unsettling atmosphere, soft ambient moonlight filtering from above, octane render, 8k resolution, Unreal Engine 5 aesthetic, photorealistic texture detail, dark color palette, creepy and cursed, nightmare fuel.
