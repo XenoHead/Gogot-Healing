@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bha3i340s5u6q"
+path="res://.godot/imported/Start.wav-cf0b6ee6c8189c8e642d7643c2ad322b.sample"
+
+[deps]
+
+source_file="res://audio/Sound FX Starter Pack Vol. 1/UI & Menus/Start.wav"
+dest_files=["res://.godot/imported/Start.wav-cf0b6ee6c8189c8e642d7643c2ad322b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

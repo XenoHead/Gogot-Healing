@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://du7j2wwsjgjr6"
+path="res://.godot/imported/Horse Gallop Loop.wav-0c3cbc95af28fb1996a86fb90b452abf.sample"
+
+[deps]
+
+source_file="res://audio/Sound FX Starter Pack Vol. 1/Medieval/Horse Gallop Loop.wav"
+dest_files=["res://.godot/imported/Horse Gallop Loop.wav-0c3cbc95af28fb1996a86fb90b452abf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

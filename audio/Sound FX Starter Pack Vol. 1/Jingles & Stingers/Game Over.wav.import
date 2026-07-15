@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c5mvf6img5gyy"
+path="res://.godot/imported/Game Over.wav-c9bd7bce1eabf36c9663fc3cbd3c6073.sample"
+
+[deps]
+
+source_file="res://audio/Sound FX Starter Pack Vol. 1/Jingles & Stingers/Game Over.wav"
+dest_files=["res://.godot/imported/Game Over.wav-c9bd7bce1eabf36c9663fc3cbd3c6073.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="HealingWithout"
+run/main_scene="uid://c1x8v8x8x8x8"
 config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
@@ -73,7 +74,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/boot_splash_plus/plugin.cfg", "res://addons/cgheven/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/kenyoni/app_settings/plugin.cfg", "res://addons/log/plugin.cfg", "res://addons/nodes_plus/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/ui_builder/plugin.cfg")
+enabled=PackedStringArray("res://addons/boot_splash_plus/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/kenyoni/app_settings/plugin.cfg", "res://addons/log/plugin.cfg", "res://addons/nodes_plus/plugin.cfg", "res://addons/reload_current_scene/plugin.cfg", "res://addons/ui_builder/plugin.cfg")
 
 [input]
 

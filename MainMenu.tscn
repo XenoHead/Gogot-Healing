@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://c1x8v8x8x8x8"]
+
+[ext_resource type="Script" uid="uid://b23hmcimqmuai" path="res://MainMenu.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://d5kvmiphrfj4" path="res://images/logo.png" id="2_logo"]
+
+[node name="MainMenu" type="Control" unique_id=386691400]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="IntroTransitionLayer" type="CanvasLayer" parent="." unique_id=1668756471]
+
+[node name="BlackBackground" type="ColorRect" parent="IntroTransitionLayer" unique_id=483006559]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="IntroTransitionLayer" unique_id=1109623310]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FireTreeLogo" type="TextureRect" parent="IntroTransitionLayer/CenterContainer" unique_id=1753077472]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+texture = ExtResource("2_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FireWavPlayer" type="AudioStreamPlayer" parent="IntroTransitionLayer" unique_id=1321160150]
+
+[node name="PromptLabel" type="Label" parent="IntroTransitionLayer" unique_id=130152409]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "HIT ANY KEY TO CONTINUE"
+horizontal_alignment = 1
+
+[node name="MenuUILayer" type="CanvasLayer" parent="." unique_id=210812240]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuUILayer" unique_id=412504377]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="MainVBox" type="VBoxContainer" parent="MenuUILayer/MarginContainer" unique_id=1244794325]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MenuUILayer/MarginContainer/MainVBox" unique_id=395786297]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "DEADWOOD CODEX"
+horizontal_alignment = 1
+
+[node name="ButtonVBox" type="VBoxContainer" parent="MenuUILayer/MarginContainer/MainVBox" unique_id=1660071121]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="MenuUILayer/MarginContainer/MainVBox/ButtonVBox" unique_id=501955893]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "NEW GAME"
+
+[node name="LoadButton" type="Button" parent="MenuUILayer/MarginContainer/MainVBox/ButtonVBox" unique_id=57240134]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "LOAD GAME"
+
+[node name="OptionsButton" type="Button" parent="MenuUILayer/MarginContainer/MainVBox/ButtonVBox" unique_id=1105825496]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "SETTINGS"
+
+[node name="QuitButton" type="Button" parent="MenuUILayer/MarginContainer/MainVBox/ButtonVBox" unique_id=1329169771]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
