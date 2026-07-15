@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdpoghsmoiln0"
+path="res://.godot/imported/06 - Childish intent - Chidish Intent.ogg-bd6f162dbfcff96be434958a070bbaf9.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/06 - Childish intent - Chidish Intent.ogg"
+dest_files=["res://.godot/imported/06 - Childish intent - Chidish Intent.ogg-bd6f162dbfcff96be434958a070bbaf9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
