@@ -4,23 +4,34 @@ extends Control
 @onready var intro_transition_layer: CanvasLayer = $IntroTransitionLayer
 @onready var fire_tree_logo: TextureRect = $IntroTransitionLayer/CenterContainer/FireTreeLogo
 @onready var fire_wav_player: AudioStreamPlayer = $IntroTransitionLayer/FireWavPlayer
-@onready var prompt_label: Label = $IntroTransitionLayer/PromptLabel
+# We are now grabbing the TextureButton by its new text-defined name
+@onready var start_button_prompt: TextureButton = $IntroTransitionLayer/StartButtonPrompt
 @onready var menu_ui: CanvasLayer = $MenuUILayer
 
-# Cache UI elements
+# Cache main menu button references
 @onready var play_button: Button = $MenuUILayer/MarginContainer/MainVBox/ButtonVBox/PlayButton
 @onready var quit_button: Button = $MenuUILayer/MarginContainer/MainVBox/ButtonVBox/QuitButton
 
-var can_continue: bool = false
+var can_interact: bool = false
 var pulse_tween: Tween = null
 
 func _ready() -> void:
+	# 1. Hide all prompt/UI elements for the boot sequence
 	menu_ui.hide()
-	prompt_label.hide()
+	start_button_prompt.hide()
+	# Pre-emptively disable interaction so clicks don't fire early
+	start_button_prompt.disabled = true
+	
 	intro_transition_layer.show()
 	fire_tree_logo.modulate.a = 0.0
 	
+	# Connect main menu signals
 	_connect_menu_signals()
+	
+	# Connect the new prompt button's signal explicitly
+	# This uses Godot's built-in UI press signal, replacing our custom input check
+	if not start_button_prompt.pressed.is_connected(_on_start_button_prompt_pressed):
+		start_button_prompt.pressed.connect(_on_start_button_prompt_pressed)
 	
 	await get_tree().create_timer(0.5).timeout
 	
@@ -37,36 +48,47 @@ func _play_burning_sound() -> void:
 		fire_wav_player.play()
 
 func _show_prompt() -> void:
-	prompt_label.show()
-	can_continue = true
+	# Enable the button and make it visible so it can receive hover/clicks
+	start_button_prompt.disabled = false
+	start_button_prompt.show()
+	can_interact = true
 	
-	# Create a continuous, ping-ponging loop for a rhythmic text pulse effect
+	# Re-implement the rhythmic pulse effect, applying it to the entire button image
 	pulse_tween = create_tween().set_loops()
-	pulse_tween.tween_property(prompt_label, "modulate:a", 0.3, 0.8).set_trans(Tween.TRANS_SINE)
-	pulse_tween.tween_property(prompt_label, "modulate:a", 1.0, 0.8).set_trans(Tween.TRANS_SINE)
+	pulse_tween.tween_property(start_button_prompt, "modulate:a", 0.3, 0.8).set_trans(Tween.TRANS_SINE)
+	pulse_tween.tween_property(start_button_prompt, "modulate:a", 1.0, 0.8).set_trans(Tween.TRANS_SINE)
 
+# The built-in pressed signal from TextureButton handles mouse clicks for us!
+func _on_start_button_prompt_pressed() -> void:
+	_on_continue_triggered()
+
+# Optional: We can still capture any keypress for accessibility, linking it to the same action [cite: 2]
 func _input(event: InputEvent) -> void:
-	# Catch any keyboard event or mouse strike
-	if can_continue and (event is InputEventKey or event is InputEventMouseButton):
+	# This catches ANY keyboard button (not mouse clicks, which the prompt button handles) [cite: 2]
+	if can_interact and (event is InputEventKey):
 		if event.is_pressed():
+			# Programmatically trigger the action associated with the prompt button [cite: 2]
 			_on_continue_triggered()
 
 func _on_continue_triggered() -> void:
-	if not can_continue:
+	if not can_interact:
 		return
 		
-	can_continue = false # Lock immediately to drop double-triggering inputs
+	can_interact = false 
+	# Lock the button again immediately to prevent double-triggers
+	start_button_prompt.disabled = true
 	
 	if pulse_tween and pulse_tween.is_valid():
 		pulse_tween.kill()
 		
-	# Reset alpha back to normal solid values for the fade-out look
-	prompt_label.modulate.a = 1.0 
+	# Ensure the button is solid before the final fade
+	start_button_prompt.modulate.a = 1.0 
 	
 	var fade_out_tween = create_tween()
 	fade_out_tween.set_parallel(true)
 	fade_out_tween.tween_property(fire_tree_logo, "modulate:a", 0.0, 0.5)
-	fade_out_tween.tween_property(prompt_label, "modulate:a", 0.0, 0.4)
+	# Fade out the image button smoothly
+	fade_out_tween.tween_property(start_button_prompt, "modulate:a", 0.0, 0.4)
 	
 	await fade_out_tween.finished
 	await get_tree().create_timer(0.5).timeout
