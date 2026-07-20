@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://uyfsdu8ljnhl"
-path="res://.godot/imported/Karate Punch.wav-b58ab40c3952f8b960509d8930a06fa4.sample"
+path="res://.godot/imported/Karate Punch.wav-be2b07120c3d5091ba2a88905bf209fd.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Hollywood/Karate Punch.wav"
-dest_files=["res://.godot/imported/Karate Punch.wav-b58ab40c3952f8b960509d8930a06fa4.sample"]
+source_file="res://audio/Hollywood/Karate Punch.wav"
+dest_files=["res://.godot/imported/Karate Punch.wav-be2b07120c3d5091ba2a88905bf209fd.sample"]
 
 [params]
 

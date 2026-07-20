@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bjrsusn5ydjt1"
-path="res://.godot/imported/Alien Speech.wav-c2f009dde8e65ed403ddd4b5948f5af0.sample"
+path="res://.godot/imported/Alien Speech.wav-4145110b92e04394680fb2bf303fb6b8.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Sci-Fi/Alien Speech.wav"
-dest_files=["res://.godot/imported/Alien Speech.wav-c2f009dde8e65ed403ddd4b5948f5af0.sample"]
+source_file="res://audio/Sci-Fi/Alien Speech.wav"
+dest_files=["res://.godot/imported/Alien Speech.wav-4145110b92e04394680fb2bf303fb6b8.sample"]
 
 [params]
 

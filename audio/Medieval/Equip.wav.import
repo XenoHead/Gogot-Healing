@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://beaihru0mcw4l"
-path="res://.godot/imported/Equip.wav-ae18035f9256bff4f130105682ac998b.sample"
+path="res://.godot/imported/Equip.wav-ff8459dd048fdc8adc9c1487b36be6ab.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Medieval/Equip.wav"
-dest_files=["res://.godot/imported/Equip.wav-ae18035f9256bff4f130105682ac998b.sample"]
+source_file="res://audio/Medieval/Equip.wav"
+dest_files=["res://.godot/imported/Equip.wav-ff8459dd048fdc8adc9c1487b36be6ab.sample"]
 
 [params]
 

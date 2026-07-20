@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dshkwvixcjphe"
-path="res://.godot/imported/Fail.wav-422981b312dbae6589d0de46c7336b63.sample"
+path="res://.godot/imported/Fail.wav-833c3fd72b6474ef833e62aab23cf427.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Jingles & Stingers/Fail.wav"
-dest_files=["res://.godot/imported/Fail.wav-422981b312dbae6589d0de46c7336b63.sample"]
+source_file="res://audio/Jingles & Stingers/Fail.wav"
+dest_files=["res://.godot/imported/Fail.wav-833c3fd72b6474ef833e62aab23cf427.sample"]
 
 [params]
 

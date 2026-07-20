@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bkb2typjfv2oa"
-path="res://.godot/imported/Reward.wav-b42630c2c7cb34fe356029bf4d0400bf.sample"
+path="res://.godot/imported/Reward.wav-c9b8a5da19216b110d963dc2027b77fd.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Hollywood/Reward.wav"
-dest_files=["res://.godot/imported/Reward.wav-b42630c2c7cb34fe356029bf4d0400bf.sample"]
+source_file="res://audio/Hollywood/Reward.wav"
+dest_files=["res://.godot/imported/Reward.wav-c9b8a5da19216b110d963dc2027b77fd.sample"]
 
 [params]
 

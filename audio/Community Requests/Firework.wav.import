@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://df8mqtghxc728"
-path="res://.godot/imported/Firework.wav-f4620ac6b41f5a4d1d29d8a80a554001.sample"
+path="res://.godot/imported/Firework.wav-078b880297aa5f7e4f3bc15a653d5e8e.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Community Requests/Firework.wav"
-dest_files=["res://.godot/imported/Firework.wav-f4620ac6b41f5a4d1d29d8a80a554001.sample"]
+source_file="res://audio/Community Requests/Firework.wav"
+dest_files=["res://.godot/imported/Firework.wav-078b880297aa5f7e4f3bc15a653d5e8e.sample"]
 
 [params]
 

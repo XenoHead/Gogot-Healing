@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c7vnovy4k74lt"
-path="res://.godot/imported/Swoosh Thunder.wav-6d7a8d5395df1ae586f9f41aa395f0c2.sample"
+path="res://.godot/imported/Swoosh Thunder.wav-ba2806950a6d0aed2c8f50262d33381b.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Motions and Impacts/Swoosh Thunder.wav"
-dest_files=["res://.godot/imported/Swoosh Thunder.wav-6d7a8d5395df1ae586f9f41aa395f0c2.sample"]
+source_file="res://audio/Motions and Impacts/Swoosh Thunder.wav"
+dest_files=["res://.godot/imported/Swoosh Thunder.wav-ba2806950a6d0aed2c8f50262d33381b.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://du7j2wwsjgjr6"
-path="res://.godot/imported/Horse Gallop Loop.wav-0c3cbc95af28fb1996a86fb90b452abf.sample"
+path="res://.godot/imported/Horse Gallop Loop.wav-0321818f2f6c06904fc593bbc8329f58.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Medieval/Horse Gallop Loop.wav"
-dest_files=["res://.godot/imported/Horse Gallop Loop.wav-0c3cbc95af28fb1996a86fb90b452abf.sample"]
+source_file="res://audio/Medieval/Horse Gallop Loop.wav"
+dest_files=["res://.godot/imported/Horse Gallop Loop.wav-0321818f2f6c06904fc593bbc8329f58.sample"]
 
 [params]
 

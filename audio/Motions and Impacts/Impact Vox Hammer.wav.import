@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dtrypgrh0b40"
-path="res://.godot/imported/Impact Vox Hammer.wav-61d1038012d06c771e2c1dc83711c0b3.sample"
+path="res://.godot/imported/Impact Vox Hammer.wav-b24440a6bd99753664f27e39caa23e7c.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Motions and Impacts/Impact Vox Hammer.wav"
-dest_files=["res://.godot/imported/Impact Vox Hammer.wav-61d1038012d06c771e2c1dc83711c0b3.sample"]
+source_file="res://audio/Motions and Impacts/Impact Vox Hammer.wav"
+dest_files=["res://.godot/imported/Impact Vox Hammer.wav-b24440a6bd99753664f27e39caa23e7c.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dc2g3vlials3t"
-path="res://.godot/imported/Reality Rift.wav-6a8a98f1c5289f4208a12f27150ed36e.sample"
+path="res://.godot/imported/Reality Rift.wav-8fbe5c33b87b3694213ccaba85f82ac5.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Horror/Reality Rift.wav"
-dest_files=["res://.godot/imported/Reality Rift.wav-6a8a98f1c5289f4208a12f27150ed36e.sample"]
+source_file="res://audio/Horror/Reality Rift.wav"
+dest_files=["res://.godot/imported/Reality Rift.wav-8fbe5c33b87b3694213ccaba85f82ac5.sample"]
 
 [params]
 

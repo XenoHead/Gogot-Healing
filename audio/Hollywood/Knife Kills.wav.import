@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://brlmmwjks4grj"
-path="res://.godot/imported/Knife Kills.wav-48bda74b484879e598d2414bb593d5f7.sample"
+path="res://.godot/imported/Knife Kills.wav-0fb0afd82e602cb1bd6d98c6969e2410.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Hollywood/Knife Kills.wav"
-dest_files=["res://.godot/imported/Knife Kills.wav-48bda74b484879e598d2414bb593d5f7.sample"]
+source_file="res://audio/Hollywood/Knife Kills.wav"
+dest_files=["res://.godot/imported/Knife Kills.wav-0fb0afd82e602cb1bd6d98c6969e2410.sample"]
 
 [params]
 

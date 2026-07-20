@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://5gtth2721s4d"
-path="res://.godot/imported/Gravipanzer.wav-5d39b629c05974a47ce3b53d6f212099.sample"
+path="res://.godot/imported/Gravipanzer.wav-4c1f13dd4a32225235b6255c97ff14a5.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Sci-Fi/Gravipanzer.wav"
-dest_files=["res://.godot/imported/Gravipanzer.wav-5d39b629c05974a47ce3b53d6f212099.sample"]
+source_file="res://audio/Sci-Fi/Gravipanzer.wav"
+dest_files=["res://.godot/imported/Gravipanzer.wav-4c1f13dd4a32225235b6255c97ff14a5.sample"]
 
 [params]
 

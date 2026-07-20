@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://vdqvfwvjn5h4"
-path="res://.godot/imported/Animal Pain.wav-2a844b203728876f0cafad3401fe271c.sample"
+path="res://.godot/imported/Animal Pain.wav-54a542fc70a97d2afec1228c85da1742.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Community Requests/Animal Pain.wav"
-dest_files=["res://.godot/imported/Animal Pain.wav-2a844b203728876f0cafad3401fe271c.sample"]
+source_file="res://audio/Community Requests/Animal Pain.wav"
+dest_files=["res://.godot/imported/Animal Pain.wav-54a542fc70a97d2afec1228c85da1742.sample"]
 
 [params]
 

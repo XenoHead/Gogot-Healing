@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://m0m0uy6gi48c"
-path="res://.godot/imported/Earthquake Loop.wav-9229d42361fcfe793cb9db3668bfd03f.sample"
+path="res://.godot/imported/Earthquake Loop.wav-dacb0a767bcadb4923a18dee57e1a4d6.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Hollywood/Earthquake Loop.wav"
-dest_files=["res://.godot/imported/Earthquake Loop.wav-9229d42361fcfe793cb9db3668bfd03f.sample"]
+source_file="res://audio/Hollywood/Earthquake Loop.wav"
+dest_files=["res://.godot/imported/Earthquake Loop.wav-dacb0a767bcadb4923a18dee57e1a4d6.sample"]
 
 [params]
 

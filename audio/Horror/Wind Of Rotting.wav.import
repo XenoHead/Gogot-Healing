@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://tnuhfhpaq67t"
-path="res://.godot/imported/Wind Of Rotting.wav-e0f82b8abeb4f309ffb99f8c68499aab.sample"
+path="res://.godot/imported/Wind Of Rotting.wav-8ec971e64d4e96104dfcd4412281d111.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Horror/Wind Of Rotting.wav"
-dest_files=["res://.godot/imported/Wind Of Rotting.wav-e0f82b8abeb4f309ffb99f8c68499aab.sample"]
+source_file="res://audio/Horror/Wind Of Rotting.wav"
+dest_files=["res://.godot/imported/Wind Of Rotting.wav-8ec971e64d4e96104dfcd4412281d111.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cuf777f5v74dv"
-path="res://.godot/imported/Titan Handgun.wav-a401c8243a38b4fadae7eed2a09dda0d.sample"
+path="res://.godot/imported/Titan Handgun.wav-1a63431c476f3cb5df9cbf5ff2fd2d76.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Hollywood/Titan Handgun.wav"
-dest_files=["res://.godot/imported/Titan Handgun.wav-a401c8243a38b4fadae7eed2a09dda0d.sample"]
+source_file="res://audio/Hollywood/Titan Handgun.wav"
+dest_files=["res://.godot/imported/Titan Handgun.wav-1a63431c476f3cb5df9cbf5ff2fd2d76.sample"]
 
 [params]
 

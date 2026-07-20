@@ -1,0 +1,33 @@
+[node name="CenterContainer" type="CenterContainer" parent="IntroTransitionLayer" unique_id=1109623310]
+	anchors_preset = 15
+	anchor_right = 1.0
+	anchor_bottom = 1.0
+	grow_horizontal = 2
+	grow_vertical = 2
+
+	[node name="IntroVBox" type="VBoxContainer" parent="IntroTransitionLayer/CenterContainer"]
+	layout_mode = 2
+	theme_override_constants/separation = 30
+	alignment = 1
+
+	[node name="FireTreeLogo" type="TextureRect" parent="IntroTransitionLayer/CenterContainer/IntroVBox" unique_id=1753077472]
+	custom_minimum_size = Vector2(450, 450)
+	layout_mode = 2
+	texture = ExtResource("2_logo")
+	expand_mode = 1
+	stretch_mode = 5
+
+	[node name="StartButtonPrompt" type="TextureButton" parent="IntroTransitionLayer/CenterContainer/IntroVBox" unique_id=130152409]
+	visible = false
+	custom_minimum_size = Vector2(300, 90)
+	layout_mode = 2
+	texture_normal = ExtResource("3_idle")
+	texture_hover = ExtResource("4_hover")
+	ignore_texture_size = true
+	stretch_mode = 5
+
+	[node name="FireWavPlayer" type="AudioStreamPlayer" parent="IntroTransitionLayer" unique_id=1321160150]
+	stream = ExtResource("3_iwfq2")
+	volume_db = -9.811
+	pitch_scale = 0.79
+	autoplay = true

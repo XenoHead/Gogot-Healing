@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://0dxl7a67wrlh"
-path="res://.godot/imported/Transition Solemn.wav-94ed7561336a916436a3f4ff6a5d6140.sample"
+path="res://.godot/imported/Transition Solemn.wav-b1698bce5e8745b26b0dbcafb83dd50d.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Motions and Impacts/Transition Solemn.wav"
-dest_files=["res://.godot/imported/Transition Solemn.wav-94ed7561336a916436a3f4ff6a5d6140.sample"]
+source_file="res://audio/Motions and Impacts/Transition Solemn.wav"
+dest_files=["res://.godot/imported/Transition Solemn.wav-b1698bce5e8745b26b0dbcafb83dd50d.sample"]
 
 [params]
 

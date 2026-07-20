@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dfxxlgqod0wfv"
-path="res://.godot/imported/Achievement.wav-ad9086fd5f60f4a7d24c8de66d9d7a0c.sample"
+path="res://.godot/imported/Achievement.wav-862f45adbbc3e082374aa9b308c32d8c.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/UI & Menus/Achievement.wav"
-dest_files=["res://.godot/imported/Achievement.wav-ad9086fd5f60f4a7d24c8de66d9d7a0c.sample"]
+source_file="res://audio/UI & Menus/Achievement.wav"
+dest_files=["res://.godot/imported/Achievement.wav-862f45adbbc3e082374aa9b308c32d8c.sample"]
 
 [params]
 

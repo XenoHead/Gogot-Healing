@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bdt2h3e64fuif"
-path="res://.godot/imported/Wormhole Drive.wav-6f1896c830828b7aad9251e497df05a3.sample"
+path="res://.godot/imported/Wormhole Drive.wav-0bc235f3ea45720d5dc0b5f1fb0e66ab.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Sci-Fi/Wormhole Drive.wav"
-dest_files=["res://.godot/imported/Wormhole Drive.wav-6f1896c830828b7aad9251e497df05a3.sample"]
+source_file="res://audio/Sci-Fi/Wormhole Drive.wav"
+dest_files=["res://.godot/imported/Wormhole Drive.wav-0bc235f3ea45720d5dc0b5f1fb0e66ab.sample"]
 
 [params]
 

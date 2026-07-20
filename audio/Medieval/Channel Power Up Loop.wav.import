@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dowa4wwu1i8kn"
-path="res://.godot/imported/Channel Power Up Loop.wav-d0cf4507caf01db40c49af14da6f40b3.sample"
+path="res://.godot/imported/Channel Power Up Loop.wav-7f51eceffca456f683740537781af044.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Medieval/Channel Power Up Loop.wav"
-dest_files=["res://.godot/imported/Channel Power Up Loop.wav-d0cf4507caf01db40c49af14da6f40b3.sample"]
+source_file="res://audio/Medieval/Channel Power Up Loop.wav"
+dest_files=["res://.godot/imported/Channel Power Up Loop.wav-7f51eceffca456f683740537781af044.sample"]
 
 [params]
 

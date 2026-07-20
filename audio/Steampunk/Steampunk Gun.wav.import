@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b0th4tb4r76oy"
-path="res://.godot/imported/Steampunk Gun.wav-15c6bc7ae3168905fb53bd64ff8d0d81.sample"
+path="res://.godot/imported/Steampunk Gun.wav-2f7ed9e36e6e435c57bd8d0068e39eea.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Steampunk/Steampunk Gun.wav"
-dest_files=["res://.godot/imported/Steampunk Gun.wav-15c6bc7ae3168905fb53bd64ff8d0d81.sample"]
+source_file="res://audio/Steampunk/Steampunk Gun.wav"
+dest_files=["res://.godot/imported/Steampunk Gun.wav-2f7ed9e36e6e435c57bd8d0068e39eea.sample"]
 
 [params]
 

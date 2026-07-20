@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://deaqc2ocjwxc6"
-path="res://.godot/imported/Parry.wav-ad9c5b78739582919a8e12917912a76a.sample"
+path="res://.godot/imported/Parry.wav-222169ce762416f40d7a6e6cdbbabb77.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Medieval/Parry.wav"
-dest_files=["res://.godot/imported/Parry.wav-ad9c5b78739582919a8e12917912a76a.sample"]
+source_file="res://audio/Medieval/Parry.wav"
+dest_files=["res://.godot/imported/Parry.wav-222169ce762416f40d7a6e6cdbbabb77.sample"]
 
 [params]
 

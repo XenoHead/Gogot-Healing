@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cmel7j875bt48"
-path="res://.godot/imported/Success.wav-46570dc7b5f113bb9c0c6e2e5aa10e68.sample"
+path="res://.godot/imported/Success.wav-bde6211ed9fad28a03851e6b23d8e561.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Retro/Success.wav"
-dest_files=["res://.godot/imported/Success.wav-46570dc7b5f113bb9c0c6e2e5aa10e68.sample"]
+source_file="res://audio/Retro/Success.wav"
+dest_files=["res://.godot/imported/Success.wav-bde6211ed9fad28a03851e6b23d8e561.sample"]
 
 [params]
 

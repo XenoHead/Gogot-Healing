@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bipp8i8axfimk"
-path="res://.godot/imported/Steampunk Wheel Activate.wav-45801b893c1624e5829679fe4344d539.sample"
+path="res://.godot/imported/Steampunk Wheel Activate.wav-a6e63c223f19f42c97fcf194eeb78474.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Steampunk/Steampunk Wheel Activate.wav"
-dest_files=["res://.godot/imported/Steampunk Wheel Activate.wav-45801b893c1624e5829679fe4344d539.sample"]
+source_file="res://audio/Steampunk/Steampunk Wheel Activate.wav"
+dest_files=["res://.godot/imported/Steampunk Wheel Activate.wav-a6e63c223f19f42c97fcf194eeb78474.sample"]
 
 [params]
 

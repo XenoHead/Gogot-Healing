@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bdy5n2rqc2eqn"
-path="res://.godot/imported/Nightmare Loop.wav-872d0fee9a3ae8aa65a716071fdee410.sample"
+path="res://.godot/imported/Nightmare Loop.wav-d04df9b2d17c5b71298adee8e5a8d861.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Environment/Nightmare Loop.wav"
-dest_files=["res://.godot/imported/Nightmare Loop.wav-872d0fee9a3ae8aa65a716071fdee410.sample"]
+source_file="res://audio/Environment/Nightmare Loop.wav"
+dest_files=["res://.godot/imported/Nightmare Loop.wav-d04df9b2d17c5b71298adee8e5a8d861.sample"]
 
 [params]
 

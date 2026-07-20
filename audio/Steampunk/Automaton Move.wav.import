@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://duihtdk3gk1g1"
-path="res://.godot/imported/Automaton Move.wav-7ee2de9e1345de93e8684d49abecc517.sample"
+path="res://.godot/imported/Automaton Move.wav-1908971d7779ad609619013d214d35d2.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Steampunk/Automaton Move.wav"
-dest_files=["res://.godot/imported/Automaton Move.wav-7ee2de9e1345de93e8684d49abecc517.sample"]
+source_file="res://audio/Steampunk/Automaton Move.wav"
+dest_files=["res://.godot/imported/Automaton Move.wav-1908971d7779ad609619013d214d35d2.sample"]
 
 [params]
 

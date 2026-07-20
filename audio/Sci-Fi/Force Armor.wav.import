@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b1qntbm2qtjqc"
-path="res://.godot/imported/Force Armor.wav-085b3b1e0e34cd05ca2461b45bdf6421.sample"
+path="res://.godot/imported/Force Armor.wav-64d4e964b3374f236cc59f49d36d1141.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Sci-Fi/Force Armor.wav"
-dest_files=["res://.godot/imported/Force Armor.wav-085b3b1e0e34cd05ca2461b45bdf6421.sample"]
+source_file="res://audio/Sci-Fi/Force Armor.wav"
+dest_files=["res://.godot/imported/Force Armor.wav-64d4e964b3374f236cc59f49d36d1141.sample"]
 
 [params]
 

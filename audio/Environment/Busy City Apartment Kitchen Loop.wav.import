@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://3iywmfr8mva4"
-path="res://.godot/imported/Busy City Apartment Kitchen Loop.wav-be5b9e484889cb2c74bba8f1c6c0fffa.sample"
+path="res://.godot/imported/Busy City Apartment Kitchen Loop.wav-a5f0e70e20c33b71caeb8b27f57a2702.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Environment/Busy City Apartment Kitchen Loop.wav"
-dest_files=["res://.godot/imported/Busy City Apartment Kitchen Loop.wav-be5b9e484889cb2c74bba8f1c6c0fffa.sample"]
+source_file="res://audio/Environment/Busy City Apartment Kitchen Loop.wav"
+dest_files=["res://.godot/imported/Busy City Apartment Kitchen Loop.wav-a5f0e70e20c33b71caeb8b27f57a2702.sample"]
 
 [params]
 

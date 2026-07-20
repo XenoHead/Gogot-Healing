@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bewjaejmx0bv8"
-path="res://.godot/imported/Bleak Moon Piano.wav-e47120f32f6cbc1c18dc35a1de72651d.sample"
+path="res://.godot/imported/Bleak Moon Piano.wav-ac21fcee7fa8b312e014ef630a8d8782.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Horror/Bleak Moon Piano.wav"
-dest_files=["res://.godot/imported/Bleak Moon Piano.wav-e47120f32f6cbc1c18dc35a1de72651d.sample"]
+source_file="res://audio/Horror/Bleak Moon Piano.wav"
+dest_files=["res://.godot/imported/Bleak Moon Piano.wav-ac21fcee7fa8b312e014ef630a8d8782.sample"]
 
 [params]
 

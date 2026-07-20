@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b4omoqr1qbbya"
-path="res://.godot/imported/Start.wav-4d1b906c3d9029579bcaebaff5bf2afc.sample"
+path="res://.godot/imported/Start.wav-9b6f1b7a01144e8265d7f334e5dcac3d.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Retro/Start.wav"
-dest_files=["res://.godot/imported/Start.wav-4d1b906c3d9029579bcaebaff5bf2afc.sample"]
+source_file="res://audio/Retro/Start.wav"
+dest_files=["res://.godot/imported/Start.wav-9b6f1b7a01144e8265d7f334e5dcac3d.sample"]
 
 [params]
 

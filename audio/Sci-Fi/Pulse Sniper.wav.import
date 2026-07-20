@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cuvx0j5hpjlac"
-path="res://.godot/imported/Pulse Sniper.wav-e532827cdea3812561d8190c25d7b275.sample"
+path="res://.godot/imported/Pulse Sniper.wav-a59b6f2d2f8bce2624c90d2eac57acde.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Sci-Fi/Pulse Sniper.wav"
-dest_files=["res://.godot/imported/Pulse Sniper.wav-e532827cdea3812561d8190c25d7b275.sample"]
+source_file="res://audio/Sci-Fi/Pulse Sniper.wav"
+dest_files=["res://.godot/imported/Pulse Sniper.wav-a59b6f2d2f8bce2624c90d2eac57acde.sample"]
 
 [params]
 

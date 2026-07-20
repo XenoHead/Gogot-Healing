@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dmo835464gc0q"
-path="res://.godot/imported/Dog Yap.wav-82a1492afc859de71a1dee2c0fe63cdd.sample"
+path="res://.godot/imported/Dog Yap.wav-81c9bb42eff53a91082713e0d7c74177.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Community Requests/Dog Yap.wav"
-dest_files=["res://.godot/imported/Dog Yap.wav-82a1492afc859de71a1dee2c0fe63cdd.sample"]
+source_file="res://audio/Community Requests/Dog Yap.wav"
+dest_files=["res://.godot/imported/Dog Yap.wav-81c9bb42eff53a91082713e0d7c74177.sample"]
 
 [params]
 

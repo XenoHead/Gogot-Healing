@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cxuxh0onp0mh1"
-path="res://.godot/imported/Ghost Cantata.wav-1a014554292c194fc046ada9addb21d6.sample"
+path="res://.godot/imported/Ghost Cantata.wav-fe2ef05a6655c4db6c866cbb66026ac7.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Horror/Ghost Cantata.wav"
-dest_files=["res://.godot/imported/Ghost Cantata.wav-1a014554292c194fc046ada9addb21d6.sample"]
+source_file="res://audio/Horror/Ghost Cantata.wav"
+dest_files=["res://.godot/imported/Ghost Cantata.wav-fe2ef05a6655c4db6c866cbb66026ac7.sample"]
 
 [params]
 

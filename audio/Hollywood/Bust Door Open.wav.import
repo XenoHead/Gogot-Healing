@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://hiee5hw2edhq"
-path="res://.godot/imported/Bust Door Open.wav-b00f6d8b33252c5469fb9d26788c04bd.sample"
+path="res://.godot/imported/Bust Door Open.wav-75e3e2d9ae1dd2b5b81e73db3730dce8.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Hollywood/Bust Door Open.wav"
-dest_files=["res://.godot/imported/Bust Door Open.wav-b00f6d8b33252c5469fb9d26788c04bd.sample"]
+source_file="res://audio/Hollywood/Bust Door Open.wav"
+dest_files=["res://.godot/imported/Bust Door Open.wav-75e3e2d9ae1dd2b5b81e73db3730dce8.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dd0qff1hv0gxf"
-path="res://.godot/imported/Ice Attack.wav-21e88e45e6115cfb354d698254939aab.sample"
+path="res://.godot/imported/Ice Attack.wav-b179a5b9d30729adb36a7713c168d766.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Magic/Ice Attack.wav"
-dest_files=["res://.godot/imported/Ice Attack.wav-21e88e45e6115cfb354d698254939aab.sample"]
+source_file="res://audio/Magic/Ice Attack.wav"
+dest_files=["res://.godot/imported/Ice Attack.wav-b179a5b9d30729adb36a7713c168d766.sample"]
 
 [params]
 

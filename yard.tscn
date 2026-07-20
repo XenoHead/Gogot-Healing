@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bul6dqb48nwqy"]
+
+[ext_resource type="Shader" uid="uid://bn663tr71togl" path="res://grass.gdshader" id="1_iwcpt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7lme"]
+render_priority = 0
+shader = ExtResource("1_iwcpt")
+shader_parameter/bottom_color = Color(0, 0, 0, 1)
+shader_parameter/top_color = Color(0, 0, 0, 1)
+shader_parameter/color_variation_1 = Color(0, 0, 0, 1)
+shader_parameter/Noise1Scale = 20.0
+shader_parameter/color_variation_2 = Color(0, 0, 0, 1)
+shader_parameter/Noise2Scale = 20.0
+shader_parameter/windSpeed = 0.005
+shader_parameter/windDis = 0.2
+shader_parameter/noiseStrength = 0.5
+shader_parameter/displaceStrength = 3.0
+shader_parameter/windNoiseScale = 20.0
+shader_parameter/windNoisePanSpeed = Vector2(0.03, 0.03)
+shader_parameter/noiseFloor = 0.3
+shader_parameter/wind_noise_scale_strength = 0.2
+shader_parameter/wind_shadow_color = Color(0, 0.2, 0, 1)
+shader_parameter/wind_shadow_strength = 0.4
+shader_parameter/flatten_shadow_strength = 0.7
+shader_parameter/wind_shadow_displacement_threshold = 0.15
+shader_parameter/wind_shadow_smoothing = 0.3
+shader_parameter/interracting_object_pos = Vector3(0, 0, 0)
+shader_parameter/flatten_radius = 0.75
+shader_parameter/flatten_strength = 3.0
+shader_parameter/flatten_floor = 0.3
+shader_parameter/combined_noise_min_scale = 0.5
+shader_parameter/combined_noise_max_scale = 1.5
+shader_parameter/invert_combined_noise = false
+shader_parameter/debug_show_wind_noise = false
+shader_parameter/debug_show_combined_noise = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ufunr"]
+
+[node name="Node3D" type="Node3D" unique_id=1910455257]
+
+[node name="YardFloor" type="MeshInstance3D" parent="." unique_id=519393688]
+material_override = SubResource("ShaderMaterial_k7lme")
+custom_aabb = AABB(20, 0, 2, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ufunr")

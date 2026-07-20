@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FootstepperSoundProfile" format=3 uid="uid://nqw1m7rl6n48"]
+
+[ext_resource type="Script" uid="uid://b7517dwyd1msy" path="res://addons/footstepper/footstepper_sound_profile.gd" id="1_1gbse"]
+[ext_resource type="AudioStream" uid="uid://c2l4xw4ohrye7" path="res://addons/footstepper/sounds/footstep.ogg" id="2_iuyiq"]
+[ext_resource type="AudioStream" uid="uid://dl7j2g3uiy6oc" path="res://addons/footstepper/sounds/jump.ogg" id="3_x18gg"]
+[ext_resource type="AudioStream" uid="uid://dauapea82bkhj" path="res://addons/footstepper/sounds/land.ogg" id="4_ym264"]
+
+[resource]
+script = ExtResource("1_1gbse")
+material_name = "sounds"
+metadata/_custom_type_script = "uid://b7517dwyd1msy"

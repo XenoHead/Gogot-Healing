@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bbch5dbrbnp2a"
-path="res://.godot/imported/Log Off.wav-72e3c389b8f3afdd9e472c24e3c35e25.sample"
+path="res://.godot/imported/Log Off.wav-bf4b3d182c380b64ab4a5cb0ad46fd37.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Jingles & Stingers/Log Off.wav"
-dest_files=["res://.godot/imported/Log Off.wav-72e3c389b8f3afdd9e472c24e3c35e25.sample"]
+source_file="res://audio/Jingles & Stingers/Log Off.wav"
+dest_files=["res://.godot/imported/Log Off.wav-bf4b3d182c380b64ab4a5cb0ad46fd37.sample"]
 
 [params]
 

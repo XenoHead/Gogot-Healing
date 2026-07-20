@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://byg11mugbt140"
-path="res://.godot/imported/Hammer Fall.wav-bb95812c1f207ee640a00ec1eaa2dd80.sample"
+path="res://.godot/imported/Hammer Fall.wav-3da90a6799ad90c6e0c33ef8a9706fdb.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Community Requests/Hammer Fall.wav"
-dest_files=["res://.godot/imported/Hammer Fall.wav-bb95812c1f207ee640a00ec1eaa2dd80.sample"]
+source_file="res://audio/Community Requests/Hammer Fall.wav"
+dest_files=["res://.godot/imported/Hammer Fall.wav-3da90a6799ad90c6e0c33ef8a9706fdb.sample"]
 
 [params]
 

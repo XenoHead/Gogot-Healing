@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://461jh6v4m517"
-path="res://.godot/imported/Map.wav-8c1f67d35b3dacede7c2756b9459ca7d.sample"
+path="res://.godot/imported/Map.wav-b08ddea7e7a1f1ba49ddd64747d95e4f.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/UI & Menus/Map.wav"
-dest_files=["res://.godot/imported/Map.wav-8c1f67d35b3dacede7c2756b9459ca7d.sample"]
+source_file="res://audio/UI & Menus/Map.wav"
+dest_files=["res://.godot/imported/Map.wav-b08ddea7e7a1f1ba49ddd64747d95e4f.sample"]
 
 [params]
 

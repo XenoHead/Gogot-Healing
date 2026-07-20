@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://daq6rfxwgq0ra"
-path="res://.godot/imported/Arrow Hit.wav-2a79fdb73cd05face336f77a26fb4f41.sample"
+path="res://.godot/imported/Arrow Hit.wav-cb1523951a667b6823a7e75185374df3.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Medieval/Arrow Hit.wav"
-dest_files=["res://.godot/imported/Arrow Hit.wav-2a79fdb73cd05face336f77a26fb4f41.sample"]
+source_file="res://audio/Medieval/Arrow Hit.wav"
+dest_files=["res://.godot/imported/Arrow Hit.wav-cb1523951a667b6823a7e75185374df3.sample"]
 
 [params]
 

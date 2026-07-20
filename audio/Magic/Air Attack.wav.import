@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ugya7gvdwnuu"
-path="res://.godot/imported/Air Attack.wav-3a24cd24713d3184220f9a482e22ca60.sample"
+path="res://.godot/imported/Air Attack.wav-f5b61ca99845c0c5511354cf0cfef805.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Magic/Air Attack.wav"
-dest_files=["res://.godot/imported/Air Attack.wav-3a24cd24713d3184220f9a482e22ca60.sample"]
+source_file="res://audio/Magic/Air Attack.wav"
+dest_files=["res://.godot/imported/Air Attack.wav-f5b61ca99845c0c5511354cf0cfef805.sample"]
 
 [params]
 

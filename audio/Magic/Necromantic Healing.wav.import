@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://damqpm51s2j6p"
-path="res://.godot/imported/Necromantic Healing.wav-5d34ed105b7b9f88af187496e6d1dc4e.sample"
+path="res://.godot/imported/Necromantic Healing.wav-697816917f3c4134591e5d2acc8a71a8.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Magic/Necromantic Healing.wav"
-dest_files=["res://.godot/imported/Necromantic Healing.wav-5d34ed105b7b9f88af187496e6d1dc4e.sample"]
+source_file="res://audio/Magic/Necromantic Healing.wav"
+dest_files=["res://.godot/imported/Necromantic Healing.wav-697816917f3c4134591e5d2acc8a71a8.sample"]
 
 [params]
 

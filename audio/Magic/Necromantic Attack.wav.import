@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c0jq7rqpljx5a"
-path="res://.godot/imported/Necromantic Attack.wav-27f344506f88158902ba8146f443b653.sample"
+path="res://.godot/imported/Necromantic Attack.wav-dc6335fcd1b4966b772a6b3ba54b0ad3.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Magic/Necromantic Attack.wav"
-dest_files=["res://.godot/imported/Necromantic Attack.wav-27f344506f88158902ba8146f443b653.sample"]
+source_file="res://audio/Magic/Necromantic Attack.wav"
+dest_files=["res://.godot/imported/Necromantic Attack.wav-dc6335fcd1b4966b772a6b3ba54b0ad3.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bojgbeoctfm6g"
-path="res://.godot/imported/It Laughs At You.wav-69f65ad75107e72c4f06c3e20cd5a02a.sample"
+path="res://.godot/imported/It Laughs At You.wav-87f36954647ebe03dd139994b465bdeb.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Horror/It Laughs At You.wav"
-dest_files=["res://.godot/imported/It Laughs At You.wav-69f65ad75107e72c4f06c3e20cd5a02a.sample"]
+source_file="res://audio/Horror/It Laughs At You.wav"
+dest_files=["res://.godot/imported/It Laughs At You.wav-87f36954647ebe03dd139994b465bdeb.sample"]
 
 [params]
 

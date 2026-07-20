@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cii85fwk7stvb"
-path="res://.godot/imported/Phase Missile.wav-ad39ece057a2b787daecdc9e4ff1c0b1.sample"
+path="res://.godot/imported/Phase Missile.wav-f7cf84d590aeb4847dcb60ded8c70b66.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Sci-Fi/Phase Missile.wav"
-dest_files=["res://.godot/imported/Phase Missile.wav-ad39ece057a2b787daecdc9e4ff1c0b1.sample"]
+source_file="res://audio/Sci-Fi/Phase Missile.wav"
+dest_files=["res://.godot/imported/Phase Missile.wav-f7cf84d590aeb4847dcb60ded8c70b66.sample"]
 
 [params]
 

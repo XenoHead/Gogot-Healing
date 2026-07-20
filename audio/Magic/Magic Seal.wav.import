@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cuxqosa7hd2j7"
-path="res://.godot/imported/Magic Seal.wav-463f5071d206bcdfbc5f61ead4ce4d28.sample"
+path="res://.godot/imported/Magic Seal.wav-943e674643c63cfde92a7ceeb0a54b3e.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Magic/Magic Seal.wav"
-dest_files=["res://.godot/imported/Magic Seal.wav-463f5071d206bcdfbc5f61ead4ce4d28.sample"]
+source_file="res://audio/Magic/Magic Seal.wav"
+dest_files=["res://.godot/imported/Magic Seal.wav-943e674643c63cfde92a7ceeb0a54b3e.sample"]
 
 [params]
 

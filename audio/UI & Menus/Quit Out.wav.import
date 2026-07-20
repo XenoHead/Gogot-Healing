@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bwt2xk8aelnrj"
-path="res://.godot/imported/Quit Out.wav-2269bf620546811ea8e3349f5c5524f8.sample"
+path="res://.godot/imported/Quit Out.wav-322faae22464f8c8016b0e0d1cc501c3.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/UI & Menus/Quit Out.wav"
-dest_files=["res://.godot/imported/Quit Out.wav-2269bf620546811ea8e3349f5c5524f8.sample"]
+source_file="res://audio/UI & Menus/Quit Out.wav"
+dest_files=["res://.godot/imported/Quit Out.wav-322faae22464f8c8016b0e0d1cc501c3.sample"]
 
 [params]
 

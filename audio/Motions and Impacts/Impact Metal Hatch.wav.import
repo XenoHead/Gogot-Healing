@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cigv6lmrlixq6"
-path="res://.godot/imported/Impact Metal Hatch.wav-f51a3402a17226af91e5035f4bca0e31.sample"
+path="res://.godot/imported/Impact Metal Hatch.wav-e7fac13f8ccd12c3882b115d3aa3da02.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Motions and Impacts/Impact Metal Hatch.wav"
-dest_files=["res://.godot/imported/Impact Metal Hatch.wav-f51a3402a17226af91e5035f4bca0e31.sample"]
+source_file="res://audio/Motions and Impacts/Impact Metal Hatch.wav"
+dest_files=["res://.godot/imported/Impact Metal Hatch.wav-e7fac13f8ccd12c3882b115d3aa3da02.sample"]
 
 [params]
 

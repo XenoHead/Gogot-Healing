@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c8wr686onbd76"
-path="res://.godot/imported/Steampunk Drill.wav-4f92fe74fc4b15c2ece236122bee0d2f.sample"
+path="res://.godot/imported/Steampunk Drill.wav-ff160c8d385c9aa002266382393e2ae1.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Steampunk/Steampunk Drill.wav"
-dest_files=["res://.godot/imported/Steampunk Drill.wav-4f92fe74fc4b15c2ece236122bee0d2f.sample"]
+source_file="res://audio/Steampunk/Steampunk Drill.wav"
+dest_files=["res://.godot/imported/Steampunk Drill.wav-ff160c8d385c9aa002266382393e2ae1.sample"]
 
 [params]
 

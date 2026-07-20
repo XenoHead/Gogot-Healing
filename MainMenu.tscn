@@ -1,9 +1,22 @@
-[gd_scene format=3 uid="uid://c1x8v8x8x8x8"]
+[gd_scene format=3 uid="uid://5pb3lf63t4j2"]
 
 [ext_resource type="Script" uid="uid://b23hmcimqmuai" path="res://MainMenu.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://d5kvmiphrfj4" path="res://images/logo.png" id="2_logo"]
-[ext_resource type="Texture2D" uid="uid://x1_idle" path="res://images/start_idle.png" id="3_idle"]
-[ext_resource type="Texture2D" uid="uid://x2_hover" path="res://images/start_hover.png" id="4_hover"]
+[ext_resource type="Texture2D" uid="uid://dn77mlqvg0lch" path="res://images/start_idle.png" id="3_idle"]
+[ext_resource type="AudioStream" uid="uid://cv7rschfa0ovs" path="res://audio/firetree.wav" id="3_iwfq2"]
+[ext_resource type="Texture2D" uid="uid://dvkrxuvxgur5w" path="res://images/start_hover.png" id="4_hover"]
+[ext_resource type="Texture2D" uid="uid://bspvkyiwd8sfy" path="res://images/hallway_1.png" id="5_bg"]
+[ext_resource type="AudioStream" uid="uid://b0u4kn2w7efb6" path="res://audio/intro_1_1.wav" id="7_intro_loop"]
+[ext_resource type="Texture2D" uid="uid://b18ei72prkpnq" path="res://images/game_logo.png" id="8_title"]
+[ext_resource type="Texture2D" uid="uid://efw7o6hi1t5j" path="res://images/ui_frame.png" id="9_frame"]
+[ext_resource type="AudioStream" uid="uid://pekevc6fpipg" path="res://audio/drone_loop.wav" id="10_hover_snd"]
+[ext_resource type="AudioStream" uid="uid://dtrypgrh0b40" path="res://audio/Motions and Impacts/Impact Vox Hammer.wav" id="11_select_snd"]
+[ext_resource type="FontFile" uid="uid://fatls3h3pln1" path="res://fonts/Dark Whispers.otf" id="12_horror_font"]
+[ext_resource type="AudioStream" uid="uid://cemcese136lk0" path="res://audio/crying.wav" id="13_crying"]
+[ext_resource type="PackedScene" uid="uid://bul6dqb48nwqy" path="res://yard.tscn" id="14_rnncn"]
+[ext_resource type="Texture2D" uid="uid://co37l1kc2cvpc" path="res://images/settings.png" id="14_settings_bg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_unselected"]
 
 [node name="MainMenu" type="Control" unique_id=386691400]
 layout_mode = 3
@@ -31,35 +44,63 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FireTreeLogo" type="TextureRect" parent="IntroTransitionLayer/CenterContainer" unique_id=1753077472]
-custom_minimum_size = Vector2(600, 600)
+[node name="IntroVBox" type="VBoxContainer" parent="IntroTransitionLayer/CenterContainer" unique_id=597421174]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="FireTreeLogo" type="TextureRect" parent="IntroTransitionLayer/CenterContainer/IntroVBox" unique_id=1753077472]
+custom_minimum_size = Vector2(450, 450)
 layout_mode = 2
 texture = ExtResource("2_logo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="FireWavPlayer" type="AudioStreamPlayer" parent="IntroTransitionLayer" unique_id=1321160150]
-
-[node name="StartButtonPrompt" type="TextureButton" parent="IntroTransitionLayer" unique_id=130152409]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -180.0
-offset_right = 200.0
-offset_bottom = -60.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="StartButtonPrompt" type="TextureButton" parent="IntroTransitionLayer/CenterContainer/IntroVBox" unique_id=130152409]
+custom_minimum_size = Vector2(300, 90)
+layout_mode = 2
 texture_normal = ExtResource("3_idle")
 texture_hover = ExtResource("4_hover")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="FireWavPlayer" type="AudioStreamPlayer" parent="IntroTransitionLayer" unique_id=1321160150]
+stream = ExtResource("3_iwfq2")
+volume_db = -9.811
+pitch_scale = 0.79
+autoplay = true
+
+[node name="IntroSelectPlayer" type="AudioStreamPlayer" parent="IntroTransitionLayer" unique_id=355571249]
+stream = ExtResource("11_select_snd")
+volume_db = -20.0
+
 [node name="MenuUILayer" type="CanvasLayer" parent="." unique_id=210812240]
 visible = false
+
+[node name="MenuLoopPlayer" type="AudioStreamPlayer" parent="MenuUILayer" unique_id=1572504342]
+stream = ExtResource("7_intro_loop")
+
+[node name="CryingPlayer" type="AudioStreamPlayer" parent="MenuUILayer" unique_id=1940526077]
+stream = ExtResource("13_crying")
+volume_db = -12.0
+
+[node name="UIHoverPlayer" type="AudioStreamPlayer" parent="MenuUILayer" unique_id=520325063]
+stream = ExtResource("10_hover_snd")
+volume_db = -1.563
+
+[node name="UISelectPlayer" type="AudioStreamPlayer" parent="MenuUILayer" unique_id=396411743]
+stream = ExtResource("11_select_snd")
+volume_db = -21.562
+
+[node name="MenuBackground" type="TextureRect" parent="MenuUILayer" unique_id=255973767]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_bg")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuUILayer" unique_id=412504377]
 anchors_preset = 15
@@ -75,34 +116,209 @@ theme_override_constants/margin_bottom = 50
 [node name="MainVBox" type="VBoxContainer" parent="MenuUILayer/MarginContainer" unique_id=1244794325]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="MenuUILayer/MarginContainer/MainVBox" unique_id=395786297]
+[node name="TitleBoxContainer" type="CenterContainer" parent="MenuUILayer/MarginContainer/MainVBox" unique_id=327512568]
 layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "DEADWOOD CODEX"
-horizontal_alignment = 1
+
+[node name="TitleLogo" type="TextureRect" parent="MenuUILayer/MarginContainer/MainVBox/TitleBoxContainer" unique_id=395786297]
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 2
+texture = ExtResource("8_title")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitleFrame" type="TextureRect" parent="MenuUILayer/MarginContainer/MainVBox/TitleBoxContainer" unique_id=210787333]
+custom_minimum_size = Vector2(450, 200)
+layout_mode = 2
+texture = ExtResource("9_frame")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ButtonVBox" type="VBoxContainer" parent="MenuUILayer/MarginContainer/MainVBox" unique_id=1660071121]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/separation = 15
 alignment = 1
 
 [node name="PlayButton" type="Button" parent="MenuUILayer/MarginContainer/MainVBox/ButtonVBox" unique_id=501955893]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_horror_font")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_unselected")
 text = "NEW GAME"
 
 [node name="LoadButton" type="Button" parent="MenuUILayer/MarginContainer/MainVBox/ButtonVBox" unique_id=57240134]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_horror_font")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_unselected")
 text = "LOAD GAME"
 
 [node name="OptionsButton" type="Button" parent="MenuUILayer/MarginContainer/MainVBox/ButtonVBox" unique_id=1105825496]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_horror_font")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_unselected")
 text = "SETTINGS"
 
 [node name="QuitButton" type="Button" parent="MenuUILayer/MarginContainer/MainVBox/ButtonVBox" unique_id=1329169771]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_horror_font")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_unselected")
 text = "QUIT"
+
+[node name="Node3D" parent="MenuUILayer" unique_id=1910455257 instance=ExtResource("14_rnncn")]
+
+[node name="SettingsLayer" type="CanvasLayer" parent="." unique_id=208871342]
+visible = false
+
+[node name="SettingsBackground" type="TextureRect" parent="SettingsLayer" unique_id=1045228078]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_settings_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsLayer" unique_id=602693103]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 60
+
+[node name="SettingsVBox" type="VBoxContainer" parent="SettingsLayer/MarginContainer" unique_id=1094324231]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="SettingsTitle" type="Label" parent="SettingsLayer/MarginContainer/SettingsVBox" unique_id=1404341296]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_fonts/font = ExtResource("12_horror_font")
+theme_override_font_sizes/font_size = 48
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="VolumeControls" type="VBoxContainer" parent="SettingsLayer/MarginContainer/SettingsVBox" unique_id=370319474]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="MainLabel" type="Label" parent="SettingsLayer/MarginContainer/SettingsVBox/VolumeControls" unique_id=2002057159]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_horror_font")
+theme_override_font_sizes/font_size = 24
+text = "MAIN AUDIO"
+
+[node name="MainSlider" type="HSlider" parent="SettingsLayer/MarginContainer/SettingsVBox/VolumeControls" unique_id=470343820]
+layout_mode = 2
+min_value = -40.0
+max_value = 0.0
+value = -6.0
+
+[node name="MusicLabel" type="Label" parent="SettingsLayer/MarginContainer/SettingsVBox/VolumeControls" unique_id=669625195]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_horror_font")
+theme_override_font_sizes/font_size = 24
+text = "MUSIC VOLUME"
+
+[node name="MusicSlider" type="HSlider" parent="SettingsLayer/MarginContainer/SettingsVBox/VolumeControls" unique_id=1282737923]
+layout_mode = 2
+min_value = -40.0
+max_value = 0.0
+value = -6.0
+
+[node name="VoiceLabel" type="Label" parent="SettingsLayer/MarginContainer/SettingsVBox/VolumeControls" unique_id=1756066409]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_horror_font")
+theme_override_font_sizes/font_size = 24
+text = "VOICE AUDIO"
+
+[node name="VoiceSlider" type="HSlider" parent="SettingsLayer/MarginContainer/SettingsVBox/VolumeControls" unique_id=1684906013]
+layout_mode = 2
+min_value = -40.0
+max_value = 0.0
+value = -6.0
+
+[node name="DisplayControls" type="HBoxContainer" parent="SettingsLayer/MarginContainer/SettingsVBox" unique_id=1253351441]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="FullscreenLabel" type="Label" parent="SettingsLayer/MarginContainer/SettingsVBox/DisplayControls" unique_id=815577773]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_horror_font")
+theme_override_font_sizes/font_size = 24
+text = "FULLSCREEN MODE"
+
+[node name="FullscreenCheck" type="CheckBox" parent="SettingsLayer/MarginContainer/SettingsVBox/DisplayControls" unique_id=1638235996]
+layout_mode = 2
+
+[node name="ActionButtons" type="HBoxContainer" parent="SettingsLayer/MarginContainer/SettingsVBox" unique_id=494402202]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="SaveButton" type="Button" parent="SettingsLayer/MarginContainer/SettingsVBox/ActionButtons" unique_id=635163902]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_horror_font")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_unselected")
+text = "SAVE"
+
+[node name="CancelButton" type="Button" parent="SettingsLayer/MarginContainer/SettingsVBox/ActionButtons" unique_id=183305665]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_horror_font")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_unselected")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_unselected")
+text = "CANCEL"

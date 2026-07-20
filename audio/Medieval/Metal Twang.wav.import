@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bv2yrm01okld3"
-path="res://.godot/imported/Metal Twang.wav-b0f4fd05f45dc17618c8b0c01896a710.sample"
+path="res://.godot/imported/Metal Twang.wav-09e59d79d3f7fdc13cf42af1767e184f.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Medieval/Metal Twang.wav"
-dest_files=["res://.godot/imported/Metal Twang.wav-b0f4fd05f45dc17618c8b0c01896a710.sample"]
+source_file="res://audio/Medieval/Metal Twang.wav"
+dest_files=["res://.godot/imported/Metal Twang.wav-09e59d79d3f7fdc13cf42af1767e184f.sample"]
 
 [params]
 

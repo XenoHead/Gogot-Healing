@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b4xmtytqhf7ie"
-path="res://.godot/imported/Air Raid Siren.wav-e73c2ae6f4892c8c033f9d9deb2146ae.sample"
+path="res://.godot/imported/Air Raid Siren.wav-041a4ea7d2eeca09d72e04a2996fa6f1.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Community Requests/Air Raid Siren.wav"
-dest_files=["res://.godot/imported/Air Raid Siren.wav-e73c2ae6f4892c8c033f9d9deb2146ae.sample"]
+source_file="res://audio/Community Requests/Air Raid Siren.wav"
+dest_files=["res://.godot/imported/Air Raid Siren.wav-041a4ea7d2eeca09d72e04a2996fa6f1.sample"]
 
 [params]
 

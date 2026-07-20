@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b88ov0o2pskae"
-path="res://.godot/imported/Crack Turn.wav-07ad63ffe6c3be1060072fe8ed751713.sample"
+path="res://.godot/imported/Crack Turn.wav-44dfae3a4ecdb32a5c3fa7b20d107f59.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Steampunk/Crack Turn.wav"
-dest_files=["res://.godot/imported/Crack Turn.wav-07ad63ffe6c3be1060072fe8ed751713.sample"]
+source_file="res://audio/Steampunk/Crack Turn.wav"
+dest_files=["res://.godot/imported/Crack Turn.wav-44dfae3a4ecdb32a5c3fa7b20d107f59.sample"]
 
 [params]
 

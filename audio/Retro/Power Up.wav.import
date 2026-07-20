@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://es8ub5mgnqma"
-path="res://.godot/imported/Power Up.wav-7bffa5256aa93444370138d0807d2db1.sample"
+path="res://.godot/imported/Power Up.wav-efceafdccf76ac156ab0f38153af011c.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Retro/Power Up.wav"
-dest_files=["res://.godot/imported/Power Up.wav-7bffa5256aa93444370138d0807d2db1.sample"]
+source_file="res://audio/Retro/Power Up.wav"
+dest_files=["res://.godot/imported/Power Up.wav-efceafdccf76ac156ab0f38153af011c.sample"]
 
 [params]
 

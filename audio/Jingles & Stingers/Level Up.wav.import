@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b5eoto5mph8sk"
-path="res://.godot/imported/Level Up.wav-3e78c225856250677365c6114b122be9.sample"
+path="res://.godot/imported/Level Up.wav-7b47c2c6a7cf3f83f804794730f8a536.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Jingles & Stingers/Level Up.wav"
-dest_files=["res://.godot/imported/Level Up.wav-3e78c225856250677365c6114b122be9.sample"]
+source_file="res://audio/Jingles & Stingers/Level Up.wav"
+dest_files=["res://.godot/imported/Level Up.wav-7b47c2c6a7cf3f83f804794730f8a536.sample"]
 
 [params]
 

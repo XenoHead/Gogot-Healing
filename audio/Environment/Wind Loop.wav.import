@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b4tj4crgcig2f"
-path="res://.godot/imported/Wind Loop.wav-22c7592e829194279ba02236e5af4bcd.sample"
+path="res://.godot/imported/Wind Loop.wav-4e331655b1ccf992bb832d8f2940e470.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Environment/Wind Loop.wav"
-dest_files=["res://.godot/imported/Wind Loop.wav-22c7592e829194279ba02236e5af4bcd.sample"]
+source_file="res://audio/Environment/Wind Loop.wav"
+dest_files=["res://.godot/imported/Wind Loop.wav-4e331655b1ccf992bb832d8f2940e470.sample"]
 
 [params]
 

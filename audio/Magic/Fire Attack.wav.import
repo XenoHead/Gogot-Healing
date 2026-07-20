@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://jgmnjk3lmgcv"
-path="res://.godot/imported/Fire Attack.wav-60e678e489313b9c6128038cd498a6e0.sample"
+path="res://.godot/imported/Fire Attack.wav-9d32ca987597eac3c83d2c82f7d36909.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Magic/Fire Attack.wav"
-dest_files=["res://.godot/imported/Fire Attack.wav-60e678e489313b9c6128038cd498a6e0.sample"]
+source_file="res://audio/Magic/Fire Attack.wav"
+dest_files=["res://.godot/imported/Fire Attack.wav-9d32ca987597eac3c83d2c82f7d36909.sample"]
 
 [params]
 

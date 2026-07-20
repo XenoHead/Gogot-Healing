@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dt86sex2fhgrd"
-path="res://.godot/imported/Stoke Coal Oven.wav-8cb84a8b181f13f038a608da810a2949.sample"
+path="res://.godot/imported/Stoke Coal Oven.wav-f4308a9ed0e3e2cc0b154a2dc7d787ca.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Community Requests/Stoke Coal Oven.wav"
-dest_files=["res://.godot/imported/Stoke Coal Oven.wav-8cb84a8b181f13f038a608da810a2949.sample"]
+source_file="res://audio/Community Requests/Stoke Coal Oven.wav"
+dest_files=["res://.godot/imported/Stoke Coal Oven.wav-f4308a9ed0e3e2cc0b154a2dc7d787ca.sample"]
 
 [params]
 

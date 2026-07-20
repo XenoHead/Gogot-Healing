@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://3fn261b3psb7"
-path="res://.godot/imported/Swoosh Machines.wav-4b596a1651813dfadbe57e048a5567b9.sample"
+path="res://.godot/imported/Swoosh Machines.wav-1972516969c264aa4680b99026baa5f7.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Motions and Impacts/Swoosh Machines.wav"
-dest_files=["res://.godot/imported/Swoosh Machines.wav-4b596a1651813dfadbe57e048a5567b9.sample"]
+source_file="res://audio/Motions and Impacts/Swoosh Machines.wav"
+dest_files=["res://.godot/imported/Swoosh Machines.wav-1972516969c264aa4680b99026baa5f7.sample"]
 
 [params]
 

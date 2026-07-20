@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://7sefycoyvxjp"
-path="res://.godot/imported/Whoosh Cyberwave.wav-2a7e6a03ff1cb56c9b37f35d07d3c849.sample"
+path="res://.godot/imported/Whoosh Cyberwave.wav-e8b8ac0a5941b51847c0b33c2c5bd056.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Motions and Impacts/Whoosh Cyberwave.wav"
-dest_files=["res://.godot/imported/Whoosh Cyberwave.wav-2a7e6a03ff1cb56c9b37f35d07d3c849.sample"]
+source_file="res://audio/Motions and Impacts/Whoosh Cyberwave.wav"
+dest_files=["res://.godot/imported/Whoosh Cyberwave.wav-e8b8ac0a5941b51847c0b33c2c5bd056.sample"]
 
 [params]
 

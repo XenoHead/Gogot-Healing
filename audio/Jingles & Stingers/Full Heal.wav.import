@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://jeoc836bkdud"
-path="res://.godot/imported/Full Heal.wav-cc6693ea85af300ed62c658cab225d27.sample"
+path="res://.godot/imported/Full Heal.wav-a8e823b13b811ff1a842e4c395a322d1.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Jingles & Stingers/Full Heal.wav"
-dest_files=["res://.godot/imported/Full Heal.wav-cc6693ea85af300ed62c658cab225d27.sample"]
+source_file="res://audio/Jingles & Stingers/Full Heal.wav"
+dest_files=["res://.godot/imported/Full Heal.wav-a8e823b13b811ff1a842e4c395a322d1.sample"]
 
 [params]
 

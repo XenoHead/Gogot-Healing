@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b3ujxt8noc2rh"
-path="res://.godot/imported/Turret Reload.wav-6c097d19039f5afbc2c400af8908cda7.sample"
+path="res://.godot/imported/Turret Reload.wav-0a1079e41a50b7ec94ef7b42f9f9d05e.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Sci-Fi/Turret Reload.wav"
-dest_files=["res://.godot/imported/Turret Reload.wav-6c097d19039f5afbc2c400af8908cda7.sample"]
+source_file="res://audio/Sci-Fi/Turret Reload.wav"
+dest_files=["res://.godot/imported/Turret Reload.wav-0a1079e41a50b7ec94ef7b42f9f9d05e.sample"]
 
 [params]
 

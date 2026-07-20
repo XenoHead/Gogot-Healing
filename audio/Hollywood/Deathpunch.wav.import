@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://ctxvqwont7wt1"
-path="res://.godot/imported/Deathpunch.wav-7d73d0dd40381e9850cfe011cd801434.sample"
+path="res://.godot/imported/Deathpunch.wav-dfd2c231126f61dd442110952e6068fa.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Hollywood/Deathpunch.wav"
-dest_files=["res://.godot/imported/Deathpunch.wav-7d73d0dd40381e9850cfe011cd801434.sample"]
+source_file="res://audio/Hollywood/Deathpunch.wav"
+dest_files=["res://.godot/imported/Deathpunch.wav-dfd2c231126f61dd442110952e6068fa.sample"]
 
 [params]
 

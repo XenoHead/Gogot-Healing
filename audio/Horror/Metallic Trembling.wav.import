@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bud13m0m0fiq1"
-path="res://.godot/imported/Metallic Trembling.wav-ba9d38f3e3d36dce6ced09488d865532.sample"
+path="res://.godot/imported/Metallic Trembling.wav-f8e378d730d7c40571fabdb15d2f4dca.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Horror/Metallic Trembling.wav"
-dest_files=["res://.godot/imported/Metallic Trembling.wav-ba9d38f3e3d36dce6ced09488d865532.sample"]
+source_file="res://audio/Horror/Metallic Trembling.wav"
+dest_files=["res://.godot/imported/Metallic Trembling.wav-f8e378d730d7c40571fabdb15d2f4dca.sample"]
 
 [params]
 

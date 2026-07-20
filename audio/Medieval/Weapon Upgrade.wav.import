@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cpep8tspo6c2e"
-path="res://.godot/imported/Weapon Upgrade.wav-b1f10a9f6c9fd4973a3eecd72e61dac0.sample"
+path="res://.godot/imported/Weapon Upgrade.wav-3777456ed0372e5249dd20f396a45700.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Medieval/Weapon Upgrade.wav"
-dest_files=["res://.godot/imported/Weapon Upgrade.wav-b1f10a9f6c9fd4973a3eecd72e61dac0.sample"]
+source_file="res://audio/Medieval/Weapon Upgrade.wav"
+dest_files=["res://.godot/imported/Weapon Upgrade.wav-3777456ed0372e5249dd20f396a45700.sample"]
 
 [params]
 

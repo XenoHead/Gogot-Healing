@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d0b80wfvttjv2"
-path="res://.godot/imported/Rolling Thunder.wav-405264027d69d5b14a5fe6d554aacd1c.sample"
+path="res://.godot/imported/Rolling Thunder.wav-145241a1e82a55e35950f5962c9a065b.sample"
 
 [deps]
 
-source_file="res://audio/Sound FX Starter Pack Vol. 1/Community Requests/Rolling Thunder.wav"
-dest_files=["res://.godot/imported/Rolling Thunder.wav-405264027d69d5b14a5fe6d554aacd1c.sample"]
+source_file="res://audio/Community Requests/Rolling Thunder.wav"
+dest_files=["res://.godot/imported/Rolling Thunder.wav-145241a1e82a55e35950f5962c9a065b.sample"]
 
 [params]
 
