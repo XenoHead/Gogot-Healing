@@ -1,0 +1,44 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(1, 1, 1, 1),
+&"custom_info": {
+"prefix": "",
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "Mom",
+"suffix": ""
+},
+&"default_portrait": "Normal",
+&"description": "Name: Mom 25 yrs (Beth)
+Appearance: Slight, brunette, pretty. 
+Personality: scatterbrained, clumsy, naive.
+Background: Former nurse, now divorced.",
+&"display_name": "Mother",
+&"mirror": false,
+&"nicknames": ["Beth"],
+&"offset": Vector2(-100, 35),
+&"portraits": {
+"Beth Worried": {
+"export_overrides": {
+"image": "\"res://images/Hero/beth_WORRIED.png\""
+},
+"mirror": false,
+"offset": Vector2(30, 0),
+"scale": 0.35,
+"scene": ""
+},
+"Normal": {
+"export_overrides": {
+"image": "\"res://images/Hero/beth_1.png\""
+},
+"ignore_char_scale": true,
+"mirror": false,
+"offset": Vector2(25, -1),
+"scale": 0.35,
+"scene": ""
+}
+},
+&"scale": 0.5
+}

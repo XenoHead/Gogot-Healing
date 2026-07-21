@@ -22,6 +22,13 @@ var wall_gallery: Array = [
 var ui_prompt: Label = null
 
 func _ready() -> void:
+	# Capture mouse exploration mode when the 3D space first initializes
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	# Listens for Dialogic closing down its layouts to restore exploration controls
+	if Engine.has_meta("Dialogic"):
+		Dialogic.timeline_ended.connect(_on_dialogue_timeline_ended)
+		
 	generate_apartment_layout()
 
 func generate_apartment_layout() -> void:
@@ -330,3 +337,8 @@ func _punch_absolute_window(root: Node3D, pos: Vector3, dims: Vector3, glass_mat
 	glass_pane.size = Vector3(dims.x - 0.05, dims.y - 0.05, 0.05) if dims.x > dims.z else Vector3(0.05, dims.y - 0.05, dims.z - 0.05)
 	glass_pane.material = glass_mat
 	root.add_child(glass_pane)
+	
+func _on_dialogue_timeline_ended() -> void:
+	# Snap the mouse pointer back into full 3D viewport capture mode
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	print("Dialogue concluded. Gameplay control restored.")

@@ -1,0 +1,8 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://b7rljiajokpln"]
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_xxg3d"]
+resource_name = "PitchShift"
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectPitchShift_xxg3d")
+bus/0/effect/0/enabled = true

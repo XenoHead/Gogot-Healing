@@ -1,9 +1,11 @@
-[gd_scene format=3 uid="uid://b87yhk2m4j1pa"]
+[gd_scene format=3 uid="uid://bauu6dx0u4q2g"]
 
 [ext_resource type="Script" uid="uid://0so4u7h3ct3f" path="res://Backstory.gd" id="1_story_script"]
-[ext_resource type="FontFile" uid="uid://fatls3h3pln1" path="res://fonts/Dark Whispers.otf" id="2_story_font"]
+[ext_resource type="Material" uid="uid://tnqgxyx343tw" path="res://addons/Configura/!example/themes/background_default.tres" id="2_ainb2"]
+[ext_resource type="FontFile" uid="uid://c5tninjvuhgcr" path="res://fonts/Dark Whispers.otf" id="2_story_font"]
+[ext_resource type="Theme" uid="uid://dowyg25wfcjvl" path="res://new_theme.tres" id="3_rg7hw"]
 
-[node name="Backstory" type="Control" unique_id=1664702710]
+[node name="Backstory" type="Control" unique_id=1369332723]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_story_script")
 
-[node name="StoryBG" type="TextureRect" parent="." unique_id=926009570]
+[node name="StoryBG" type="TextureRect" parent="." unique_id=29758808]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +24,7 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 6
 
-[node name="DimOverlay" type="ColorRect" parent="." unique_id=1997335271]
+[node name="DimOverlay" type="ColorRect" parent="." unique_id=1328178896]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.45)
 
-[node name="IntroVideoContainer" type="AspectRatioContainer" parent="." unique_id=271941425]
+[node name="IntroVideoContainer" type="AspectRatioContainer" parent="." unique_id=1086482075]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,17 +42,18 @@ grow_horizontal = 2
 grow_vertical = 2
 ratio = 0.75
 
-[node name="IntroVideoPlayer" type="VideoStreamPlayer" parent="IntroVideoContainer" unique_id=764090900]
+[node name="IntroVideoPlayer" type="VideoStreamPlayer" parent="IntroVideoContainer" unique_id=1495752036]
 layout_mode = 2
 volume_db = 3.5599997
 expand = true
 
-[node name="StoryMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1453221452]
+[node name="StoryMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=996068884]
+volume_db = 5.818
 
-[node name="StepSFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1567737063]
-volume_db = 7.438
+[node name="StepSFXPlayer" type="AudioStreamPlayer" parent="." unique_id=2054197192]
+volume_db = -3.266
 
-[node name="SarahTexture" type="TextureRect" parent="." unique_id=877157597]
+[node name="SarahTexture" type="TextureRect" parent="." unique_id=294059927]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -67,19 +70,24 @@ grow_vertical = 0
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1554093930]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=60865802]
+modulate = Color(1, 1, 1, 0.38039216)
+top_level = true
+light_mask = 512
+material = ExtResource("2_ainb2")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_rg7hw")
 theme_override_constants/margin_left = 120
 theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 120
 theme_override_constants/margin_bottom = 80
 
-[node name="StoryText" type="Label" parent="MarginContainer" unique_id=713295493]
+[node name="StoryText" type="Label" parent="MarginContainer" unique_id=1179546883]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
 theme_override_fonts/font = ExtResource("2_story_font")
@@ -88,7 +96,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="PromptLabel" type="Label" parent="." unique_id=467487678]
+[node name="PromptLabel" type="Label" parent="." unique_id=1407014576]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -105,3 +113,20 @@ theme_override_fonts/font = ExtResource("2_story_font")
 theme_override_font_sizes/font_size = 20
 text = "[ PRESS ANY KEY TO CONTINUE ]"
 horizontal_alignment = 1
+
+[node name="CornerSoundCue" type="Label" parent="." unique_id=99482711]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 90.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.72, 0.11, 0.11, 1)
+theme_override_fonts/font = ExtResource("2_story_font")
+theme_override_font_sizes/font_size = 24
+text = "* Mmmpphhh MMmpphh *"
+horizontal_alignment = 2
+vertical_alignment = 1

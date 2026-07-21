@@ -13,3 +13,9 @@ Thumbs.db
 *_MACOSX/
 .DS_Store
 /images
+/audio
+/video
+addons/12121.json
+addons/addons/open_editors/GuiClose.svg
+addons/addons/open_editors/GuiClose.svg.import
+/addons

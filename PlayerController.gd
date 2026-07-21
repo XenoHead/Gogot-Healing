@@ -72,8 +72,25 @@ func _physics_process(delta: float) -> void:
 	var grass_mesh = get_node_or_null("../YardFloor")
 	if grass_mesh and grass_mesh.material_override:
 		grass_mesh.material_override.set_shader_parameter("interracting_object_pos", global_position)
+	_evaluate_interaction_raycast()
+
+func _evaluate_interaction_raycast() -> void:
+	var hud_prompt = get_node_or_null("../HUD_Overlay/InteractionPrompt")
+	if not hud_prompt: return
+	
+	var ray = get_node_or_null("HeadAssembly/PlayerCamera/InteractionRayCast") as RayCast3D
+	if ray and ray.is_colliding():
+		var target = ray.get_collider()
+		if target:
+			var interactable = target.get_node_or_null("Interactable") as Interactable
+			if interactable and not is_sitting:
+				hud_prompt.update_prompt(interactable.prompt_message)
+				return
+		
+	hud_prompt.update_prompt("")
 
 func _process_standard_movement(delta: float) -> void:
+	
 	if is_sitting:
 		velocity = Vector3.ZERO
 		return
@@ -142,6 +159,7 @@ func _process_noclip_movement(delta: float) -> void:
 
 func _handle_object_interaction(interactable: Interactable) -> void:
 	match interactable.interaction_type:
+		
 		"couch":
 			if not is_sitting:
 				stand_position = global_position
@@ -152,19 +170,23 @@ func _handle_object_interaction(interactable: Interactable) -> void:
 				velocity = Vector3.ZERO
 				print("Sitting down on couch.")
 				
+		"sarah_door":
+			# Freeze player movement physics while dialogue runs
+			velocity = Vector3.ZERO
+			
+			# Verify the Dialogic system is active before initiating the tree branch
+			if Engine.has_meta("Dialogic"):
+				# Instructs Dialogic to take control and generate the UI layers instantly
+				Dialogic.start("apartment_start")
+				
+				# Free the cursor so player can select dialogue choices with the mouse
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			else:
+				printerr("Error: Dialogic is missing or timeline path is invalid.")
+
 		"tv":
-			# Cycle options: Static -> Change Channel -> Turn Off
-			tv_state = (tv_state + 1) % 3
-			var tv_mesh = interactable.get_parent() as CSGBox3D
-			if tv_mesh and tv_mesh.material:
-				var mat = tv_mesh.material as StandardMaterial3D
-				match tv_state:
-					0:
-						mat.albedo_color = Color(0.3, 0.3, 0.3) # Render active screen white static
-						print("TV Option: Watching Static")
-					1:
-						mat.albedo_color = Color(0.0, 0.1, 0.4) # Shift color signature to a channel blue
-						print("TV Option: Changed Channel")
-					2:
-						mat.albedo_color = Color(0.02, 0.02, 0.02) # Clear black dead screen color
-						print("TV Option: Turned Off")
+			velocity = Vector3.ZERO
+			if Engine.has_meta("Dialogic"):
+				# Triggers the distinct television interaction timeline we mapped
+				Dialogic.start("tv_interaction")
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

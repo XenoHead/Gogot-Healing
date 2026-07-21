@@ -7,6 +7,10 @@ extends Control
 @onready var start_button_prompt: TextureButton = $IntroTransitionLayer/CenterContainer/IntroVBox/StartButtonPrompt
 @onready var intro_select_player: AudioStreamPlayer = $IntroTransitionLayer/IntroSelectPlayer
 
+# ADD THIS UNIFIED DISCLAIMER NODE REFERENCE
+@onready var disclaimer_container: MarginContainer = $IntroTransitionLayer/DisclaimerContainer
+
+# Unified Disclaimer Node Reference
 @onready var menu_ui: CanvasLayer = $MenuUILayer
 @onready var menu_loop_player: AudioStreamPlayer = $MenuUILayer/MenuLoopPlayer
 @onready var crying_player: AudioStreamPlayer = $MenuUILayer/CryingPlayer
@@ -45,9 +49,20 @@ func _ready() -> void:
 	menu_ui.hide()
 	settings_layer.hide()
 	
+	# Safeguard: Force containers to pass clicks through to the texture button
+	$IntroTransitionLayer/CenterContainer.mouse_filter = Control.MOUSE_FILTER_PASS
+	$IntroTransitionLayer/CenterContainer/IntroVBox.mouse_filter = Control.MOUSE_FILTER_PASS
+	
+	# SAFEGUARD: Hide the disclaimer on cold boot
+	if has_node("IntroTransitionLayer/DisclaimerContainer"):
+		disclaimer_container.hide()
+		disclaimer_container.modulate.a = 0.0
+		
 	start_button_prompt.show()
 	start_button_prompt.modulate.a = 0.0
+	
 	start_button_prompt.disabled = true
+	start_button_prompt.mouse_filter = Control.MOUSE_FILTER_STOP
 	
 	intro_transition_layer.show()
 	fire_tree_logo.modulate.a = 0.0
@@ -101,6 +116,7 @@ func _on_continue_triggered() -> void:
 	can_interact = false 
 	start_button_prompt.disabled = true
 	
+	# --- PHASE 1: FADE OUT INITIAL TREE LOGO ---
 	var fade_out_tween = create_tween()
 	fade_out_tween.set_parallel(true)
 	
@@ -113,8 +129,26 @@ func _on_continue_triggered() -> void:
 	await fade_out_tween.finished
 	fire_wav_player.stop() 
 	
-	await get_tree().create_timer(0.5).timeout
+	# --- PHASE 2: INTERCEPT WITH CONTENT WARNING ---
+	if disclaimer_container:
+		disclaimer_container.modulate.a = 0.0
+		disclaimer_container.show()
+		
+		var warning_fade_in = create_tween()
+		warning_fade_in.tween_property(disclaimer_container, "modulate:a", 1.0, 0.6)
+		await warning_fade_in.finished
+		
+		# Allow the warning text window to hold for 4.5 seconds
+		await get_tree().create_timer(4.5).timeout
+		
+		var warning_fade_out = create_tween()
+		warning_fade_out.tween_property(disclaimer_container, "modulate:a", 0.0, 0.6)
+		await warning_fade_out.finished
+		disclaimer_container.hide()
+	else:
+		await get_tree().create_timer(0.5).timeout
 	
+	# --- PHASE 3: PRESENT MAIN MENU CONTROLS ---
 	intro_transition_layer.hide()
 	menu_ui.show()
 	
@@ -138,7 +172,6 @@ func _on_continue_triggered() -> void:
 	
 	var menu_tween = create_tween()
 	menu_tween.tween_property(menu_container, "modulate:a", 1.0, 0.8)
-
 
 func _setup_button_effects() -> void:
 	if not button_vbox:
@@ -165,7 +198,6 @@ func _connect_menu_signals() -> void:
 	if quit_button and not quit_button.pressed.is_connected(_on_quit_pressed):
 		quit_button.pressed.connect(_on_quit_pressed)
 	
-	# Connect the Load Button so it doesn't stand out or cause issues
 	var load_btn = $MenuUILayer/MarginContainer/MainVBox/ButtonVBox/LoadButton
 	if load_btn and not load_btn.pressed.is_connected(_on_load_pressed):
 		load_btn.pressed.connect(_on_load_pressed)
@@ -174,12 +206,11 @@ func _on_button_hover(btn: Button) -> void:
 	if not btn.text.begins_with("> "):
 		btn.text = "> " + btn.text
 	
-	# Bypasses the Nil check by using an explicit method tween
 	var shift_tween = create_tween()
 	shift_tween.tween_method(
 		func(val: int): btn.add_theme_constant_override("outline_size", val),
-		0, # Start size
-		6, # Target thickness for your horror font display
+		0,
+		6,
 		0.1
 	)
 	
@@ -195,12 +226,11 @@ func _on_button_unhover(btn: Button) -> void:
 	if btn.text.begins_with("> "):
 		btn.text = btn.text.replace("> ", "")
 		
-	# Bypasses the Nil check to cleanly strip out the override constant on exit
 	var shift_tween = create_tween()
 	shift_tween.tween_method(
 		func(val: int): btn.add_theme_constant_override("outline_size", val),
-		6, # Current thickness
-		0, # Remove outline
+		6,
+		0,
 		0.1
 	)
 	
@@ -209,7 +239,6 @@ func _on_button_unhover(btn: Button) -> void:
 		audio_fade_out.tween_property(ui_hover_player, "volume_db", -80.0, 0.05)
 		audio_fade_out.connect("finished", func(): if ui_hover_player: ui_hover_player.stop())
 
-# Fallback method placeholder for the load button signal connection
 func _on_load_pressed() -> void:
 	print("Load Game triggered. Functionality pending save architecture integration.")
 		
@@ -218,35 +247,29 @@ func _on_button_pressed_sound() -> void:
 		ui_select_player.play()
 
 func _on_play_pressed() -> void:
-	# Capture the running track data so it never stops playing
+	GameState.reset_game_state()
 	var track_stream = menu_loop_player.stream
 	var track_pos = menu_loop_player.get_playback_position()
 	var track_vol = menu_loop_player.volume_db
-	
-	# Stop the crying audio overlay immediately as we leave the menu
+		
 	if crying_player and crying_player.is_playing():
 		crying_player.stop()
 		
 	menu_loop_player.stop()
 	
-	# Instantiate the backstory scene directly so we can execute the audio handoff
 	var backstory_scene = load("res://Backstory.tscn")
 	var backstory_instance = backstory_scene.instantiate()
 	
 	get_tree().root.add_child(backstory_instance)
 	get_tree().current_scene = backstory_instance
 	
-	# Pass the menu variables straight over to the new node player
 	backstory_instance.init_story_audio(track_stream, track_pos, track_vol)
-	
-	# Delete the old main menu layout from memory safely
 	queue_free()
 
 func _on_options_pressed() -> void:
 	menu_ui.hide()
 	settings_layer.show()
 	
-	# Cache current values in case the user cancels changes
 	saved_main_db = main_slider.value
 	saved_music_db = music_slider.value
 	saved_voice_db = voice_slider.value
@@ -254,7 +277,6 @@ func _on_options_pressed() -> void:
 	fullscreen_check.button_pressed = saved_fullscreen
 
 func _on_quit_pressed() -> void:
-	# Let the audio play, then wait for it to finish before shutting down
 	if ui_select_player and ui_select_player.stream:
 		await ui_select_player.finished
 	get_tree().quit()
@@ -264,19 +286,16 @@ func _setup_settings_signals() -> void:
 	save_button.pressed.connect(_on_settings_save)
 	cancel_button.pressed.connect(_on_settings_cancel)
 	
-	# Route visual highlights to save/cancel choices
 	for btn in [save_button, cancel_button]:
 		btn.mouse_entered.connect(_on_button_hover.bind(btn))
 		btn.mouse_exited.connect(_on_button_unhover.bind(btn))
 		btn.pressed.connect(_on_button_pressed_sound)
 	
-	# Dynamically capture slider adjustments
 	main_slider.value_changed.connect(func(val): _apply_volume("Master", val))
-	music_slider.value_changed.connect(func(val): _apply_volume("Music", val)) # Maps to MenuLoopPlayer/CryingPlayer
+	music_slider.value_changed.connect(func(val): _apply_volume("Music", val))
 	voice_slider.value_changed.connect(func(val): _apply_volume("Voice", val))
 
 func _apply_volume(bus_name: String, db_value: float) -> void:
-	# If slider is dragged to the far left floor value (-40), completely mute it
 	if db_value <= -39.0:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index(bus_name), true)
 	else:
@@ -284,7 +303,6 @@ func _apply_volume(bus_name: String, db_value: float) -> void:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus_name), db_value)
 
 func _on_settings_save() -> void:
-	# Commit window preferences
 	if fullscreen_check.button_pressed:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
@@ -294,12 +312,10 @@ func _on_settings_save() -> void:
 	menu_ui.show()
 
 func _on_settings_cancel() -> void:
-	# Revert audio buses back to cached entry parameters
 	_apply_volume("Master", saved_main_db)
 	_apply_volume("Music", saved_music_db)
 	_apply_volume("Voice", saved_voice_db)
 	
-	# Revert slider positions
 	main_slider.value = saved_main_db
 	music_slider.value = saved_music_db
 	voice_slider.value = saved_voice_db

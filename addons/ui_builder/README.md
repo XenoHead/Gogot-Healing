@@ -1,13 +1,13 @@
 # Quick Layout
 
-A visual UI Builder and alignment toolkit for Godot 4.7+'s `Control`-based UI.
+A visual UI Builder and alignment toolkit for Godot 4.6+'s `Control`-based UI.
 Build screens by dragging nodes onto a live schematic canvas instead of
 hunting through the Create Node dialog, then align, distribute, snap, and
 theme them from a dedicated dock — all fully undoable.
 
 Two tools, one addon:
 
-- **UI Builder** (bottom panel) — drag-and-drop node creation on a
+- **UI Builder** (bottom dock, floatable) — drag-and-drop node creation on a
   pan/zoomable canvas with rulers and a viewport outline, live resize and
   reposition, reusable UI/HUD templates, and a per-node info panel with
   inline editing.
@@ -18,15 +18,16 @@ Two tools, one addon:
 
 1. Copy `addons/ui_builder/` into your project's `addons/` folder, so you
    end up with `res://addons/ui_builder/plugin.cfg`.
-2. In Godot: **Project → Project Settings → Plugins**, enable "Quick Layout".
+2. In Godot: **Project → Project Settings → Plugins**, enable "UI Builder".
 3. A **Quick Layout** dock appears on the left, and a **UI Builder** tab
-   appears in the bottom panel.
+   appears at the bottom — right-click its tab → **Make Floating** to pop it
+   into its own resizable window if you want it out of the way.
 
 ## Quick Start
 
 1. Open (or create) a scene with a `Control`-derived root node.
-2. Open the **UI Builder** tab in the bottom panel — your scene's root Control
-   is auto-selected as the build target (shown in the **Target** label).
+2. Open the **UI Builder** tab — your scene's root Control is auto-selected
+   as the build target (shown in the **Target** label).
 3. Drag **Button** (or anything else) from the palette on the left onto the
    canvas and drop it. A real Button node appears in your scene, selected and
    ready to move or resize.
@@ -43,15 +44,16 @@ full toolset.
 
 ### Getting started
 
-1. Open the **UI Builder** tab in the bottom panel. If a scene is already
-   open, its root Control (or the shallowest Control found in its tree) is
-   selected as the build target automatically. Otherwise, select any
-   `Control` node in the Scene tree and click **Use Selected as Target**.
+1. Open the **UI Builder** tab. If a scene is already open, its root Control
+   (or the shallowest Control found in its tree) is selected as the build
+   target automatically. Otherwise, select any `Control` node in the Scene
+   tree and click **Use Selected as Target**.
 2. Drag any item from the palette on the left — Button, Label, Panel,
    VBoxContainer, and 30+ more — onto the canvas and drop it. A real node of
    that type is created as a child of whichever box you dropped it on (or
    the build target, if you dropped it on empty space), auto-selected, and
-   ready to tweak.
+   ready to tweak. Type into the filter box above the palette to narrow the
+   list down by name.
 3. Hover or click a palette item to see a description and, for layout
    containers, a small diagram of how it arranges children.
 
@@ -59,25 +61,53 @@ full toolset.
 
 - **Select**: click a box to select it. If a container's children fill it
   completely, Alt+Click steps up to the parent (repeated Alt+Clicks keep
-  walking up the tree), or right-click → **Select Parent**.
+  walking up the tree), or right-click → **Select Parent**. Shift+click adds
+  or removes a box from the selection. Drag a rubber band over empty canvas
+  space to select everything it touches (Shift+drag adds to the existing
+  selection instead of replacing it) — this feeds the same selection Align/
+  Distribute/Match Size/Grid Snap use, so you can multi-select straight from
+  the canvas instead of round-tripping through the Scene tree.
 - **Move**: drag a box to reposition it, or drop it onto a different box to
   reparent into it. Dragging within the same layout container (VBoxContainer,
   HBoxContainer, etc.) reorders it among its siblings instead — a
   container recalculates its children's position every layout pass, so a
   raw position edit wouldn't actually stick at runtime; reordering is the
-  one thing that does.
+  one thing that does. Outside of reordering, dragging snaps to (and shows a
+  guide line for) a sibling's or the parent's own edge/center when close —
+  same idea as Figma/Sketch smart guides. Toggle this off in **Project
+  Settings → UI Builder → Enable Alignment Guides** if you'd rather it not
+  snap at all.
 - **Resize**: select a single node and drag any of its 8 corner/edge
   handles. Not available for a layout container's children, for the same
   reason moving doesn't reposition them.
+- **Nudge**: arrow keys move the selected node(s) by 1px, Shift+arrow by
+  the Grid Snap size. Same Container-child exception as Move/Resize. Holding
+  a key keeps nudging and stays a single undo step.
 - **Delete**: right-click a box → **Delete**, or select one or more nodes
   and click **Delete Selected**.
 - **Duplicate**: Ctrl+D, or right-click a box → **Duplicate**. Copies the
   node and its whole subtree, nudged slightly so it doesn't land exactly on
-  top of the original.
+  top of the original. Works on a multi-selection too.
+- **Copy / Paste**: Ctrl+C, or right-click a box → **Copy**, then Ctrl+V or
+  right-click a different box (or empty canvas space, to paste into the
+  build target) → **Paste into...**. Unlike Duplicate, this lets you move a
+  node (or a multi-selection) into a completely different parent instead of
+  just alongside where it already was — handy for reusing a piece you built
+  in one spot somewhere else. Paste can be repeated; each paste is an
+  independent copy.
 - **Rename, resize, and space**: the info panel on the right shows live
   details for whatever's hovered or selected, including editable fields —
-  **Name**, **Custom Min Size**, and (for VBoxContainer/HBoxContainer)
-  **Separation** — with changes applied immediately through undo/redo.
+  **Name**, **Custom Min Size** (the **✕** button next to it resets both to
+  0 in one step), and whichever layout-relevant theme constants apply to the
+  node's type (e.g. **Separation** for box/split containers and separators,
+  **Margin Left/Top/Right/Bottom** for MarginContainer, **H/V Separation**
+  for flow containers, **Side Margin** for TabContainer, **Text Outline
+  Size** for ProgressBar) — with changes applied immediately through
+  undo/redo. Double-click a box as a shortcut
+  straight into the Name field, selected and ready to type over.
+- **Set as Build Target**: right-click a box → **Set as Build Target**, as a
+  shortcut for pointing the UI Builder at a node already on the canvas
+  without going back to the Scene tree / **Use Selected as Target**.
 - Click empty canvas space to deselect.
 
 ### The canvas
@@ -90,7 +120,8 @@ full toolset.
   aspect ratio regardless of the panel's own shape (letterboxed rather than
   stretched to fill).
 - **Pan**: middle-click-drag. **Zoom**: scroll wheel, centered on the
-  cursor. **Reset View** snaps back to centered, 100% zoom.
+  cursor, or type an exact percentage into the zoom field next to **Reset
+  View** (10-800%). **Reset View** snaps back to centered, 100% zoom.
 - Pixel-tick rulers run along the top and left in target-space coordinates
   (the same numbers the Inspector shows), and stay correct through panning
   and zooming. Gridlines appear whenever **Snap to Grid** is on.
@@ -124,11 +155,19 @@ Ships with three starters: `main_menu_ui`, `health_score_hud`, and
 | Action | Input |
 | --- | --- |
 | Select topmost box | Click |
+| Add/remove box from selection | Shift+Click |
+| Rubber-band select | Drag over empty canvas space |
+| Add rubber-band to selection | Shift+Drag over empty canvas space |
 | Select parent (repeatable) | Alt+Click |
-| Context menu (Delete / Duplicate / Select Parent) | Right-click |
+| Rename (jumps to the Name field) | Double-click |
+| Context menu (Delete / Duplicate / Copy / Paste / Select Parent / Set as Build Target) | Right-click |
 | Move / reorder / reparent | Drag |
 | Resize | Drag a handle on a selected box |
+| Nudge selection by 1px | Arrow keys |
+| Nudge selection by Grid Snap size | Shift+Arrow keys |
 | Duplicate | Ctrl+D |
+| Copy | Ctrl+C |
+| Paste into selected node (or build target) | Ctrl+V |
 | Deselect | Click empty canvas space |
 | Pan | Middle-click-drag |
 | Zoom | Scroll wheel |
@@ -167,6 +206,15 @@ Every operation goes through Godot's undo/redo manager.
   to match this addon's Grid Snap size if you want both to agree.
 - Distribute keeps the two outermost nodes fixed and spaces the rest evenly
   between them, matching standard design-tool conventions.
+- If you drag the **UI Builder** tab out of its default bottom slot into a
+  side dock, Godot's drag-and-drop dock repositioning doesn't offer a way to
+  drop it back into the bottom slot — that's a Godot editor limitation, not
+  this addon. Fix: **Project → Project Settings → Plugins**, disable then
+  re-enable "UI Builder" to reset it back to the bottom.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release notes and bug fix history.
 
 ## Support
 

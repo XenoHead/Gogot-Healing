@@ -64,9 +64,27 @@ const TYPE_DESCRIPTIONS := {
 	"Tree": "A hierarchical, expandable list — file browsers, outlines, or any nested data view. Populated entirely via script.",
 }
 
+## Editable theme_override_constants fields shown in the info panel, keyed by
+## which native classes they apply to. "classes" is checked with
+## node.is_class(), so a subclass (e.g. HSplitContainer) matches its base
+## (SplitContainer) without needing its own separate entry.
+const CONSTANT_FIELDS := [
+	{"classes": ["BoxContainer", "SplitContainer", "Separator"], "key": "separation", "label": "Separation", "min": 0, "max": 200, "tooltip": "theme_override_constants/separation — the gap/thickness this node puts between or around its children"},
+	{"classes": ["MarginContainer"], "key": "margin_left", "label": "Margin Left", "min": 0, "max": 200, "tooltip": "theme_override_constants/margin_left — inset from the left edge"},
+	{"classes": ["MarginContainer"], "key": "margin_top", "label": "Margin Top", "min": 0, "max": 200, "tooltip": "theme_override_constants/margin_top — inset from the top edge"},
+	{"classes": ["MarginContainer"], "key": "margin_right", "label": "Margin Right", "min": 0, "max": 200, "tooltip": "theme_override_constants/margin_right — inset from the right edge"},
+	{"classes": ["MarginContainer"], "key": "margin_bottom", "label": "Margin Bottom", "min": 0, "max": 200, "tooltip": "theme_override_constants/margin_bottom — inset from the bottom edge"},
+	{"classes": ["FlowContainer"], "key": "h_separation", "label": "H Separation", "min": 0, "max": 200, "tooltip": "theme_override_constants/h_separation — horizontal gap between children"},
+	{"classes": ["FlowContainer"], "key": "v_separation", "label": "V Separation", "min": 0, "max": 200, "tooltip": "theme_override_constants/v_separation — vertical gap between wrapped lines"},
+	{"classes": ["TabContainer"], "key": "side_margin", "label": "Side Margin", "min": 0, "max": 200, "tooltip": "theme_override_constants/side_margin — margin at the tab bar's edges"},
+	{"classes": ["ProgressBar"], "key": "outline_size", "label": "Text Outline Size", "min": 0, "max": 32, "tooltip": "theme_override_constants/outline_size — outline thickness of the percentage text"},
+]
+
 var _editor_interface: EditorInterface
 var _undo_redo: EditorUndoRedoManager
 var _canvas: QuickLayoutCanvas
+var _palette_filter_edit: LineEdit
+var _palette_buttons: Array[QuickLayoutPaletteButton] = []
 var _top_ruler: QuickLayoutRuler
 var _left_ruler: QuickLayoutRuler
 var _target_label: Label
@@ -74,6 +92,8 @@ var _refresh_timer: Timer
 var _snap_check: CheckButton
 var _grid_spin: SpinBox
 var _viewport_frame_check: CheckButton
+var _zoom_spin: SpinBox
+var _updating_zoom_ui: bool = false
 var _info_title: Label
 var _info_desc: Label
 var _info_preview: QuickLayoutPalettePreview
@@ -81,12 +101,15 @@ var _template_option: OptionButton
 var _template_paths: Array[String] = []
 var _min_size_width_spin: SpinBox
 var _min_size_height_spin: SpinBox
+var _clear_min_size_btn: Button
 var _name_edit: LineEdit
-var _separation_row: HBoxContainer
-var _separation_spin: SpinBox
-## The node whose editable fields (Name, Custom Min Size, Separation) are
-## currently shown — set on selection change only, not on hover, so a quick
-## mouse pass over other boxes can't clobber an in-progress edit.
+var _constants_foldable: FoldableContainer
+var _constant_labels: Array[Label] = []
+var _constant_spins: Array[SpinBox] = []
+## The node whose editable fields (Name, Custom Min Size, and any applicable
+## CONSTANT_FIELDS) are currently shown — set on selection change only, not
+## on hover, so a quick mouse pass over other boxes can't clobber an
+## in-progress edit.
 var _info_target_node: Control = null
 var _updating_min_size_ui: bool = false
 
@@ -94,13 +117,21 @@ var _updating_min_size_ui: bool = false
 func setup(editor_interface: EditorInterface, undo_redo: EditorUndoRedoManager) -> void:
 	_editor_interface = editor_interface
 	_undo_redo = undo_redo
+	# Without this, dragging the dock below the palette list's true minimum
+	# height doesn't shrink it — the buttons just keep rendering at their
+	# natural size past this panel's own allocated rect and visually bleed
+	# into the bottom tab strip (Output/Debugger/etc.) below it. Clipping
+	# forces content to actually respect the space we're given, worst case
+	# showing fewer visible palette buttons (already scrollable) instead of
+	# overlapping the tabs.
+	clip_contents = true
 	_build_ui()
 	_editor_interface.get_selection().selection_changed.connect(_on_selection_changed)
 	_auto_select_scene_root()
 
 
-## Godot toggles this panel's own `visible` off/on as its bottom-panel tab
-## is switched away from/back to — NOTIFICATION_VISIBILITY_CHANGED is the
+## Godot toggles this panel's own `visible` off/on as its dock tab is
+## switched away from/back to — NOTIFICATION_VISIBILITY_CHANGED is the
 ## reliable, self-contained way to know "the tab was just selected," rather
 ## than guessing at how the EditorPlugin-managed tab button behaves.
 func _notification(what: int) -> void:
@@ -188,6 +219,17 @@ func _build_ui() -> void:
 	reset_view_btn.pressed.connect(_on_reset_view_pressed)
 	header.add_child(reset_view_btn)
 
+	_zoom_spin = SpinBox.new()
+	_zoom_spin.min_value = QuickLayoutCanvas.MIN_ZOOM * 100.0
+	_zoom_spin.max_value = QuickLayoutCanvas.MAX_ZOOM * 100.0
+	_zoom_spin.step = 1
+	_zoom_spin.value = 100
+	_zoom_spin.suffix = "%"
+	_zoom_spin.custom_minimum_size = Vector2(80, 0)
+	_zoom_spin.tooltip_text = "Canvas zoom — type an exact value, or scroll wheel over the canvas"
+	_zoom_spin.value_changed.connect(_on_zoom_spin_changed)
+	header.add_child(_zoom_spin)
+
 	_target_label = Label.new()
 	_target_label.text = "Target: (none)"
 	_target_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -228,7 +270,7 @@ func _build_ui() -> void:
 	template_row.add_child(VSeparator.new())
 
 	var min_size_label := Label.new()
-	min_size_label.text = "Min Size:"
+	min_size_label.text = "Custom Min Size:"
 	template_row.add_child(min_size_label)
 
 	_min_size_width_spin = SpinBox.new()
@@ -255,6 +297,15 @@ func _build_ui() -> void:
 	_min_size_height_spin.value_changed.connect(_on_min_size_spin_changed)
 	template_row.add_child(_min_size_height_spin)
 
+	_clear_min_size_btn = Button.new()
+	_clear_min_size_btn.text = "✕"
+	_clear_min_size_btn.add_theme_color_override("font_color", Color(0.9, 0.3, 0.3))
+	_clear_min_size_btn.add_theme_color_override("font_hover_color", Color(1.0, 0.4, 0.4))
+	_clear_min_size_btn.tooltip_text = "Clear Custom Min Size (set both to 0)"
+	_clear_min_size_btn.disabled = true
+	_clear_min_size_btn.pressed.connect(_on_clear_min_size_pressed)
+	template_row.add_child(_clear_min_size_btn)
+
 	root.add_child(HSeparator.new())
 
 	# Body: palette (left) + canvas (right)
@@ -263,9 +314,25 @@ func _build_ui() -> void:
 	split.split_offset = 140
 	root.add_child(split)
 
+	var palette_column := VBoxContainer.new()
+	palette_column.custom_minimum_size = Vector2(140, 0)
+	split.add_child(palette_column)
+
+	_palette_filter_edit = LineEdit.new()
+	_palette_filter_edit.placeholder_text = "Filter..."
+	_palette_filter_edit.clear_button_enabled = true
+	_palette_filter_edit.tooltip_text = "Filter the palette by name"
+	_palette_filter_edit.text_changed.connect(_on_palette_filter_changed)
+	palette_column.add_child(_palette_filter_edit)
+
 	var palette_scroll := ScrollContainer.new()
-	palette_scroll.custom_minimum_size = Vector2(140, 0)
-	split.add_child(palette_scroll)
+	palette_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	# No horizontal scrolling — the vertical scrollbar's own width can push
+	# content juuust past the viewport and trigger a horizontal scrollbar
+	# too, which we never want here (buttons should just be capped/clipped,
+	# not scrollable sideways).
+	palette_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	palette_column.add_child(palette_scroll)
 
 	var palette_box := VBoxContainer.new()
 	palette_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -276,9 +343,20 @@ func _build_ui() -> void:
 		btn.control_type = type_name
 		btn.text = type_name
 		btn.tooltip_text = "Drag onto the canvas to add a %s" % type_name
+		# PROTOTYPE: fixed width sized to the longest label, instead of
+		# stretching to fill the column — comparing against the full-width
+		# look before deciding which to keep.
+		btn.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 		btn.mouse_entered.connect(_on_palette_item_focused.bind(type_name))
 		btn.pressed.connect(_on_palette_item_focused.bind(type_name))
 		palette_box.add_child(btn)
+		_palette_buttons.append(btn)
+
+	# Deferred: get_minimum_size() needs theme-resolved font metrics, which
+	# aren't reliable until this whole panel is actually in the tree (it
+	# isn't yet at this point in setup() — add_control_to_dock() happens
+	# after setup() returns).
+	call_deferred("_apply_fixed_palette_button_width")
 
 	# Nested split so the info panel gets a slice of the space to the right
 	# of the canvas, without HSplitContainer's two-child limit getting in
@@ -301,6 +379,9 @@ func _build_ui() -> void:
 	_canvas.node_deleted.connect(_on_node_deleted)
 	_canvas.target_lost.connect(_on_target_lost)
 	_canvas.node_hover_changed.connect(_on_canvas_node_hover_changed)
+	_canvas.build_target_set.connect(_on_canvas_build_target_set)
+	_canvas.rename_requested.connect(_on_canvas_rename_requested)
+	_canvas.view_changed.connect(_on_canvas_view_changed)
 	_canvas.snap_to_grid_enabled = _snap_check.button_pressed
 	_canvas.grid_size = _grid_spin.value
 	_canvas.viewport_frame_enabled = _viewport_frame_check.button_pressed
@@ -334,7 +415,14 @@ func _build_ui() -> void:
 	canvas_wrapper.add_child(_canvas)
 
 	var info_scroll := ScrollContainer.new()
-	info_scroll.custom_minimum_size = Vector2(180, 0)
+	# 180 was set before the Constants section existed — its longest label
+	# ("Text Outline Size:") plus a 70px SpinBox needs more room than that,
+	# so dragging the panel down toward 180 compressed the SpinBox below the
+	# width its own up/down arrows need. This is a floor on info_scroll
+	# itself (the SplitContainer's direct child) rather than relying on
+	# FoldableContainer correctly propagating its content's minimum size
+	# upward, which it may not.
+	info_scroll.custom_minimum_size = Vector2(230, 0)
 	body_split.add_child(info_scroll)
 
 	var info_box := VBoxContainer.new()
@@ -361,21 +449,40 @@ func _build_ui() -> void:
 	_name_edit.focus_exited.connect(_on_name_edit_focus_exited)
 	name_row.add_child(_name_edit)
 
-	_separation_row = HBoxContainer.new()
-	_separation_row.visible = false
-	info_box.add_child(_separation_row)
+	_constants_foldable = FoldableContainer.new()
+	_constants_foldable.title = "Constants"
+	_constants_foldable.folded = true
+	_constants_foldable.visible = false
+	info_box.add_child(_constants_foldable)
 
-	var separation_label := Label.new()
-	separation_label.text = "Separation:"
-	_separation_row.add_child(separation_label)
+	# FoldableContainer only wraps a single content child (like PanelContainer)
+	# rather than stacking multiple children itself, so the fields need their
+	# own grid inside it — GridContainer also keeps every label/value column
+	# aligned, unlike independent per-field HBoxContainers.
+	var constants_grid := GridContainer.new()
+	constants_grid.columns = 2
+	_constants_foldable.add_child(constants_grid)
 
-	_separation_spin = SpinBox.new()
-	_separation_spin.min_value = 0
-	_separation_spin.max_value = 200
-	_separation_spin.step = 1
-	_separation_spin.tooltip_text = "theme_override_constants/separation — the gap this VBoxContainer/HBoxContainer puts between its children"
-	_separation_spin.value_changed.connect(_on_separation_spin_changed)
-	_separation_row.add_child(_separation_spin)
+	for i in CONSTANT_FIELDS.size():
+		var field: Dictionary = CONSTANT_FIELDS[i]
+
+		var field_label := Label.new()
+		field_label.text = "%s:" % field["label"]
+		field_label.visible = false
+		constants_grid.add_child(field_label)
+
+		var spin := SpinBox.new()
+		spin.min_value = field["min"]
+		spin.max_value = field["max"]
+		spin.step = 1
+		spin.custom_minimum_size = Vector2(70, 0)
+		spin.tooltip_text = field["tooltip"]
+		spin.visible = false
+		spin.value_changed.connect(_on_constant_spin_changed.bind(i))
+		constants_grid.add_child(spin)
+
+		_constant_labels.append(field_label)
+		_constant_spins.append(spin)
 
 	info_box.add_child(HSeparator.new())
 
@@ -413,6 +520,20 @@ func _redraw_canvas_area() -> void:
 	# (Inspector, undo/redo) while still selected.
 	if _info_target_node != null and is_instance_valid(_info_target_node):
 		_sync_info_target_ui(_info_target_node)
+
+
+func _on_palette_filter_changed(new_text: String) -> void:
+	var needle := new_text.strip_edges().to_lower()
+	for btn in _palette_buttons:
+		btn.visible = needle.is_empty() or btn.control_type.to_lower().contains(needle)
+
+
+func _apply_fixed_palette_button_width() -> void:
+	var longest_button_width := 0.0
+	for btn in _palette_buttons:
+		longest_button_width = maxf(longest_button_width, btn.get_minimum_size().x)
+	for btn in _palette_buttons:
+		btn.custom_minimum_size.x = longest_button_width
 
 
 func _on_palette_item_focused(type_name: String) -> void:
@@ -519,6 +640,26 @@ func _on_reset_view_pressed() -> void:
 		_redraw_canvas_area()
 
 
+func _on_zoom_spin_changed(value: float) -> void:
+	if _updating_zoom_ui or _canvas == null:
+		return
+	_canvas.set_zoom_percent(value)
+	_redraw_canvas_area()
+
+
+## Keeps the zoom SpinBox in sync with zoom changes that didn't come from
+## typing into it — scroll wheel, Reset View — via the canvas's existing
+## view_changed signal (already used by the rulers for the same reason).
+## _updating_zoom_ui guards against feeding a value change back into
+## _on_zoom_spin_changed and re-triggering set_zoom_percent() pointlessly.
+func _on_canvas_view_changed() -> void:
+	if _zoom_spin == null or _canvas == null or _zoom_spin.has_focus():
+		return
+	_updating_zoom_ui = true
+	_zoom_spin.value = _canvas.get_zoom_percent()
+	_updating_zoom_ui = false
+
+
 ## Shows the currently selected node's Name and Custom Minimum Size in the
 ## editable fields (disabled/cleared when there's no single selected node),
 ## without triggering the commit handlers as if the user had edited them.
@@ -535,24 +676,46 @@ func _sync_info_target_ui(node: Control) -> void:
 			_min_size_height_spin.value = node.custom_minimum_size.y
 		_min_size_width_spin.editable = true
 		_min_size_height_spin.editable = true
+		_clear_min_size_btn.disabled = false
 		if not _name_edit.has_focus():
 			_name_edit.text = node.name
 		_name_edit.editable = true
-		if node is BoxContainer:
-			_separation_row.visible = true
-			if not _separation_spin.has_focus():
-				_separation_spin.value = node.get_theme_constant("separation")
-		else:
-			_separation_row.visible = false
+		var any_constant_applies := false
+		for i in CONSTANT_FIELDS.size():
+			var field: Dictionary = CONSTANT_FIELDS[i]
+			var label := _constant_labels[i]
+			var spin := _constant_spins[i]
+			if _field_applies(node, field):
+				label.visible = true
+				spin.visible = true
+				any_constant_applies = true
+				if not spin.has_focus():
+					spin.value = node.get_theme_constant(field["key"])
+			else:
+				label.visible = false
+				spin.visible = false
+		_constants_foldable.visible = any_constant_applies
 	else:
 		_min_size_width_spin.value = 0
 		_min_size_height_spin.value = 0
 		_min_size_width_spin.editable = false
 		_min_size_height_spin.editable = false
+		_clear_min_size_btn.disabled = true
 		_name_edit.text = ""
 		_name_edit.editable = false
-		_separation_row.visible = false
+		for label in _constant_labels:
+			label.visible = false
+		for spin in _constant_spins:
+			spin.visible = false
+		_constants_foldable.visible = false
 	_updating_min_size_ui = false
+
+
+func _field_applies(node: Control, field: Dictionary) -> bool:
+	for class_name_str: String in field["classes"]:
+		if node.is_class(class_name_str):
+			return true
+	return false
 
 
 func _on_min_size_spin_changed(_value: float) -> void:
@@ -571,22 +734,46 @@ func _on_min_size_spin_changed(_value: float) -> void:
 		_canvas.queue_redraw()
 
 
-func _on_separation_spin_changed(value: float) -> void:
+## Sets both Custom Min Size fields to 0 in one undo step, rather than the
+## two separate steps calling value = 0 on each SpinBox in turn would create
+## (each assignment fires value_changed -> _on_min_size_spin_changed on its
+## own). set_value_no_signal keeps the displayed fields in sync without
+## re-triggering that handler a second/third time.
+func _on_clear_min_size_pressed() -> void:
+	if _info_target_node == null or not is_instance_valid(_info_target_node) or _undo_redo == null:
+		return
+	if _info_target_node.custom_minimum_size == Vector2.ZERO:
+		return
+	_undo_redo.create_action("Quick Layout: Clear Custom Min Size %s" % _info_target_node.name)
+	_undo_redo.add_do_property(_info_target_node, "custom_minimum_size", Vector2.ZERO)
+	_undo_redo.add_undo_property(_info_target_node, "custom_minimum_size", _info_target_node.custom_minimum_size)
+	_undo_redo.commit_action()
+	_min_size_width_spin.set_value_no_signal(0)
+	_min_size_height_spin.set_value_no_signal(0)
+	if _canvas:
+		_canvas.queue_redraw()
+
+
+func _on_constant_spin_changed(value: float, field_index: int) -> void:
 	if _updating_min_size_ui or _info_target_node == null or not is_instance_valid(_info_target_node):
 		return
-	if not (_info_target_node is BoxContainer) or _undo_redo == null:
+	if _undo_redo == null:
 		return
+	var field: Dictionary = CONSTANT_FIELDS[field_index]
+	if not _field_applies(_info_target_node, field):
+		return
+	var key: String = field["key"]
 	var new_value := int(value)
-	if _info_target_node.has_theme_constant_override("separation") \
-			and _info_target_node.get_theme_constant("separation") == new_value:
+	if _info_target_node.has_theme_constant_override(key) \
+			and _info_target_node.get_theme_constant(key) == new_value:
 		return
 
-	_undo_redo.create_action("Quick Layout: Set Separation %s" % _info_target_node.name)
-	_undo_redo.add_do_method(_info_target_node, "add_theme_constant_override", "separation", new_value)
-	if _info_target_node.has_theme_constant_override("separation"):
-		_undo_redo.add_undo_method(_info_target_node, "add_theme_constant_override", "separation", _info_target_node.get_theme_constant("separation"))
+	_undo_redo.create_action("Quick Layout: Set %s %s" % [field["label"], _info_target_node.name])
+	_undo_redo.add_do_method(_info_target_node, "add_theme_constant_override", key, new_value)
+	if _info_target_node.has_theme_constant_override(key):
+		_undo_redo.add_undo_method(_info_target_node, "add_theme_constant_override", key, _info_target_node.get_theme_constant(key))
 	else:
-		_undo_redo.add_undo_method(_info_target_node, "remove_theme_constant_override", "separation")
+		_undo_redo.add_undo_method(_info_target_node, "remove_theme_constant_override", key)
 	_undo_redo.commit_action()
 	if _canvas:
 		_canvas.queue_redraw()
@@ -635,6 +822,24 @@ func _on_target_lost() -> void:
 	_target_label.text = "Target: (none) — previous target was deleted"
 
 
+## Generic label text for a target set via the canvas's own right-click
+## "Set as Build Target" — other call sites (Use Selected as Target, template
+## insert, auto-select) set their own more specific message right after
+## calling set_build_target(), which naturally overrides this.
+func _on_canvas_build_target_set(node: Control) -> void:
+	_target_label.text = "Target: %s" % node.name
+	_redraw_canvas_area()
+
+
+## Double-click on the canvas: jump straight into the sidebar Name field
+## instead of a full in-place text-edit overlay on the canvas itself (which
+## would also need to track pan/zoom as the user scrolls/zooms mid-edit).
+func _on_canvas_rename_requested(node: Control) -> void:
+	_sync_info_target_ui(node)
+	_name_edit.grab_focus()
+	_name_edit.select_all()
+
+
 # --- Templates: instantiate a premade .tscn as a child of the build target,
 #     or pack the current selection into a new reusable .tscn. -------------
 
@@ -663,7 +868,14 @@ func _do_insert_template() -> void:
 	var template_path: String = _template_paths[_template_option.selected]
 
 	if _canvas.build_target != null and is_instance_valid(_canvas.build_target):
-		_insert_template_into(template_path, _canvas.build_target, false)
+		# If the target has no children yet, there's nothing ambiguous about
+		# switching to the newly inserted template — do it automatically so
+		# the user isn't left pointed at an empty outer wrapper, wondering
+		# why drops/clicks aren't landing inside the template they just
+		# inserted. If the target already has other content, leave it alone
+		# — the user may be deliberately composing several things under it.
+		var target_was_empty := _canvas.build_target.get_child_count() == 0
+		_insert_template_into(template_path, _canvas.build_target, target_was_empty)
 		return
 
 	var edited_root := _editor_interface.get_edited_scene_root()

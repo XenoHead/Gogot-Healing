@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DialogicStyle" format=3 uid="uid://3hqruflhmxdq"]
+
+[ext_resource type="PackedScene" uid="uid://cqpb3ie51rwl5" path="res://addons/dialogic/Modules/DefaultLayoutParts/Base_Default/default_layout_base.tscn" id="1_8y0gb"]
+[ext_resource type="Script" uid="uid://bwg6yncmh2cml" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="1_ccut8"]
+[ext_resource type="Script" uid="uid://dv08k6ljua6fm" path="res://addons/dialogic/Resources/dialogic_style.gd" id="2_vr01k"]
+[ext_resource type="PackedScene" uid="uid://bquja8jyk8kbr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn" id="4_a2dw6"]
+[ext_resource type="PackedScene" uid="uid://lx24i8fl6uo" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn" id="5_ie4db"]
+
+[sub_resource type="Resource" id="Resource_ccut8"]
+script = ExtResource("1_ccut8")
+scene = ExtResource("1_8y0gb")
+
+[sub_resource type="Resource" id="Resource_ie4db"]
+script = ExtResource("1_ccut8")
+scene = ExtResource("4_a2dw6")
+overrides = {
+"name_label_use_global_color": "false",
+"next_indicator_show_on_autoadvance": "true"
+}
+
+[sub_resource type="Resource" id="Resource_v1s55"]
+script = ExtResource("1_ccut8")
+scene = ExtResource("5_ie4db")
+
+[resource]
+script = ExtResource("2_vr01k")
+name = "narrator_style"
+layer_list = Array[String](["11", "12"])
+layer_info = {
+"": SubResource("Resource_ccut8"),
+"11": SubResource("Resource_ie4db"),
+"12": SubResource("Resource_v1s55")
+}
+metadata/_latest_layer = "11"

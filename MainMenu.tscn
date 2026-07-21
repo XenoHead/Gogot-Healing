@@ -6,14 +6,14 @@
 [ext_resource type="AudioStream" uid="uid://cv7rschfa0ovs" path="res://audio/firetree.wav" id="3_iwfq2"]
 [ext_resource type="Texture2D" uid="uid://dvkrxuvxgur5w" path="res://images/start_hover.png" id="4_hover"]
 [ext_resource type="Texture2D" uid="uid://bspvkyiwd8sfy" path="res://images/hallway_1.png" id="5_bg"]
+[ext_resource type="FontFile" uid="uid://dx04sto3nekqb" path="res://fonts/GrotleyRegular-mLEWv.otf" id="7_3fnrj"]
 [ext_resource type="AudioStream" uid="uid://b0u4kn2w7efb6" path="res://audio/intro_1_1.wav" id="7_intro_loop"]
 [ext_resource type="Texture2D" uid="uid://b18ei72prkpnq" path="res://images/game_logo.png" id="8_title"]
 [ext_resource type="Texture2D" uid="uid://efw7o6hi1t5j" path="res://images/ui_frame.png" id="9_frame"]
 [ext_resource type="AudioStream" uid="uid://pekevc6fpipg" path="res://audio/drone_loop.wav" id="10_hover_snd"]
 [ext_resource type="AudioStream" uid="uid://dtrypgrh0b40" path="res://audio/Motions and Impacts/Impact Vox Hammer.wav" id="11_select_snd"]
-[ext_resource type="FontFile" uid="uid://fatls3h3pln1" path="res://fonts/Dark Whispers.otf" id="12_horror_font"]
+[ext_resource type="FontFile" uid="uid://c5tninjvuhgcr" path="res://fonts/Dark Whispers.otf" id="12_horror_font"]
 [ext_resource type="AudioStream" uid="uid://cemcese136lk0" path="res://audio/crying.wav" id="13_crying"]
-[ext_resource type="PackedScene" uid="uid://bul6dqb48nwqy" path="res://yard.tscn" id="14_rnncn"]
 [ext_resource type="Texture2D" uid="uid://co37l1kc2cvpc" path="res://images/settings.png" id="14_settings_bg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_unselected"]
@@ -74,6 +74,45 @@ autoplay = true
 stream = ExtResource("11_select_snd")
 volume_db = -20.0
 
+[node name="DisclaimerContainer" type="MarginContainer" parent="IntroTransitionLayer" unique_id=249259989]
+custom_minimum_size = Vector2(550, 0)
+propagate_maximum_size = false
+offset_right = 685.0
+offset_bottom = 1078.0
+offset_transform_scale = Vector2(0, 0)
+layout_direction = 1
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="DisclaimerText" type="Label" parent="IntroTransitionLayer/DisclaimerContainer" unique_id=243350006]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_3fnrj")
+theme_override_font_sizes/font_size = 9
+text = "## CONTENT WARNING & DISCLAIMER
+**ATTENTION: READ BEFORE PLAYING**
+
+This project is an intense psychological horror experience intended strictly for **adult audiences**. 
+By proceeding past this screen, you acknowledge and consent to exposure to the following thematic elements:
+
+*Severe Psychological Horror:* Depictions of profound mental illness, trauma processing, catatonia, and institutionalization.
+*Graphic Violence & Gore:* High-fidelity depictions of body horror, visceral trauma, and physical harm.
+*Adult Content:* Includes explicit adult themes, coarse language, and full nudity.
+*Sensory Triggers:* High-intensity audio static, sudden high-contrast visual flashing, and intense psychological distress.
+
+Psychological Safety Note
+
+This game explores raw, uncompromised themes of psychological decay, severe anxiety, and deep-seated familial trauma. If you are highly sensitive to realistic depictions of mental health crises or intense psychological manipulation, please exercise caution.
+
+**Player discretion is absolutely required.**"
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 131
+uppercase = true
+
 [node name="MenuUILayer" type="CanvasLayer" parent="." unique_id=210812240]
 visible = false
 
@@ -82,7 +121,7 @@ stream = ExtResource("7_intro_loop")
 
 [node name="CryingPlayer" type="AudioStreamPlayer" parent="MenuUILayer" unique_id=1940526077]
 stream = ExtResource("13_crying")
-volume_db = -12.0
+volume_db = -6.8
 
 [node name="UIHoverPlayer" type="AudioStreamPlayer" parent="MenuUILayer" unique_id=520325063]
 stream = ExtResource("10_hover_snd")
@@ -203,8 +242,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_unselected")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_unselected")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_unselected")
 text = "QUIT"
-
-[node name="Node3D" parent="MenuUILayer" unique_id=1910455257 instance=ExtResource("14_rnncn")]
 
 [node name="SettingsLayer" type="CanvasLayer" parent="." unique_id=208871342]
 visible = false

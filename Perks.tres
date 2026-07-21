@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DialogicGlossary" format=3 uid="uid://bg84v70m5y68y"]
+
+[ext_resource type="Script" uid="uid://80elcodyqohb" path="res://addons/dialogic/Modules/Glossary/glossary_resource.gd" id="1_dvlki"]
+
+[resource]
+script = ExtResource("1_dvlki")
+entries = {
+"rewards": {
+"case_sensitive": true,
+"name": "rewards"
+}
+}
