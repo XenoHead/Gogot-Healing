@@ -1,7 +1,21 @@
 # Godot 4+ specific ignores
 .godot/
+.nomedia
 /android/
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+*.tmp
+
+# Imported translations (automatically generated from CSV files)
 *.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
 
 # Dialogic specific local editor history
 .dialogic_history/
@@ -9,9 +23,8 @@
 # System specific files
 Thumbs.db
 .DS_Store
-
 *_MACOSX/
-.DS_Store
+
 /addons
 /assets
 /audio
