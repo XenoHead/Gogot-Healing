@@ -1,0 +1,380 @@
+[gd_scene format=3 uid="uid://ny35vimeipqe"]
+
+[ext_resource type="Material" path="res://addons/ambientcg/Extracted/Grass001_2K-JPG.tres" id="2_cfeer"]
+[ext_resource type="Texture2D" uid="uid://c4x571ufr64v" path="res://images/places/window01.png" id="5_3da08"]
+[ext_resource type="Material" uid="uid://bl1500ds01hwe" path="res://assets/textures/Peeling Painted Wall/2k/Peeling Painted Wall.tres" id="5_8ph6s"]
+[ext_resource type="Material" path="res://addons/ambientcg/Extracted/Planks020_2K-JPG.tres" id="5_cfeer"]
+[ext_resource type="Material" uid="uid://dc1v8y7m4yi0c" path="res://addons/ambientcg/Extracted/Gravel043_2K-PNG.tres" id="6_rlwgm"]
+[ext_resource type="Material" path="res://addons/ambientcg/Extracted/Carpet012_2K-JPG.tres" id="7_cfeer"]
+[ext_resource type="Script" uid="uid://yrsk75u5t67o" path="res://scripts/Interactable.gd" id="9_p2k5u"]
+[ext_resource type="AudioStream" uid="uid://dc4o6wuo1cqgj" path="res://audio/ap2.wav" id="10_wevw6"]
+[ext_resource type="Texture2D" uid="uid://dk7antl1kgbd1" path="res://images/places/wall2.png" id="11_x0pna"]
+[ext_resource type="Texture2D" uid="uid://cjs3mcb1onepg" path="res://images/places/record_shelf.jpg" id="12_wvtsw"]
+[ext_resource type="ArrayMesh" uid="uid://b6axngamh3p8h" path="res://images/objects/Sofa/Sofa.obj" id="15_sofa"]
+[ext_resource type="Texture2D" uid="uid://dpvaifisxv34r" path="res://images/objects/Sofa/Texture/Alberta_Alfred_leather_dark.jpg" id="16_leather"]
+[ext_resource type="Texture2D" uid="uid://dcudo6n7easjn" path="res://images/objects/Sofa/Texture/leather_normal.jpg" id="17_leathern"]
+[ext_resource type="Material" path="res://addons/ambientcg/Extracted/Wood006_2K-JPG.tres" id="19_cfeer"]
+[ext_resource type="Material" path="res://addons/ambientcg/Extracted/Wallpaper001A_2K-PNG.tres" id="19_rlwgm"]
+[ext_resource type="Material" path="res://addons/ambientcg/Extracted/Bricks104_2K-JPG.tres" id="20_8ph6s"]
+[ext_resource type="Material" path="res://addons/ambientcg/Extracted/Tiles139_2K-JPG.tres" id="20_cfeer"]
+[ext_resource type="Material" path="res://addons/ambientcg/Extracted/Metal049A_2K-PNG.tres" id="20_rlwgm"]
+[ext_resource type="Material" uid="uid://d3ifuhw5h12mm" path="res://assets/textures/Decrepit Wallpaper/4k/Decrepit Wallpaper.tres" id="20_sj0jj"]
+[ext_resource type="Material" path="res://addons/ambientcg/Extracted/Carpet003_2K-JPG.tres" id="22_8ph6s"]
+[ext_resource type="PackedScene" uid="uid://4guogbtvyudk" path="res://assets/models/Coffee Table 01/2k/CoffeeTable_01_2k.gltf" id="22_kvgdt"]
+[ext_resource type="Material" path="res://addons/ambientcg/Extracted/Wallpaper001A_Aged.tres" id="23_aged"]
+[ext_resource type="PackedScene" uid="uid://c0s7gjemyav4o" path="res://assets/models/Electric Stove/2k/electric_stove_2k.gltf" id="23_kvgdt"]
+[ext_resource type="PackedScene" uid="uid://dfrefcj201v1p" path="res://assets/models/Ornate Mirror 01/8k/ornate_mirror_01_8k.gltf" id="24_sj0jj"]
+[ext_resource type="PackedScene" uid="uid://b0n6oyoi430gv" path="res://assets/models/Fancy Picture Frame 01/1k/fancy_picture_frame_01_1k.gltf" id="25_darf8"]
+[ext_resource type="PackedScene" uid="uid://b01sm1wsihr5g" path="res://assets/models/TV remote/RemoteController.fbx" id="26_xmuok"]
+[ext_resource type="ArrayMesh" uid="uid://402f7xjess88" path="res://assets/models/Door.obj" id="27_rsbmv"]
+[ext_resource type="ArrayMesh" uid="uid://cdlf32an6m7kv" path="res://assets/models/WallTrim.obj" id="28_mrmpc"]
+[ext_resource type="PackedScene" uid="uid://b6jn2g2rto1ku" path="res://assets/models/Wall Clock/1k/wall_clock_1k.gltf" id="29_ym6i7"]
+[ext_resource type="PackedScene" uid="uid://btedyoxmthh31" path="res://assets/models/Painted Wooden Nightstand/1k/painted_wooden_nightstand_1k.gltf" id="30_8dueg"]
+[ext_resource type="PackedScene" uid="uid://8d21sf2u7hem" path="res://assets/models/Painted Wooden Cabinet/2k/painted_wooden_cabinet_2k.gltf" id="31_hj5f8"]
+[ext_resource type="Material" path="res://addons/ambientcg/Extracted/Tiles140_2K-JPG.tres" id="32_1rajl"]
+[ext_resource type="ArrayMesh" uid="uid://bacs0bkfmfn16" path="res://assets/models/Cupboard.obj" id="33_2fk4v"]
+[ext_resource type="ArrayMesh" uid="uid://vxi0ig3ssvql" path="res://assets/models/Table.obj" id="34_6md2n"]
+[ext_resource type="ArrayMesh" uid="uid://b228ia5dnld08" path="res://assets/models/Plate.obj" id="35_a0nva"]
+[ext_resource type="ArrayMesh" uid="uid://dtkhaghwdkj2m" path="res://assets/models/Chair.obj" id="36_vdasu"]
+[ext_resource type="PackedScene" uid="uid://do0pesgeqyogv" path="res://assets/models/Vintage Microwave/1k/vintage_microwave_1k.gltf" id="37_nq7au"]
+[ext_resource type="PackedScene" uid="uid://bus4fllk7funh" path="res://assets/models/Ornate Medieval Dagger/4k/ornate_medieval_dagger_4k.gltf" id="38_ukn77"]
+[ext_resource type="PackedScene" uid="uid://bh5ahax27mi6t" path="res://assets/models/Hanging Picture Frame 02/1k/hanging_picture_frame_02_1k.gltf" id="39_hj5f8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojcyp"]
+albedo_texture = ExtResource("5_3da08")
+roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfjmr"]
+albedo_texture = ExtResource("11_x0pna")
+
+[sub_resource type="StandardMaterial3D" id="LeatherSofa"]
+albedo_texture = ExtResource("16_leather")
+roughness = 0.55
+normal_texture = ExtResource("17_leathern")
+
+[sub_resource type="BoxShape3D" id="BoxShape_couch"]
+size = Vector3(2.55, 0.86, 1.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufunr"]
+albedo_texture = ExtResource("12_wvtsw")
+albedo_texture_force_srgb = true
+
+[node name="our_home" type="CSGCombiner3D" unique_id=2122624132]
+use_collision = true
+
+[node name="bathroom_wall1" type="CSGBox3D" parent="." unique_id=213125420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6725185, 1.5976245, 5.0627155)
+size = Vector3(0.2, 2.8289948, 5.0930176)
+material = ExtResource("19_rlwgm")
+
+[node name="back_porch" type="CSGBox3D" parent="." unique_id=1224568920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.461232, 0.0004999973, 0.055840254)
+size = Vector3(4, 0.001, 15.562347)
+material = ExtResource("2_cfeer")
+
+[node name="front_bushes" type="CSGBox3D" parent="." unique_id=689855518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.509919, 1.4880369, -0.11480427)
+size = Vector3(0.055282593, 2.9760742, 15.335236)
+
+[node name="house_floor" type="CSGBox3D" parent="." unique_id=1457796948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069061995, -0.07177022, -0.3889869)
+material_override = ExtResource("5_cfeer")
+size = Vector3(14, 0.27148438, 15)
+material = ExtResource("6_rlwgm")
+
+[node name="wall_front1" type="CSGBox3D" parent="." unique_id=1244112203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.929233, 1.4972534, -0.056738377)
+material_overlay = ExtResource("5_8ph6s")
+transparency = 0.04
+lod_bias = 71.892
+visibility_range_end = 756.18
+size = Vector3(0.001, 2.9945068, 15.486524)
+material = ExtResource("19_rlwgm")
+
+[node name="house_ceiling" type="CSGBox3D" parent="." unique_id=1100494565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2797239, 3.009658, -0.038432598)
+size = Vector3(16.469242, 0.001, 15.453923)
+material = ExtResource("20_cfeer")
+
+[node name="house_wall_back" type="CSGBox3D" parent="." unique_id=516227155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9840384, 1.5005169, -0.038456917)
+size = Vector3(0.04004492, 3, 15.433979)
+material = ExtResource("20_sj0jj")
+
+[node name="house_wall_right" type="CSGBox3D" parent="." unique_id=1844659573]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0073046684, 1.5663419, -7.740665)
+material_override = ExtResource("23_aged")
+size = Vector3(13.8227415, 3.0605202, 0.14980468)
+material = ExtResource("23_aged")
+
+[node name="kitchen_" type="CSGBox3D" parent="." unique_id=865316144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.3, -7.7)
+size = Vector3(2.95, 1.1500001, 0.05)
+material = SubResource("StandardMaterial3D_ojcyp")
+
+[node name="door_front" type="CSGBox3D" parent="." unique_id=778075781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1071978, 0.94019353, 1.9513104)
+operation = 2
+size = Vector3(0.43142092, 2.5322633, 1.2)
+material = ExtResource("20_rlwgm")
+
+[node name="Front_Door_aCTUAL" type="MeshInstance3D" parent="door_front" unique_id=1907857792]
+transform = Transform3D(0.008358171, 0, 0.9997617, 0, 1.1034873, 0, -1.0251201, 0, 0.008151414, 1.2087221, -0.84959674, 0.646497)
+material_override = ExtResource("5_cfeer")
+mesh = ExtResource("27_rsbmv")
+
+[node name="moms_wall2" type="CSGBox3D" parent="." unique_id=1707907893]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.153144, 1.4987793, -2.0948153)
+size = Vector3(5.739543, 2.9975586, 0.2)
+material = SubResource("StandardMaterial3D_sfjmr")
+
+[node name="bay_window" type="CSGBox3D" parent="." unique_id=956972632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0982318, 1.6458681, -7.6617475)
+operation = 2
+flip_faces = true
+size = Vector3(3.0457153, 1.6456299, 0.17900391)
+
+[node name="mom_wall1" type="CSGBox3D" parent="." unique_id=2123102530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1856699, 1.5438313, -4.7032175)
+size = Vector3(0.001, 2.919983, 6)
+material = ExtResource("20_sj0jj")
+
+[node name="mom_door" type="CSGBox3D" parent="." unique_id=163389988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1993539, 1.1539428, -4.4666514)
+layers = 0
+operation = 2
+flip_faces = true
+size = Vector3(0.2, 2.1552978, 0.977832)
+
+[node name="den_wall1" type="CSGBox3D" parent="." unique_id=2140106521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.4677734, 5.0048447)
+size = Vector3(0.2, 2.9355469, 5.1799316)
+material = ExtResource("20_sj0jj")
+
+[node name="sarah_wall1" type="CSGBox3D" parent="." unique_id=1764468215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1772635, 1.5482955, 0.43583202)
+size = Vector3(0.001, 3, 4.265625)
+material = ExtResource("20_sj0jj")
+
+[node name="bathroom_door_rug" type="CSGBox3D" parent="." unique_id=367080049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9172697, 0.21789554, 4.812011)
+size = Vector3(2, 0.001, 3)
+material = ExtResource("7_cfeer")
+
+[node name="sarah_door_rug" type="CSGBox3D" parent="." unique_id=985364852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0748897, 0.10894777, 0.13931054)
+size = Vector3(5.64917, 0.001, 4.5065346)
+material = ExtResource("7_cfeer")
+
+[node name="sarah_door" type="CSGBox3D" parent="." unique_id=1318753976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2766701, 1.05, 0.37809157)
+operation = 2
+size = Vector3(0.4, 2, 0.9)
+
+[node name="Interactable" type="Node3D" parent="sarah_door" unique_id=1300000001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023929, 0, 0)
+script = ExtResource("9_p2k5u")
+prompt_message = "[E] Knock on Sarah's Door"
+interaction_type = "sarah_door"
+
+[node name="SarahDoorMarker" type="Marker3D" parent="sarah_door" unique_id=1300000002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="sarah_wall2" type="CSGBox3D" parent="." unique_id=776154637]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, -4.0473585, 1.4897461, 2.5)
+size = Vector3(4.500458, 2.9794922, 0.2)
+material = ExtResource("20_sj0jj")
+
+[node name="couch" type="Node3D" parent="." unique_id=1355441868]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9980183, 0.32, 4.0003757)
+
+[node name="Sofa" type="MeshInstance3D" parent="couch" unique_id=153000001]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, -0.31025022, 0)
+material_override = SubResource("LeatherSofa")
+mesh = ExtResource("15_sofa")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="couch" unique_id=153000002]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="couch/StaticBody3D" unique_id=153000003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43, 0)
+shape = SubResource("BoxShape_couch")
+
+[node name="Interactable" type="Node3D" parent="couch" unique_id=263804341]
+script = ExtResource("9_p2k5u")
+prompt_message = "[E] Sit on Couch"
+interaction_type = "couch"
+
+[node name="CouchMarker" type="Marker3D" parent="couch" unique_id=263804342]
+transform = Transform3D(0.97380525, 0.22738355, 0, -0.22738355, 0.97380525, 0, 0, 0, 1, 0, 0.28066278, 0.5271182)
+gizmo_extents = 0.12
+
+[node name="door_table" type="CSGBox3D" parent="." unique_id=787137483]
+transform = Transform3D(-0.99982977, 0, 0.018452194, 0, 1, 0, -0.018452194, 0, -0.99982977, 6.616985, 0.67314994, 0.5905031)
+size = Vector3(0.37279168, 1.1325287, 0.4312256)
+material = ExtResource("5_cfeer")
+
+[node name="Interactable" type="Node3D" parent="door_table" unique_id=1515997984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015587807, 0.17374757, 0.08450708)
+script = ExtResource("9_p2k5u")
+prompt_message = "[E] Open Drawer"
+
+[node name="DoorTableMarker" type="Marker3D" parent="door_table" unique_id=1515997985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15611744, 0.79999995, 0.3015862)
+gizmo_extents = 0.08
+
+[node name="door_lamp" type="CSGCylinder3D" parent="door_table" unique_id=1156944696]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038825035, 0.65848273, 0.011472046)
+radius = 0.11767578
+height = 0.6622963
+
+[node name="MusicInventoryRack" type="CSGBox3D" parent="." unique_id=848480023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.620605, 1.0290971, -2.7513635)
+flip_faces = true
+size = Vector3(0.001, 1.8848388, 1.409729)
+material = SubResource("StandardMaterial3D_ufunr")
+
+[node name="Music_rack_back" type="CSGBox3D" parent="MusicInventoryRack" unique_id=228607425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09199333, -0.016326904, -0.030431032)
+size = Vector3(0.16204834, 1.9953003, 1.3841705)
+material = ExtResource("19_cfeer")
+
+[node name="ApartmentMusic" type="AudioStreamPlayer3D" parent="MusicInventoryRack" unique_id=2147153695]
+stream = ExtResource("10_wevw6")
+autoplay = true
+max_distance = 15.0
+
+[node name="mom_window" type="CSGBox3D" parent="." unique_id=765138264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8361087, 1.5588801, -4.923493)
+operation = 2
+size = Vector3(0.4, 0.8967285, 0.6333679)
+
+[node name="kitchen_floor" type="CSGBox3D" parent="." unique_id=1698714755]
+transform = Transform3D(0.9993454, 0, 0, 0, 0.9993454, 0, 0, 0, 0.9993454, 2.8169112, 0.047, -4.6501374)
+size = Vector3(8.044479, 0.036816407, 5.948242)
+material = ExtResource("20_cfeer")
+
+[node name="sarah_window" type="CSGBox3D" parent="." unique_id=542598120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.870632, 1.4021895, 0.2809881)
+operation = 2
+size = Vector3(0.4, 0.8582519, 0.73515624)
+
+[node name="house_wall_left" type="CSGBox3D" parent="." unique_id=1701318376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015667439, 1.6071866, 7.6128902)
+size = Vector3(13.9564085, 3.067566, 0.025781251)
+material = ExtResource("20_sj0jj")
+
+[node name="den_window2" type="CSGBox3D" parent="." unique_id=1611112308]
+transform = Transform3D(0.019833293, 0, 0.9998033, 0, 1, 0, -0.9998033, 0, 0.019833293, 6.8995023, 1.6768483, 5.247059)
+operation = 2
+size = Vector3(1.5605469, 1.1125, 0.17546387)
+
+[node name="lamp+light" type="OmniLight3D" parent="." unique_id=991311833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5122805, 1.5883789, 0.7152568)
+visible = false
+light_color = Color(0.5931336, 0.59313357, 0.59313357, 1)
+light_size = 0.273
+
+[node name="den_window3" type="CSGBox3D" parent="." unique_id=1123225065]
+transform = Transform3D(0.9996898, 0, 0.024904348, 0, 1, 0, -0.024904348, 0, 0.9996898, -0.5890381, 1.680977, 7.6557007)
+operation = 2
+size = Vector3(1.8671875, 1.1125, 0.4)
+
+[node name="bathroom_floor2" type="CSGBox3D" parent="." unique_id=620785385]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.871208, 0.18049967, 5.054562)
+size = Vector3(4.204056, 0.1, 5.0117188)
+material = ExtResource("20_cfeer")
+
+[node name="bathroom_door" type="CSGBox3D" parent="." unique_id=927569972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6419933, 1.2149422, 5.520917)
+operation = 2
+size = Vector3(0.4, 2.1, 0.9)
+
+[node name="front_porch_floor" type="CSGBox3D" parent="." unique_id=921240787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.64324, -0.024536937, -0.11412573)
+size = Vector3(2.690625, 0.001, 15.34556)
+material = ExtResource("20_8ph6s")
+
+[node name="front_porch_floor2" type="CSGBox3D" parent="." unique_id=859930833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.261222, -0.035541154, -3.3661518)
+size = Vector3(2.4818358, 0.010083009, 7.5627136)
+
+[node name="den_floor" type="CSGBox3D" parent="." unique_id=291213149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8304477, 0.10582137, 2.9342232)
+size = Vector3(8, 0.001, 9.29834)
+material = ExtResource("5_cfeer")
+
+[node name="den_floor_rug" type="CSGBox3D" parent="." unique_id=1800410142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1956263, 0.11474168, 5.390396)
+size = Vector3(2.6950073, 0.039648443, 1.3387465)
+material = ExtResource("22_8ph6s")
+
+[node name="CoffeeTable_01_2k" parent="." unique_id=1865730224 instance=ExtResource("22_kvgdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.073037, 0.13456595, 5.278762)
+
+[node name="electric_stove_2k" parent="." unique_id=596628321 instance=ExtResource("23_kvgdt")]
+transform = Transform3D(1.3171973, 0, 0, 0, 1.4066317, 0, 0, 0, 1.0949463, 3.081821, 0.06539619, -7.2957582)
+
+[node name="ornate_mirror_01_8k" parent="." unique_id=941620427 instance=ExtResource("24_sj0jj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.081821, 0.06539619, -7.562062)
+
+[node name="ornate_mirror_01_8k2" parent="." unique_id=593870010 instance=ExtResource("24_sj0jj")]
+transform = Transform3D(1.0739397, 0, 0, 0, 1, 0, 0, 0, 1, -5.0150375, 1.8014387, 7.561437)
+
+[node name="fancy_picture_frame_01_1k" parent="." unique_id=1434165999 instance=ExtResource("25_darf8")]
+transform = Transform3D(-0.043159686, 0, 0.99906814, 0, 1, 0, -0.99906814, 0, -0.043159686, -1.1338625, 1.545243, -1.7678666)
+
+[node name="RemoteController" parent="." unique_id=628599633 instance=ExtResource("26_xmuok")]
+transform = Transform3D(0.054699864, 0, 0, 0, 0.058926027, 0, 0, 0, 0.035193533, 3.1220374, 0.6798779, 5.0478997)
+
+[node name="Door" type="MeshInstance3D" parent="." unique_id=766701639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1839477, 0.12364149, -3.4777029)
+mesh = ExtResource("27_rsbmv")
+surface_material_override/0 = ExtResource("5_cfeer")
+
+[node name="WallTrim" type="MeshInstance3D" parent="." unique_id=1220309468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8001404, 2.880948, -1.9490767)
+mesh = ExtResource("28_mrmpc")
+
+[node name="wall_clock_1k" parent="." unique_id=1134220389 instance=ExtResource("29_ym6i7")]
+transform = Transform3D(0.06220209, 0, -0.9980636, 0, 1, 0, 0.9980636, 0, 0.06220209, 6.8940077, 1.7085962, -1.0788095)
+
+[node name="painted_wooden_nightstand_1k" parent="." unique_id=381517329 instance=ExtResource("30_8dueg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.439864, 0.06397213, -7.051545)
+
+[node name="painted_wooden_cabinet_2k" parent="." unique_id=230098006 instance=ExtResource("31_hj5f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.140481, 0.109818585, -7.2016373)
+
+[node name="painted_wooden_cabinet_2k2" parent="." unique_id=654232494 instance=ExtResource("31_hj5f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9451338, 0.09976817, -7.2924953)
+
+[node name="Cupboard" type="MeshInstance3D" parent="." unique_id=619296217]
+transform = Transform3D(0.66813767, 0, -0.7440376, 0, 1, 0, 0.7440376, 0, 0.66813767, -3.7988343, 0.06837821, -4.648272)
+material_override = ExtResource("32_1rajl")
+mesh = ExtResource("33_2fk4v")
+
+[node name="Table" type="MeshInstance3D" parent="." unique_id=1289748734]
+transform = Transform3D(-0.04922375, 0, -0.66130215, 0, 1, 0, 0.9818279, 0, -0.033154253, 6.2225227, 0.06539607, -7.687978)
+material_override = ExtResource("19_cfeer")
+mesh = ExtResource("34_6md2n")
+
+[node name="Plate" type="MeshInstance3D" parent="." unique_id=802678247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3762784, 0.07613176, -6.2943993)
+material_override = ExtResource("5_8ph6s")
+mesh = ExtResource("35_a0nva")
+
+[node name="Chair" type="MeshInstance3D" parent="." unique_id=1409278400]
+transform = Transform3D(-0.040583473, 0, 0.99917614, 0, 1, 0, -0.99917614, 0, -0.040583473, 5.6582565, 0.06539607, -5.165528)
+mesh = ExtResource("36_vdasu")
+
+[node name="Chair2" type="MeshInstance3D" parent="." unique_id=567116430]
+transform = Transform3D(-0.9991823, 0, -0.040432308, 0, 1, 0, 0.040432308, 0, -0.9991823, 7.139469, 0.065396786, -6.4090433)
+mesh = ExtResource("36_vdasu")
+
+[node name="vintage_microwave_1k" parent="." unique_id=492877548 instance=ExtResource("37_nq7au")]
+transform = Transform3D(0.8696738, 0, 0, 0, 1, 0, 0, 0, 0.47844046, 0.92519593, 1.2403957, -7.306607)
+
+[node name="ornate_medieval_dagger_4k" parent="." unique_id=94118761 instance=ExtResource("38_ukn77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5368483, 0.7511324, 5.0485783)
+
+[node name="hanging_picture_frame_02_1k" parent="." unique_id=484597694 instance=ExtResource("39_hj5f8")]
+transform = Transform3D(-0.023362905, 0, 0.9997271, 0, 1, 0, -0.9997271, 0, -0.023362905, 1.1156492, 1.6405333, 5.7750773)

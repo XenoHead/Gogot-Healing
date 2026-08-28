@@ -8,55 +8,64 @@
 
 config_version=5
 
+[ambientcg]
+
+extract_path="res://addons/ambientcg/Extracted"
+material_file_directory="res://addons/ambientcg/Materials"
+environment_file_directory="res://addons/ambientcg/Environments"
+
 [application]
 
 config/name="HealingWithout"
-config/tags=PackedStringArray("adult_situations", "gore", "nudity", "violence")
-run/main_scene="res://MainMenu.tscn"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="uid://dkx11uy4o2y6f"
 boot_splash+/background/animation=2
 boot_splash+/logo/text=""
 
 [audio]
 
-buses/default_bus_layout="uid://b3oj24ea5ebml"
+buses/default_bus_layout=""
 
 [autoload]
 
+GameState="*res://scripts/GameState.gd"
 Dialogic="*uid://ds2q0uclmolvu"
-GameState="*uid://dlgv3mdonj08l"
-BootSplashPlus="*uid://dokddwtktku65"
-SubsystemBoot="*res://addons/FoundationGameFramework/editor/SubsystemBootAutoload.gd"
-HeraGameInspector="*uid://c4ug7a211oav8"
+BootSplashPlus="*res://addons/boot_splash_plus/boot_splash_plus_runtime.gd"
+AmbientAPI="*uid://cmbh88h6yljhy"
+AmbientParser="*uid://dcdrqnwmpgvk4"
+AmbientFileHandler="*uid://dnh8sqjyu74hs"
+AmbientMaterialMaker="*uid://nig0lamfd3mv"
+NoteValue="*uid://gdms0yobdmba"
 
 [dialogic]
 
 directories/dch_directory={
-"Mother": "res://Mother.dch",
-"Narrator": "res://Narrator.dch",
-"Sarah": "res://Characters/sarah.dch"
-}
-directories/dtl_directory={
-"first-big-choice": "res://first-big-choice.dtl",
-"sarahtimeline": "res://sarahtimeline.dtl",
-"timeline": "res://timeline.dtl"
+"Mother": "res://dilogic/characters/Mother.dch",
+"Narrator": "res://dilogic/characters/Narrator.dch",
+"sarah": "res://dilogic/characters/sarah.dch"
 }
 layout/style_directory={
 "Mom": "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/Mom.tres",
-"narrator_style": "res://Characters/narrator_style.tres",
 "sarah": "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/sarah.tres"
 }
 glossary/default_case_sensitive=true
-layout/style_list=["res://Characters/narrator_style.tres", "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/sarah.tres", "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/Mom.tres"]
+layout/style_list=["res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/sarah.tres", "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/Mom.tres"]
 layout/default_style=""
 variables={
 "GameState": {
-"SanityLevel": "",
 "both_together_points": 0,
 "mother_alone_points": 0,
 "sarah_alone_points_": 0
+},
+"sarah_body": {},
+"sarah_mind": {
+"NewVar": "",
+"divergence_level": 0.0,
+"divergence_on": true,
+"mental_scars": "",
+"trigger_level": 0.0
 }
 }
 text/letter_speed=0.01
@@ -72,7 +81,7 @@ animations/leave_default_wait=true
 animations/cross_fade_default_length=0.5
 choices/autofocus_first=true
 choices/delay=0.2
-choices/reveal_delay=0.0
+choices/reveal_delay=0
 choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
@@ -84,12 +93,6 @@ audio/channel_defaults={
 "loop": false,
 "volume": 0.0
 },
-"React": {
-"audio_bus": "Inside",
-"fade_length": 0.0,
-"loop": true,
-"volume": 0.0
-},
 "music": {
 "audio_bus": "Music",
 "fade_length": 0.0,
@@ -97,7 +100,7 @@ audio/channel_defaults={
 "volume": 0.0
 },
 "otherroom": {
-"audio_bus": "Voice",
+"audio_bus": "Voice 2",
 "fade_length": 0.0,
 "loop": true,
 "volume": 0.0
@@ -109,19 +112,23 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
-audio/type_sound_bus="Voice"
-glossary/glossary_files=["uid://bg84v70m5y68y"]
+audio/type_sound_bus="Master"
+glossary/glossary_files=[]
 text/autocolor_names=true
-history/simple_history_enabled=false
+history/simple_history_enabled=true
 history/simple_history_save=false
 history/full_history_enabled=false
 history/full_history_save=false
 history/visited_event_history_enabled=false
 history/save_on_autosave=false
-history/save_on_save=false
+history/save_on_save=true
 layout/end_behaviour=1
-extensions_folder="res://addons/dialogic_additions"
+extensions_folder="res://addons/dialogic/custom_extensions"
 text/input_action="dialogic_default_action"
+choices/hotkey_behaviour=1
+directories/dtl_directory={
+"first-big-choice": "res://dilogic/timelines/first-big-choice.dtl"
+}
 
 [display]
 
@@ -130,18 +137,26 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ExtensionResolver/plugin.cfg", "res://addons/FoundationGameFramework/plugin.cfg", "res://addons/FoundationGameplayTags/plugin.cfg", "res://addons/GMPShared/menu/plugin.cfg", "res://addons/Quick-Add-Menu/plugin.cfg", "res://addons/QuickAudioPreview/plugin.cfg", "res://addons/SceneBuilder/addons/scene_builder/plugin.cfg", "res://addons/SharePlugin/plugin.cfg", "res://addons/asset_placer_with_physics/plugin.cfg", "res://addons/boot_splash_plus/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/footstepper/plugin.cfg", "res://addons/godot-state-machine-1.0.0/addons/state_machine/plugin.cfg", "res://addons/godot_3d_cursor/plugin.cfg", "res://addons/hera_agent_godot/plugin.cfg", "res://addons/nodes_plus/plugin.cfg")
+enabled=PackedStringArray("res://addons/ExtensionResolver/plugin.cfg", "res://addons/PolyHavenImport/plugin.cfg", "res://addons/SimpleSampler/plugin.cfg", "res://addons/ambientcg/plugin.cfg", "res://addons/asset_browser/plugin.cfg", "res://addons/asset_placer_with_physics/plugin.cfg", "res://addons/boot_splash_plus/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/easyik/plugin.cfg", "res://addons/footstepper/plugin.cfg", "res://addons/godot_mcp_server/plugin.cfg", "res://addons/nodes_plus/plugin.cfg", "res://addons/state_machine/plugin.cfg")
 
 [filesystem]
 
 import/fbx2gltf/enabled.web=true
-import/blender/enabled=false
+import/blender/enabled.web=true
 
 [importer_defaults]
 
-animation_library={
-&"fbx/allow_geometry_helper_nodes": true
-}
+texture/compress/mode=0
+texture/compress/high_quality=true
+texture/mipmaps/generate=true
+texture/compress/normal_map=0
+texture/compress/channel_pack=0
+texture/process/fix_alpha_border=true
+texture/process/premult_alpha=false
+texture/process/normal_map_invert_y=false
+texture/process/hdr_as_srgb=false
+texture/process/size_limit=0
+texture/detect_3d/compress_to=0
 
 [input]
 
@@ -185,12 +200,11 @@ interact={
 ]
 }
 
-[physics]
+[layer_names]
 
-3d/physics_engine="Jolt Physics"
+3d_render/layer_17="SimpleGrassTextured interactive layer"
 
 [rendering]
 
-rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

@@ -3,15 +3,9 @@
 [ext_resource type="Script" uid="uid://3akc4p71r5rn" path="res://addons/dialogic/Editor/Settings/CoreSettingsPages/settings_editor.gd" id="1_kdw7t"]
 [ext_resource type="PackedScene" uid="uid://dbpkta2tjsqim" path="res://addons/dialogic/Editor/Common/hint_tooltip_icon.tscn" id="2_ey6hj"]
 
-[sub_resource type="DPITexture" id="DPITexture_1n4qk"]
-_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"M5 8a4 4 0 1 1 4 4v2a6 6 0 1 0-6-6H1l3 4 3-4z\"/></svg>
+[sub_resource type="DPITexture" id="DPITexture_m6kd3"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#ff5d5d\" d=\"M2 1v8.586l1.293-1.293a1 1 0 0 1 1.414 0L7 10.587l2.293-2.293a1 1 0 0 1 1.414 0L13 10.586l1-1V6H9V1H2zm8 0v4h4zm-6 9.414-2 2V15h12v-2.586l-.293.293a1 1 0 0 1-1.414 0L10 10.414l-2.293 2.293a1 1 0 0 1-1.414 0L4 10.414z\"/></svg>
 "
-saturation = 2.0
-color_map = {
-Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
-Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
-Color(1, 0.8666667, 0.39607844, 1): Color(0.83, 0.78, 0.62, 1)
-}
 
 [node name="EditorSettingsPage" type="VBoxContainer" unique_id=350772692]
 anchors_preset = 15
@@ -40,7 +34,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 tooltip_text = "Reset Colors to default"
-icon = SubResource("DPITexture_1n4qk")
+icon = SubResource("DPITexture_m6kd3")
 flat = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=485517901]

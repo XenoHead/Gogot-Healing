@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://pv0hj02fwux0"]
+
+[ext_resource type="Script" uid="uid://cutu8qm5qekvv" path="res://scripts/ApartmentRoot.gd" id="1_k7cl5"]
+[ext_resource type="PackedScene" uid="uid://ny35vimeipqe" path="res://scenes/our_home.tscn" id="2_dmpir"]
+[ext_resource type="AudioStream" uid="uid://bqcfw814sg5wf" path="res://audio/ap1.wav" id="3_neaeq"]
+[ext_resource type="Script" uid="uid://c41vhqqphjk0h" path="res://scripts/PlayerController.gd" id="4_t6mby"]
+[ext_resource type="Script" uid="uid://bfwyjcvtiew6d" path="res://addons/footstepper/footstepper.gd" id="5_yvdbp"]
+[ext_resource type="Resource" uid="uid://nqw1m7rl6n48" path="res://resources/default_profile.tres" id="6_dqvb4"]
+[ext_resource type="Script" uid="uid://dix25ryusm8d1" path="res://addons/nodes_plus/nodes/interaction_area_3D.gd" id="7_5yoca"]
+[ext_resource type="PackedScene" path="res://scenes/television.tscn" id="8_tv"]
+[ext_resource type="PackedScene" uid="uid://c72am6fbc7d1d" path="res://scenes/DialogueOverlay.tscn" id="9_dovl"]
+[ext_resource type="AudioStream" uid="uid://u8dguv70k2h5" path="res://audio/tv_hiss.mp3" id="10_hiss"]
+
+[sub_resource type="Environment" id="Environment_ufunr"]
+ambient_light_color = Color(0, 0, 0, 0)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2o1oq"]
+
+[node name="ApartmentRoot" type="Node3D" unique_id=1583420739]
+script = ExtResource("1_k7cl5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=380680564]
+environment = SubResource("Environment_ufunr")
+
+[node name="our_home" parent="." unique_id=2122624132 instance=ExtResource("2_dmpir")]
+transform = Transform3D(0.98871624, 0, 0, 0, 0.98871624, 0, 0, 0, 0.98871624, -2.799137, -1.0191545, -1.2581455)
+
+[node name="Television" parent="." unique_id=1454945054 instance=ExtResource("8_tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29155195, 0.5103687, 6.2983418)
+size = Vector3(3.0921142, 1.746582, 0.001)
+
+[node name="Apt_music" type="AudioStreamPlayer2D" parent="." unique_id=556789076]
+stream = ExtResource("3_neaeq")
+volume_db = -0.16
+autoplay = true
+
+[node name="TV_hiss_point" type="Node3D" parent="." unique_id=150011001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29155195, 0.5103687, 6.2983418)
+
+[node name="TV_hiss" type="AudioStreamPlayer3D" parent="TV_hiss_point" unique_id=150011002]
+stream = ExtResource("10_hiss")
+volume_db = -33.655
+
+[node name="TV_light" type="SpotLight3D" parent="TV_hiss_point" unique_id=1581267694]
+transform = Transform3D(-0.2329949, 0.97246116, -0.005718205, -0.5454337, -0.1355457, -0.8271212, -0.80511826, -0.18959612, 0.56199455, 0, 0, -0.2551279)
+visible = false
+
+[node name="HallwayLight" type="Node3D" parent="." unique_id=1937588981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 210, 2.3, 0)
+visible = false
+
+[node name="PlayerRoot" type="CharacterBody3D" parent="." unique_id=880519005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1.5)
+script = ExtResource("4_t6mby")
+walk_speed = 3.0
+run_speed = null
+jump_velocity = null
+mouse_sensitivity = null
+noclip_speed = null
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="PlayerRoot" unique_id=1664285622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_player")
+
+[node name="HeadAssembly" type="Node3D" parent="PlayerRoot" unique_id=921844589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="PlayerRoot/HeadAssembly" unique_id=182747143]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23823237, 0)
+current = true
+far = 500.0
+
+[node name="InteractionRayCast" type="RayCast3D" parent="PlayerRoot/HeadAssembly/PlayerCamera" unique_id=2030281579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2780118, 0, 0)
+target_position = Vector3(0, 0, -4)
+hit_back_faces = false
+
+[node name="Footstepper" type="Node3D" parent="PlayerRoot" unique_id=1227465882]
+script = ExtResource("5_yvdbp")
+material_aware_enabled = true
+default_sound_profile = ExtResource("6_dqvb4")
+metadata/_custom_type_script = "uid://bfwyjcvtiew6d"
+
+[node name="InteractionArea3D" type="Area3D" parent="." unique_id=772152607]
+script = ExtResource("7_5yoca")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea3D" unique_id=1207249712]
+shape = SubResource("BoxShape3D_2o1oq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1121094898]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0818176, 0.9314804, 0)
+visible = false
+
+[node name="DialogueOverlay" parent="." unique_id=991234567 instance=ExtResource("9_dovl")]
+offset_left = 12.0
+offset_top = 51.0
+offset_right = 12.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2

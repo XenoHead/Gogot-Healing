@@ -1,1 +1,0 @@
-ffmpeg -i time2.mp4 -c:v libtheora -q:v 7 -c:a libvorbis -q:a 5 output.ogv

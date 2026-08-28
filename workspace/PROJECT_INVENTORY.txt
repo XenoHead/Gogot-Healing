@@ -1,0 +1,85 @@
+HEALING WITHOUT — PROJECT INVENTORY
+Generated 2026-08-19
+
+=== SCENES (res://scenes/) ===
+apartment_root.tscn
+backstory.tscn
+baseModel.tscn
+DialogueOverlay.tscn
+MainMenu.tscn
+New_File.tres
+our_home.tscn
+television.tscn
+yard.tscn
+YardEnvironment.tscn
+
+=== SCRIPTS (res://scripts/) ===
+ApartmentRoot.gd
+Backstory.gd
+DialogueOverlay.gd
+GameState.gd
+Interactable.gd
+MainMenu.gd
+PlayerController.gd
+splashloader.gd
+
+=== DIALOGIC TIMELINES ===
+first-big-choice.dtl
+first-big-choice.dtl.uid
+start_timeline.dtl.uid
+timeline.dtl.uid
+
+=== ADDONS (enabled) ===
+res://addons/ExtensionResolver/plugin.cfg
+res://addons/ambientcg/plugin.cfg
+res://addons/asset_placer_with_physics/plugin.cfg
+res://addons/boot_splash_plus/plugin.cfg
+res://addons/dialogic/plugin.cfg
+res://addons/easyik/plugin.cfg
+res://addons/footstepper/plugin.cfg
+res://addons/nodes_plus/plugin.cfg
+res://addons/state_machine/plugin.cfg
+
+=== FONTS ===
+dark-whispers.regular.otf
+dark-whispers.regular.otf.import
+GrotleyRegular-mLEWv.otf
+GrotleyRegular-mLEWv.otf.import
+
+=== AUDIO (top) ===
+ap1.wav
+ap1.wav.import
+ap2.wav
+ap2.wav.import
+crying.wav
+crying.wav.import
+drone_loop.wav
+drone_loop.wav.import
+Environment
+firetree.wav
+firetree.wav.import
+first-choice
+Impact Vox Hammer.wav
+Impact Vox Hammer.wav.import
+intro
+intro_1.wav
+intro_1.wav.import
+intro_1_1.wav
+intro_1_1.wav.import
+audio/first-choice:
+10.wav.import
+19.wav.import
+20.wav.import
+hot_2.wav.import
+medium_3.wav.import
+medium_7.wav.import
+medium_8.wav.import
+medium_9.wav.import
+sarah_1.wav.import
+sarah_1_muffled.wav
+sarah_1_muffled.wav.import
+
+=== main scene ===
+run/main_scene="res://scenes/MainMenu.tscn"
+=== audio bus layout ===
+buses/default_bus_layout="uid://t8u11mqohbbf"

@@ -1,11 +1,11 @@
 @icon("res://addons/nodes_plus/icons/node/StateMachine.svg")
 extends Node
-class_name StateMachine
+class_name NP_StateMachine
 
 @export var character: Node
 @export var initial_state: NodePath
 
-var current_state: State
+var current_state: NP_State
 
 
 func _ready() -> void:
@@ -14,7 +14,7 @@ func _ready() -> void:
 		change_state(node)
 
 
-func change_state(new_state: State, data := {}) -> void:
+func change_state(new_state: NP_State, data := {}) -> void:
 	if current_state:
 		current_state.exit()
 

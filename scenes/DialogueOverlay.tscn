@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c72am6fbc7d1d"]
+
+[ext_resource type="Script" path="res://scripts/DialogueOverlay.gd" id="1_be6d6"]
+
+[node name="DialogueOverlay" type="Control" unique_id=870332640]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+visible = false
+
+[node name="DialoguePanel" type="Panel" parent="." unique_id=439771416]
+layout_mode = 0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -320.0
+offset_right = 200.0
+offset_bottom = -20.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialoguePanel" unique_id=197903743]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 120.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialoguePanel" unique_id=1022363994]
+layout_mode = 0
+offset_top = 130.0
+offset_right = 360.0
+offset_bottom = 278.0

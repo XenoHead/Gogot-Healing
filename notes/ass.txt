@@ -1,0 +1,5 @@
+  ERROR: servers/rendering/rendering_device.cpp:5048 - Condition "!pipeline.driver_id" is true. Returning: RID()
+  ERROR: modules/betsy/image_compress_betsy.cpp:164 - Condition "cached_shaders[BETSY_SHADER_BC1_STANDARD].pipeline.is_null()" is true.
+  ERROR: servers/rendering/rendering_device.cpp:6674 - Parameter "pipeline" is null.
+  ERROR: This compute pipeline requires (0) bytes of push constant data, supplied: (16)
+  ERROR: No compute pipeline was set before attempting to draw.

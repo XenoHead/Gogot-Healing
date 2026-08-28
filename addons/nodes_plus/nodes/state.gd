@@ -1,8 +1,8 @@
 @icon("res://addons/nodes_plus/icons/node/State.svg")
 extends Node
-class_name State
+class_name NP_State
 
-var state_machine: StateMachine
+var state_machine: NP_StateMachine
 var character: Node
 
 

@@ -1,0 +1,7 @@
+Read and digest every file in this folder — GAME.md, HERMES_SETTINGS_EXPORT.md,
+PROJECT_INVENTORY.txt, and README.md. Internalize the project architecture, my
+standing constraints (no commit/push, leave notes/ alone, don't "fix" the skewed
+transforms, keep sarah_door/first-big-choice.dtl, redact secrets), and the
+settings that reproduce my preferred behavior. Then confirm you understand and
+tell me what you'd do first if I asked you to work on the Godot project
+"Healing Without".

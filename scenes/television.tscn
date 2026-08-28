@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://tv_static_scene_001"]
+
+[ext_resource type="Script" uid="uid://yrsk75u5t67o" path="res://scripts/Interactable.gd" id="2_inter"]
+[ext_resource type="Shader" path="res://shaders/tv_static.gdshader" id="3_tvshader"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_screen"]
+size = Vector2(3, 1.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape_tv"]
+size = Vector3(3.1, 2, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tv"]
+shader = ExtResource("3_tvshader")
+cull_mode = 0
+
+[node name="Television" type="CSGBox3D"]
+size = Vector3(3.1, 2, 0.1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, -0.051)
+mesh = SubResource("QuadMesh_screen")
+material_override = SubResource("ShaderMaterial_tv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape_tv")
+
+[node name="Interactable" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5489297, -0.0858984, 0)
+visibility_parent = NodePath("..")
+script = ExtResource("2_inter")
+prompt_message = "[E] Use Television"
+interaction_type = "tv"
+interact_range = 4.0
+
+[node name="TVMarker" type="Marker3D" parent="." unique_id=150011003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)

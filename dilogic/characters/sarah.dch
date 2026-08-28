@@ -1,0 +1,53 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+&"_translation_id": "",
+&"color": Color(0.90234375, 0.08811951, 0.08811951, 1),
+&"custom_info": {
+"prefix": "",
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "sarah",
+"suffix": ""
+},
+&"default_portrait": "Sarah Default",
+&"description": "Name: Daughter 10 yrs (Sarah)
+Appearance: Golden-blonde hair, piercing green eyes.
+Personality: Smart, mature, secretly sexual, loves boys.
+Background: Sarah has always been a precocious child, far beyond her years in both intellect and emotional maturity. While her peers are playing with dolls, Sarah is captivated by the complexities of human relationships and the allure of romance. She possesses a quiet confidence and a hidden side that surprises those who underestimate her. Despite her young age, she has a sophisticated understanding of attraction and a secret fascination with the boys in her life, navigating the world with a wisdom and curiosity that belies her childhood.
+",
+&"display_name": "Sarah",
+&"mirror": false,
+&"nicknames": ["Baby Girl"],
+&"offset": Vector2(0, 0),
+&"portraits": {
+"Sara Sad": {
+"export_overrides": {
+"image": "\"res://images/Hero/sara_sad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 0.5,
+"scene": ""
+},
+"Sarah Default": {
+"export_overrides": {
+"image": "\"res://images/Hero/sarah_younger.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"Sarah Mad": {
+"export_overrides": {
+"image": "\"res://images/Hero/sarah_mad.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 0.5,
+"scene": ""
+}
+},
+&"scale": 0.5
+}

@@ -103,6 +103,9 @@ var Audio := preload("res://addons/dialogic/Modules/Audio/subsystem_audio.gd").n
 var Backgrounds := preload("res://addons/dialogic/Modules/Background/subsystem_backgrounds.gd").new():
 	get: return get_subsystem("Backgrounds")
 
+var BuildVictim := preload("res://addons/dialogic/custom_extensions/BuildVictim/subsystem_build_victim.gd").new():
+	get: return get_subsystem("BuildVictim")
+
 var Choices := preload("res://addons/dialogic/Modules/Choice/subsystem_choices.gd").new():
 	get: return get_subsystem("Choices")
 
