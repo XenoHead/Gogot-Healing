@@ -13,8 +13,8 @@ Thumbs.db
 *_MACOSX/
 .DS_Store
 /addons
-/addons
 /assets
 /audio
 /images
 /video
+*.zip
