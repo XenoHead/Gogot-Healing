@@ -1,18 +1,20 @@
 [gd_scene format=3 uid="uid://c72am6fbc7d1d"]
 
-[ext_resource type="Script" path="res://scripts/DialogueOverlay.gd" id="1_be6d6"]
+[ext_resource type="Script" uid="uid://cbd2hlx833ly1" path="res://scripts/DialogueOverlay.gd" id="1_be6d6"]
 
 [node name="DialogueOverlay" type="Control" unique_id=870332640]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-visible = false
+script = ExtResource("1_be6d6")
 
 [node name="DialoguePanel" type="Panel" parent="." unique_id=439771416]
 layout_mode = 0
-anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

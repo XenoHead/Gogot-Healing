@@ -1,0 +1,5 @@
+{
+    "openclaw.configMode": "gateway",
+    "openclaw.gatewayUrl": "http://127.0.0.1:18789",
+    "openclaw.gatewayToken": ""
+}

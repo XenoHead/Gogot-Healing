@@ -1,0 +1,15 @@
+Free 3D model sites (Godot-friendly)
+For your horror-game vibe, you want .glb/.gltf (Godot's native best) or .obj (what you used). Avoid .blend (needs Blender installed) and .fbx (works but .glb is cleaner). Everything below is royalty-free / CC0 for commercial-ish use, but always check the license per asset (some require attribution):
+
+Kenney (kenney.nl) — CC0, game-ready, low-poly. Great for props, furniture, interior kits. The easiest starting point. Has a "Furniture" and "Interior" pack.
+Poly Pizza (poly.pizza) — huge free CC0 library, searchable, direct .glb download, filters by license. Best for quick grabs.
+Sketchfab (sketchfab.com) — massive; filter Downloadable + CC0 / CC-BY (avoid "All rights reserved"). Export as .glb.
+Quaternius (quaternius.com) — CC0, low-poly, has horror/urban/env packs.
+AmbientCG (ambientcg.com) — you already have it as an addon; great for PBR textures (wood, concrete, fabric) to texture your own models — pairs perfectly with the folder convention we set up.
+cgbookcase, Free3D (free3d.com, filter free), TurboSquid (filter "Free") — more hit-or-miss but useful for specific props.
+Workflow that matches what we just did
+Download .glb → drop in res://images/objects/<Name>/.
+Textures (if separate) → res://images/objects/<Name>/Texture/.
+Drag into the scene, measure get_aabb() to find the scale (remember the sofa was millimeters → 0.001).
+Add StaticBody3D + CollisionShape3D for collision, keep an Interactable child for prompts.
+One Godot-specific tip: when importing a .glb, open it in the Import dock and set "Mesh > Generate LODs" off if it looks weird, and check "Nodes → Root Type" if you need it as a CharacterBody/RigidBody. For static furniture, leaving it as Node3D + a manual StaticBody (like the sofa) is simplest.

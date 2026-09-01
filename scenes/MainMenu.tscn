@@ -101,12 +101,13 @@ theme_override_constants/margin_bottom = 60
 [node name="DisclaimerText" type="Label" parent="IntroTransitionLayer/DisclaimerContainer" unique_id=243350006]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(3.4255767, 3.4255767, 3.4255767, 0.99607843)
 theme_override_fonts/font = ExtResource("7_3fnrj")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "CONTENT WARNING & DISCLAIMER
 -----------------------------------------------------
-This game  is an intense psychological horror experience intended strictly for adult audiences.
+Rated M for MATURE
+This game  is  an intense psychological horror experience intended strictly for adult audiences.
 By proceeding past this screen, you acknowledge and consent to exposure to the following thematic elements:
 
 1. Severe Psychological Horror: Depictions of profound mental illness, trauma and grief..
@@ -125,6 +126,18 @@ vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 131
 uppercase = true
+
+[node name="Iagreelabel" type="Button" parent="IntroTransitionLayer/DisclaimerContainer/DisclaimerText" unique_id=587726106]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 561.0
+offset_right = 605.0
+offset_bottom = 587.0
+theme_override_colors/font_color = Color(0.99607843, 0.047058824, 0.13333334, 1)
+theme_override_font_sizes/font_size = 20
+text = " I AGREE TO PLAY"
+horizontal_alignment = 1
+flat = true
 
 [node name="MenuUILayer" type="CanvasLayer" parent="." unique_id=210812240]
 visible = false

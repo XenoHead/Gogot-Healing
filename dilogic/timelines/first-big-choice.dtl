@@ -1,12 +1,19 @@
-Narrator: Beth sits back in the couch listening to the white noise of the tv it soothes her somehow. \
-The she hears a strange muffled, breathy, expression.\
-Down the hall...
-audio otherroom "res://audio/first-choice/sarah_1_muffled.wav" [volume="0.0" bus="Voice" loop="false"]
-Narrator: *[Mmmpphhh MMmpphh]*
-Mother: Investigate?
-- Yes
-	Mother (Beth Worried): She walks quietly down the hall
-- No
-	Mother: She falls asleep
-	set {GameState.sarah_alone_points_} += 0.1
-	Sarah: **Sarah Feels More Alone**
+[background arg="res://images/places/outdoor.jpeg" fade="0.0"]
+Narrator: Beth leans in, her naive curiosity piqued by the muffled, breathless whispers of a boy’s voice leaking from Sarah’s oversized headphones and the unmistakable sound of rhythmic friction. When she finally pushes the door open, she doesn't find Sarah playing a game or reading a book, but caught in a moment of intense, private discovery.
+Mother (Beth Worried): 'Sarah? What are you doing in there?'
+Narrator: Silence from the other side of the door...then the sound of a laptop slamming and bed sheets being mved forcefully.
+- [ 1 ] Just keep things quiet. (Neutral)
+	Mother (Beth Worried): 'Sarah...'
+	Mother: 'Just... clean up when you're done. Let's keep things quiet.'
+	set {GameState.both_together_points} += ""
+	Narrator: The scratching stops briefly, but the thick silence remains.
+- [ 2 ] That's my girl. Meticulous. (Encourage)
+	set {GameState.mother_alone_points} += ""
+	Narrator: A cold breeze catches under the door frame. The scratching rhythm syncs up faster.
+	Mother (Beth Worried): 'Meticulous. Just like your father used to be.'
+- [ 3 ] Drop that immediately! Go to your closet! (Punish)
+	set {GameState.sarah_alone_points_} += ""
+	Narrator: A heavy, violent thud rattles the wood framework from the inside, followed by complete stillness.
+	Mother: 'Drop that immediately! Go to your closet. Now!'
+[stop]
+[end_timeline]

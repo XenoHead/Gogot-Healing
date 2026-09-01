@@ -18,7 +18,7 @@ environment_file_directory="res://addons/ambientcg/Environments"
 
 config/name="HealingWithout"
 run/main_scene="res://scenes/MainMenu.tscn"
-config/features=PackedStringArray("4.7", "Forward Plus")
+config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/show_image=false
 config/icon="uid://dkx11uy4o2y6f"
 boot_splash+/background/animation=2
@@ -38,6 +38,8 @@ AmbientParser="*uid://dcdrqnwmpgvk4"
 AmbientFileHandler="*uid://dnh8sqjyu74hs"
 AmbientMaterialMaker="*uid://nig0lamfd3mv"
 NoteValue="*uid://gdms0yobdmba"
+Inventory="*res://scripts/Inventory.gd"
+InventoryUI="*res://scenes/InventoryUI.tscn"
 
 [dialogic]
 
@@ -48,24 +50,26 @@ directories/dch_directory={
 }
 layout/style_directory={
 "Mom": "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/Mom.tres",
-"sarah": "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/sarah.tres"
+"Sarah": "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/sarah.tres",
+"narrator_style": "res://dilogic/characters/narrator_style.tres"
 }
 glossary/default_case_sensitive=true
-layout/style_list=["res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/sarah.tres", "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/Mom.tres"]
+layout/style_list=["res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/sarah.tres", "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/Mom.tres", "res://dilogic/characters/narrator_style.tres"]
 layout/default_style=""
 variables={
 "GameState": {
 "both_together_points": 0,
 "mother_alone_points": 0,
-"sarah_alone_points_": 0
+"sarah_alone_points_": 0,
+"sarah_choice_path": "",
+"watch_static_path": false
 },
 "sarah_body": {},
 "sarah_mind": {
-"NewVar": "",
-"divergence_level": 0.0,
+"divergence_level": 0,
 "divergence_on": true,
-"mental_scars": "",
-"trigger_level": 0.0
+"mental_scars": 0,
+"trigger_level": 0
 }
 }
 text/letter_speed=0.01
@@ -99,6 +103,12 @@ audio/channel_defaults={
 "loop": true,
 "volume": 0.0
 },
+"narrator": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+},
 "otherroom": {
 "audio_bus": "Voice 2",
 "fade_length": 0.0,
@@ -127,7 +137,9 @@ extensions_folder="res://addons/dialogic/custom_extensions"
 text/input_action="dialogic_default_action"
 choices/hotkey_behaviour=1
 directories/dtl_directory={
-"first-big-choice": "res://dilogic/timelines/first-big-choice.dtl"
+"first-big-choice": "res://dilogic/timelines/first-big-choice.dtl",
+"sarah_door_locked": "res://dilogic/timelines/sarah_door_locked.dtl",
+"tv_story": "res://dilogic/timelines/tv_story.dtl"
 }
 
 [display]
@@ -137,7 +149,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ExtensionResolver/plugin.cfg", "res://addons/PolyHavenImport/plugin.cfg", "res://addons/SimpleSampler/plugin.cfg", "res://addons/ambientcg/plugin.cfg", "res://addons/asset_browser/plugin.cfg", "res://addons/asset_placer_with_physics/plugin.cfg", "res://addons/boot_splash_plus/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/easyik/plugin.cfg", "res://addons/footstepper/plugin.cfg", "res://addons/godot_mcp_server/plugin.cfg", "res://addons/nodes_plus/plugin.cfg", "res://addons/state_machine/plugin.cfg")
+enabled=PackedStringArray("res://addons/ExtensionResolver/plugin.cfg", "res://addons/PolyHavenImport/plugin.cfg", "res://addons/SimpleSampler/plugin.cfg", "res://addons/Swift_Inventory/plugin.cfg", "res://addons/ambientcg/plugin.cfg", "res://addons/asset_browser/plugin.cfg", "res://addons/asset_placer_with_physics/plugin.cfg", "res://addons/boot_splash_plus/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/easyik/plugin.cfg", "res://addons/footstepper/plugin.cfg", "res://addons/godot_mcp_server/plugin.cfg", "res://addons/nodes_plus/plugin.cfg", "res://addons/state_machine/plugin.cfg")
 
 [filesystem]
 
