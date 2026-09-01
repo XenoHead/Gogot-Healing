@@ -1,0 +1,26 @@
+- Change Channels
+	Narrator: The remote slides through channels, the images on the screen change. A news anchor's face skews into jagged lines of static, their voice warped into a low, metallic groan that swallows whatever catastrophe they are trying to report.
+	Narrator: Another click brings a bright, garish burst of color where a woman's manicured hand waves an unidentifiable object, her pitch distorted into a high-pitched, warbling squeal that sounds more like feedback than salesmanship.
+	Narrator: A third shift drops the room into shadowy flesh tones and rhythmic, muffled thuds, the audio resolving into a blurred, wet cadence of heavy breathing before tearing apart into vertical lines.
+	Nothing stays legible or clear for more than a second, leaving only the sickening impression of stories half-told and signals lost in the noise.
+	join Mother center
+	Mother: "Fuck. I must be exhausted..."
+- Watch Static
+	audio music "res://audio/tv_hiss.mp3" [volume="-33.7"]
+	Narrator: Beth closed her eyes and listened to the steady white noise. The low, unchanging hum served as a perfect acoustic wall, isolating her from the sharp, unpredictable chaos of the outside world.
+	Narrator: With every passing second, the static gently smoothed over her frayed thoughts, coaxing her shoulders to drop and her breathing to slow to a steady rhythm.
+	Narrator: In that seamless blanket of sound, there were no sudden demands or jarring interruptions—just a mindless, comforting void where her overworked mind could finally rest.
+	
+	Untill Beth heard something unusual. She stands, perking her ears for the unfamilar sounds coming from the hallway.
+	[background arg="res://images/places/outdoor.jpeg" fade="0.0" wait="true"]
+	label *muffled sounds* (muffled_sounds)
+	jump first-big-choice/
+	Narrator: She crept over to Sarah's door.
+	[voice path="res://audio/first-choice/sarah_1_muffled.wav" volume="-12.0"]
+	Narrator: Sarah turns off the TV and walks slowly to Sarah's door.
+	set {GameState.watch_static_path} = true
+- Turn Off Tv
+	set {GameState.turn_off_requested} = true
+	Narrator: "The screen collapses into a small white dot, leaving a high-frequency whistle piercing the dark."
+- Stand Up (leave tv on)
+	set {GameState.stand_up_requested} = true

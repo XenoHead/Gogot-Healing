@@ -14,6 +14,8 @@ var crouch_height: float = 0.9
 # TV & Interaction States
 var tv_state: int = 0 # 0: Static, 1: Change Channel, 2: Off
 var is_sitting: bool = false
+var walk_target: Vector3 = Vector3.ZERO  # when set, standard movement walks here instead of manual input
+var _active_dialogic_timeline := ""  # path of the timeline we last started (timeline_ended has no arg)
 var tv_mesh: MeshInstance3D = null
 var tv_hiss_player: AudioStreamPlayer3D = null
 var tv_light: SpotLight3D = null
@@ -78,6 +80,110 @@ func stand_up() -> void:
 	set_tv_on(false)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	print("Stood up from couch.")
+
+# Used by the Watch Static branch: stands Beth up (if seated) and moves her
+# behind the scenes to the Sarah's-door marker (instant, no visible walk),
+# so the door is "shown" and the first major choice pops there.
+func move_to_sarah_door() -> void:
+	if is_sitting:
+		is_sitting = false
+		collision.disabled = false
+	set_tv_on(true)  # static stays on as she goes to the door
+	var marker: Node3D = null
+	# Robust recursive lookup — works regardless of how the scenes are nested.
+	if get_tree().current_scene != null:
+		marker = get_tree().current_scene.find_child("SarahDoorMarker", true, false)
+	if marker == null:
+		marker = get_tree().root.find_child("SarahDoorMarker", true, false)
+	if marker != null:
+		# The marker sits AT the door (floating, offset y=1.2) and inside the
+		# door collision, which shoves a CharacterBody3D away. Instead, stand a
+		# clean ~2.0 units in FRONT of the door (along its local -Z) at floor level.
+		var door_node = marker.get_parent()  # sarah_door CSGBox
+		var stand_pos: Vector3 = marker.global_position
+		if door_node != null:
+			var fwd: Vector3 = -door_node.global_transform.basis.z  # door's forward (into room)
+			fwd.y = 0.0
+			if fwd.length() > 0.001:
+				fwd = fwd.normalized()
+				stand_pos = door_node.global_position + fwd * 2.0
+		stand_pos.y = global_position.y  # keep current floor height (no floating)
+		# Defer the actual move so it happens AFTER Dialogic's signal callback
+		# finishes (avoids the teleport being overwritten this frame).
+		var look_node: Node3D = door_node if door_node != null else marker
+		call_deferred("_apply_door_teleport", stand_pos, look_node)
+	else:
+		printerr("Error: SarahDoorMarker not found for move_to_sarah_door.")
+
+func _apply_door_teleport(stand_pos: Vector3, look_node: Node3D) -> void:
+	velocity = Vector3.ZERO
+	global_position = stand_pos
+	var lt := look_node.global_position
+	look_at(Vector3(lt.x, global_position.y, lt.z))
+	rotation.x = 0.0
+	rotation.z = 0.0
+	walk_target = Vector3.ZERO  # cancel any in-progress auto-walk
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	print("Moved to Sarah's door (behind the scenes): ", stand_pos)
+
+# Handles signals emitted from the TV Dialogic timeline (tv_story.dtl).
+# Use a "Send Signal" event in Dialogic with these argument strings:
+#   "watch_static"  -> correct path: keep static, route player to Sarah's door
+#   "change_channel"-> turn the static off (wrong/branch path)
+#   "turn_off"      -> turn the static off (wrong/branch path)
+#   "stand_up"      -> stand up off the couch
+func _on_dialogic_signal(argument: Variant) -> void:
+	var sig := str(argument)
+	match sig:
+		"change_channel", "turn_off":
+			set_tv_on(false)
+		"stand_up":
+			stand_up()
+		"neutral", "encourage", "punish":
+			# Sarah-door choice outcomes -> apply metrics.
+			if GameState.has_method("modify_metrics"):
+				GameState.modify_metrics(sig)
+
+# Called when a Dialogic timeline ends. Bridges Dialogic's broken signal_event
+# plumbing: tv_story's branches set GameState flags via "set {GameState.x}"
+# events, then we act on them here when tv_story ends.
+#   watch_static_path -> teleport Beth to Sarah's door (the jump already
+#                         started first-big-choice, so we only teleport)
+#   turn_off_requested-> turn the TV off, stay on couch
+#   stand_up_requested -> stand up off the couch, TV stays on
+#
+# IMPORTANT: after first-big-choice.dtl ends, Dialogic returns to tv_story
+# (after the jump event). If we don't stop it here, tv_story resumes and
+# re-shows the TV choice screen — Beth loops back to the TV. The final
+# cleanup block below prevents that.
+func _on_tv_timeline_ended(_timeline_resource: Variant) -> void:
+	if _active_dialogic_timeline != "res://dilogic/timelines/tv_story.dtl":
+		return
+	_active_dialogic_timeline = ""
+
+	if GameState.watch_static_path:
+		GameState.watch_static_path = false  # reset (fire once)
+		set_tv_on(true)
+		move_to_sarah_door()  # behind-the-scenes teleport to the door marker
+		return
+
+	if GameState.turn_off_requested:
+		GameState.turn_off_requested = false
+		set_tv_on(false)  # screen off, Beth stays seated
+		return
+
+	if GameState.stand_up_requested:
+		GameState.stand_up_requested = false
+		stand_up()  # get up off the couch, TV stays on
+		return
+
+	# No branch matched: tv_story ended on its own (most likely after
+	# first-big-choice.dtl returned via the jump event). Stop Dialogic so
+	# it doesn't loop back to the TV choice screen.
+	var dlg_root = Engine.get_main_loop().root.get_node_or_null("Dialogic")
+	if dlg_root and dlg_root.has_method("stop"):
+		dlg_root.stop()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") or (event is InputEventKey and event.keycode == KEY_ESCAPE and event.pressed):
@@ -202,6 +308,26 @@ func _process_standard_movement(delta: float) -> void:
 	if is_sitting:
 		velocity = Vector3.ZERO
 		return
+
+	# Auto-walk toward a scripted target (e.g. Sarah's door after Watch Static).
+	if walk_target != Vector3.ZERO:
+		var to_target = walk_target - global_position
+		to_target.y = 0.0
+		var dist = to_target.length()
+		if dist < 0.15:
+			walk_target = Vector3.ZERO
+			velocity.x = move_toward(velocity.x, 0, walk_speed)
+			velocity.z = move_toward(velocity.z, 0, walk_speed)
+		else:
+			var dir = to_target.normalized()
+			velocity.x = dir.x * walk_speed
+			velocity.z = dir.z * walk_speed
+			look_at(Vector3(walk_target.x, global_position.y, walk_target.z))
+			rotation.x = 0.0
+			rotation.z = 0.0
+		move_and_slide()
+		return
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
@@ -275,24 +401,60 @@ func _handle_object_interaction(interactable: Interactable) -> void:
 				collision.disabled = true
 				global_position = interactable.get_parent().global_position + Vector3(0, 0.5, 0)
 				velocity = Vector3.ZERO
+				# Snap to face the TV (yaw only) so the player looks at it when sitting.
+				var tv = get_parent().get_node_or_null("Television")
+				if tv:
+					var target = tv.global_position
+					target.y = global_position.y
+					look_at(target)
+					rotation.x = 0.0
+					rotation.z = 0.0
+					if head:
+						head.rotation.x = 0.0
 				# Turn on TV static when sitting (shader toggle). Future: animated arm+remote pops in view here.
 				set_tv_on(true)
 				print("Sitting down on couch.")
 				
+		"door_table":
+			# Open Beth's inventory. On first open, seed a starter note so the
+			# drawer isn't empty (swap for real item art later).
+			if Inventory.is_open:
+				return
+			Inventory.ensure_drawer_note()
+			Inventory.ensure_keys()
+			Inventory.toggle()
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
 		"sarah_door":
+			# GATED: the first-big-choice dialogue is ONLY reachable via the TV
+			# "Watch Static" branch (which jumps to first-big-choice from within
+			# tv_story.dtl). Pressing E at the door directly must NOT open it.
+			# Show a brief teaser so the player learns to look elsewhere.
 			velocity = Vector3.ZERO
-			var dialogue_overlay = get_dialogue_overlay()
-			if dialogue_overlay and dialogue_overlay.has_method("start_door_interaction"):
-				dialogue_overlay.start_door_interaction()
+			var dialogic_root = Engine.get_main_loop().root.get_node_or_null("Dialogic")
+			if dialogic_root != null:
+				dialogic_root.start("res://dilogic/timelines/sarah_door_locked.dtl")
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			else:
-				printerr("Error: DialogueOverlay missing or start_door_interaction() not found.")
+				printerr("Error: Dialogic unavailable for sarah_door locked prompt.")
 
 		"tv":
 			velocity = Vector3.ZERO
-			var dialogue_overlay = get_dialogue_overlay()
-			if dialogue_overlay and dialogue_overlay.has_method("start_tv_interaction"):
-				dialogue_overlay.start_tv_interaction()
+			# Launch the TV story through Dialogic (text + narrator audio per branch).
+			# The Watch Static branch sets the Dialogic variable "watch_static"=true,
+			# and when tv_story ends we read that var to route Beth to the door.
+			var dialogic_root = Engine.get_main_loop().root.get_node_or_null("Dialogic")
+			if dialogic_root != null and ResourceLoader.exists("res://dilogic/timelines/tv_story.dtl"):
+				if not dialogic_root.timeline_ended.is_connected(_on_tv_timeline_ended):
+					dialogic_root.timeline_ended.connect(_on_tv_timeline_ended)
+				_active_dialogic_timeline = "res://dilogic/timelines/tv_story.dtl"
+				dialogic_root.start("res://dilogic/timelines/tv_story.dtl")
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			else:
-				printerr("Error: DialogueOverlay missing or start_tv_interaction() not found.")
+				# Fallback while tv_story.dtl isn't created yet, or Dialogic unavailable.
+				var dialogue_overlay = get_dialogue_overlay()
+				if dialogue_overlay and dialogue_overlay.has_method("start_tv_interaction"):
+					dialogue_overlay.start_tv_interaction()
+					Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+				else:
+					printerr("Error: tv_story.dtl missing and DialogueOverlay.start_tv_interaction() not found. Create res://dilogic/timelines/tv_story.dtl.")

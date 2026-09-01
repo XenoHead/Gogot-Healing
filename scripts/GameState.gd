@@ -5,6 +5,18 @@ var manipulation_level: int = 0
 var house_anxiety: int = 0
 var max_sanity_cap: float = 100.0
 
+# Set to true by the TV "Watch Static" branch (Dialogic set-event writes here)
+# so PlayerController knows to route Beth to Sarah's door after tv_story ends.
+var watch_static_path: bool = false
+
+# Set by the TV "Turn Off Tv" / "Stand Up" branches so PlayerController knows
+# what to do when tv_story ends (signal_event is broken in this Dialogic build).
+var turn_off_requested: bool = false
+var stand_up_requested: bool = false
+
+# Set by the Sarah-door choice (neutral/encourage/punish) for metric routing.
+var sarah_choice_path: String = ""
+
 func modify_metrics(action: String) -> void:
 	match action:
 		"encourage":

@@ -2,7 +2,7 @@
 "@path": "res://addons/dialogic/Resources/character.gd",
 "@subpath": NodePath(""),
 &"_translation_id": "",
-&"color": Color(0.84375, 0.6328125, 0.6328125, 1),
+&"color": Color(0.5859375, 0.10070801, 0.19168854, 1),
 &"custom_info": {
 "prefix": "",
 "sound_mood_default": "",
@@ -10,22 +10,32 @@
 "style": "narrator_style",
 "suffix": ""
 },
-&"default_portrait": "Narrator 2 Removebg Preview",
-&"description": "Character for narration",
+&"default_portrait": "Narrator_2",
+&"description": "",
 &"display_name": "Narrator",
 &"mirror": false,
-&"nicknames": ["No Voice"],
-&"offset": Vector2(123, 41),
+&"nicknames": [""],
+&"offset": Vector2(0, 0),
 &"portraits": {
-"Narrator 2 Removebg Preview": {
+"Narrartor_1": {
 "export_overrides": {
-"image": "\"res://images/Hero/narrator_2-removebg-preview.png\""
+"image": "\"res://images/people/Narrartor.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
-"scale": 1,
+"scale": 0.9,
 "scene": ""
+},
+"Narrator_2": {
+"export_overrides": {
+"image": "\"res://images/people/dsBuffer.bmp.png\""
+},
+"ignore_char_scale": true,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "res://addons/dialogic/Modules/Character/default_portrait.tscn"
 }
 },
-&"scale": 0.5
+&"scale": 0.93
 }

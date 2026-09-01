@@ -5,7 +5,6 @@
 [ext_resource type="Material" path="res://addons/ambientcg/Extracted/Wood006_2K-JPG.tres" id="2_ainb2"]
 [ext_resource type="FontFile" uid="uid://buhkxqdlscbku" path="res://fonts/dark-whispers.regular.otf" id="2_story_font"]
 [ext_resource type="Theme" uid="uid://dowyg25wfcjvl" path="res://resources/new_theme.tres" id="3_rg7hw"]
-[ext_resource type="FontFile" uid="uid://dx04sto3nekqb" path="res://fonts/GrotleyRegular-mLEWv.otf" id="5_svtvx"]
 
 [node name="Backstory" type="Control" unique_id=1369332723]
 layout_mode = 3
@@ -98,11 +97,10 @@ theme_override_constants/margin_right = 120
 theme_override_constants/margin_bottom = 80
 
 [node name="StoryText" type="Label" parent="MarginContainer" unique_id=1179546883]
-custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.17111987, 0.17111987, 0.17111987, 1)
-theme_override_fonts/font = ExtResource("5_svtvx")
-theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_fonts/font = ExtResource("2_story_font")
+theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -119,7 +117,7 @@ offset_top = -60.0
 offset_right = 200.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.99607843, 0.047058824, 0.13333334, 1)
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
 theme_override_fonts/font = ExtResource("2_story_font")
 theme_override_font_sizes/font_size = 20
 text = "[ PRESS ANY KEY TO CONTINUE ]"

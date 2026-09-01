@@ -41,19 +41,19 @@ var dialogue_nodes: Dictionary = {
 			{"text": "[ 1 ] Watch Static", "action": "watch_static", "next": "tv_static"},
 			{"text": "[ 2 ] Change Channel", "action": "change_channel", "next": "tv_channel"},
 			{"text": "[ 3 ] Turn Off", "action": "turn_off", "next": "tv_off"},
-			{"text": "[ 4 ] Stand Up", "action": "stand_up", "next": "tv_off"}
+			{"text": "[ 4 ] Stand Up", "action": "stand_up", "next": "tv_on"}
 		]
 	},
 	"tv_static": {
-		"text": "White noise fills the apartment. The cascading patterns begin to form shapes moving behind the glass surface...",
+		"text": "",
 		"choices": []
 	},
 	"tv_channel": {
-		"text": "The dial clicks roughly, but the static stays. Only the pitch of the screeching speaker changes.",
+		"text": "",
 		"choices": []
 	},
 	"tv_off": {
-		"text": "The screen collapses into a small white dot, leaving a high-frequency whistle piercing the dark.",
+		"text": "",
 		"choices": []
 	}
 	}

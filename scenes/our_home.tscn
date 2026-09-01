@@ -10,9 +10,11 @@
 [ext_resource type="AudioStream" uid="uid://dc4o6wuo1cqgj" path="res://audio/ap2.wav" id="10_wevw6"]
 [ext_resource type="Texture2D" uid="uid://dk7antl1kgbd1" path="res://images/places/wall2.png" id="11_x0pna"]
 [ext_resource type="Texture2D" uid="uid://cjs3mcb1onepg" path="res://images/places/record_shelf.jpg" id="12_wvtsw"]
-[ext_resource type="ArrayMesh" uid="uid://b6axngamh3p8h" path="res://images/objects/Sofa/Sofa.obj" id="15_sofa"]
-[ext_resource type="Texture2D" uid="uid://dpvaifisxv34r" path="res://images/objects/Sofa/Texture/Alberta_Alfred_leather_dark.jpg" id="16_leather"]
-[ext_resource type="Texture2D" uid="uid://dcudo6n7easjn" path="res://images/objects/Sofa/Texture/leather_normal.jpg" id="17_leathern"]
+[ext_resource type="Texture2D" uid="uid://dntli64qa8x57" path="res://images/places/outdoor.jpeg" id="14_6md2n"]
+[ext_resource type="ArrayMesh" uid="uid://b6axngamh3p8h" path="res://assets/models/Sofa/Sofa.obj" id="15_sofa"]
+[ext_resource type="PackedScene" uid="uid://brv5b581dev7s" path="res://assets/models/door/DOOR.glb" id="16_a0nva"]
+[ext_resource type="Texture2D" uid="uid://dpvaifisxv34r" path="res://assets/models/Sofa/Texture/Alberta_Alfred_leather_dark.jpg" id="16_leather"]
+[ext_resource type="Texture2D" uid="uid://dcudo6n7easjn" path="res://assets/models/Sofa/Texture/leather_normal.jpg" id="17_leathern"]
 [ext_resource type="Material" path="res://addons/ambientcg/Extracted/Wood006_2K-JPG.tres" id="19_cfeer"]
 [ext_resource type="Material" path="res://addons/ambientcg/Extracted/Wallpaper001A_2K-PNG.tres" id="19_rlwgm"]
 [ext_resource type="Material" path="res://addons/ambientcg/Extracted/Bricks104_2K-JPG.tres" id="20_8ph6s"]
@@ -39,6 +41,9 @@
 [ext_resource type="PackedScene" uid="uid://do0pesgeqyogv" path="res://assets/models/Vintage Microwave/1k/vintage_microwave_1k.gltf" id="37_nq7au"]
 [ext_resource type="PackedScene" uid="uid://bus4fllk7funh" path="res://assets/models/Ornate Medieval Dagger/4k/ornate_medieval_dagger_4k.gltf" id="38_ukn77"]
 [ext_resource type="PackedScene" uid="uid://bh5ahax27mi6t" path="res://assets/models/Hanging Picture Frame 02/1k/hanging_picture_frame_02_1k.gltf" id="39_hj5f8"]
+[ext_resource type="PackedScene" uid="uid://dj811n1udjvrn" path="res://assets/models/Old_bed_CGT/Old_bed.fbx" id="42_a0nva"]
+[ext_resource type="PackedScene" uid="uid://hrpn7y7y37ai" path="res://assets/models/GothicBed_01_4k/GothicBed_01_4k.gltf" id="43_vdasu"]
+[ext_resource type="PackedScene" uid="uid://bsb6e4mq6ufus" path="res://assets/models/desklamp/Polyester Masa Lambası-Free3D.fbx" id="44_vdasu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojcyp"]
 albedo_texture = ExtResource("5_3da08")
@@ -46,6 +51,9 @@ roughness = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfjmr"]
 albedo_texture = ExtResource("11_x0pna")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nq7au"]
+albedo_texture = ExtResource("14_6md2n")
 
 [sub_resource type="StandardMaterial3D" id="LeatherSofa"]
 albedo_texture = ExtResource("16_leather")
@@ -168,17 +176,21 @@ material = ExtResource("7_cfeer")
 
 [node name="sarah_door" type="CSGBox3D" parent="." unique_id=1318753976]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2766701, 1.05, 0.37809157)
+material_override = SubResource("StandardMaterial3D_nq7au")
 operation = 2
 size = Vector3(0.4, 2, 0.9)
 
 [node name="Interactable" type="Node3D" parent="sarah_door" unique_id=1300000001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023929, 0, 0)
 script = ExtResource("9_p2k5u")
-prompt_message = "[E] Knock on Sarah's Door"
+prompt_message = "[E] Listen to Sarah"
 interaction_type = "sarah_door"
 
 [node name="SarahDoorMarker" type="Marker3D" parent="sarah_door" unique_id=1300000002]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="sarah_door_action" parent="sarah_door" unique_id=212948782 instance=ExtResource("16_a0nva")]
+transform = Transform3D(-0.12291222, 0, 0.9924176, 0, 1, 0, -0.9924176, 0, -0.12291222, 0.22676241, -0.8436785, -0.10207975)
 
 [node name="sarah_wall2" type="CSGBox3D" parent="." unique_id=776154637]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, -4.0473585, 1.4897461, 2.5)
@@ -217,15 +229,11 @@ material = ExtResource("5_cfeer")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015587807, 0.17374757, 0.08450708)
 script = ExtResource("9_p2k5u")
 prompt_message = "[E] Open Drawer"
+interaction_type = "door_table"
 
 [node name="DoorTableMarker" type="Marker3D" parent="door_table" unique_id=1515997985]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15611744, 0.79999995, 0.3015862)
 gizmo_extents = 0.08
-
-[node name="door_lamp" type="CSGCylinder3D" parent="door_table" unique_id=1156944696]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.038825035, 0.65848273, 0.011472046)
-radius = 0.11767578
-height = 0.6622963
 
 [node name="MusicInventoryRack" type="CSGBox3D" parent="." unique_id=848480023]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.620605, 1.0290971, -2.7513635)
@@ -299,17 +307,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.261222, -0.035541154, -3.36
 size = Vector3(2.4818358, 0.010083009, 7.5627136)
 
 [node name="den_floor" type="CSGBox3D" parent="." unique_id=291213149]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8304477, 0.10582137, 2.9342232)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8683832, 0.12263155, 2.8181987)
 size = Vector3(8, 0.001, 9.29834)
 material = ExtResource("5_cfeer")
 
 [node name="den_floor_rug" type="CSGBox3D" parent="." unique_id=1800410142]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1956263, 0.11474168, 5.390396)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1956263, 0.11474168, 5.852308)
 size = Vector3(2.6950073, 0.039648443, 1.3387465)
 material = ExtResource("22_8ph6s")
 
 [node name="CoffeeTable_01_2k" parent="." unique_id=1865730224 instance=ExtResource("22_kvgdt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.073037, 0.13456595, 5.278762)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.073037, 0.13456595, 5.777337)
 
 [node name="electric_stove_2k" parent="." unique_id=596628321 instance=ExtResource("23_kvgdt")]
 transform = Transform3D(1.3171973, 0, 0, 0, 1.4066317, 0, 0, 0, 1.0949463, 3.081821, 0.06539619, -7.2957582)
@@ -325,11 +333,6 @@ transform = Transform3D(-0.043159686, 0, 0.99906814, 0, 1, 0, -0.99906814, 0, -0
 
 [node name="RemoteController" parent="." unique_id=628599633 instance=ExtResource("26_xmuok")]
 transform = Transform3D(0.054699864, 0, 0, 0, 0.058926027, 0, 0, 0, 0.035193533, 3.1220374, 0.6798779, 5.0478997)
-
-[node name="Door" type="MeshInstance3D" parent="." unique_id=766701639]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1839477, 0.12364149, -3.4777029)
-mesh = ExtResource("27_rsbmv")
-surface_material_override/0 = ExtResource("5_cfeer")
 
 [node name="WallTrim" type="MeshInstance3D" parent="." unique_id=1220309468]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8001404, 2.880948, -1.9490767)
@@ -378,3 +381,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5368483, 0.7511324, 5.04857
 
 [node name="hanging_picture_frame_02_1k" parent="." unique_id=484597694 instance=ExtResource("39_hj5f8")]
 transform = Transform3D(-0.023362905, 0, 0.9997271, 0, 1, 0, -0.9997271, 0, -0.023362905, 1.1156492, 1.6405333, 5.7750773)
+
+[node name="Old_bed" parent="." unique_id=1119437149 instance=ExtResource("42_a0nva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5199203, 0.10944772, -1.2959759)
+
+[node name="GothicBed_01_4k" parent="." unique_id=1817608647 instance=ExtResource("43_vdasu")]
+transform = Transform3D(0.04500509, 0, 0.9989868, 0, 1, 0, -0.9989868, 0, 0.04500509, -5.7837534, 0.10944772, -4.622432)
+
+[node name="DOOR" parent="." unique_id=2070621289 instance=ExtResource("16_a0nva")]
+transform = Transform3D(-0.0061882776, 0, -0.99998087, 0, 1, 0, 0.99998087, 0, -0.0061882776, -1.170808, 0.16539618, -4.350008)
+
+[node name="Polyester Masa Lambası-Free3D" parent="." unique_id=70773380 instance=ExtResource("44_vdasu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.611628, 1.4521388, 0.5349208)

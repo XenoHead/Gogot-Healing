@@ -8,6 +8,7 @@ extends Control
 @onready var intro_select_player: AudioStreamPlayer = $IntroTransitionLayer/IntroSelectPlayer
 
 @onready var disclaimer_container: MarginContainer = $IntroTransitionLayer/DisclaimerContainer
+@onready var i_agree_button: Button = $IntroTransitionLayer/DisclaimerContainer/DisclaimerText/Iagreelabel
 
 @onready var menu_ui: CanvasLayer = $MenuUILayer
 @onready var menu_loop_player: AudioStreamPlayer = $MenuUILayer/MenuLoopPlayer
@@ -33,6 +34,7 @@ extends Control
 var can_interact: bool = false
 var last_hover_time: int = 0
 const HOVER_COOLDOWN_MS: int = 150
+var _i_agree_pressed_flag: bool = false
 
 var saved_main_db: float = -6.0
 var saved_music_db: float = -6.0
@@ -66,6 +68,9 @@ func _ready() -> void:
 	_connect_menu_signals()
 	_setup_button_effects()
 	_setup_settings_signals()
+
+	if i_agree_button:
+		i_agree_button.pressed.connect(_on_i_agree_pressed)
 	
 	if not start_button_prompt.pressed.is_connected(_on_start_button_prompt_pressed):
 		start_button_prompt.pressed.connect(_on_start_button_prompt_pressed)
@@ -141,7 +146,7 @@ func _on_continue_triggered() -> void:
 		warning_fade_in.tween_property(disclaimer_container, "modulate:a", 1.0, 0.6)
 		await warning_fade_in.finished
 		
-		await get_tree().create_timer(4.5).timeout
+		await _wait_for_i_agree()
 		
 		var warning_fade_out = create_tween()
 		warning_fade_out.tween_property(disclaimer_container, "modulate:a", 0.0, 0.6)
@@ -149,7 +154,21 @@ func _on_continue_triggered() -> void:
 		disclaimer_container.hide()
 	else:
 		await get_tree().create_timer(0.5).timeout
-	
+
+	_advance_to_menu()
+
+func _on_i_agree_pressed() -> void:
+	print("DEBUG: I AGREE pressed")
+	_i_agree_pressed_flag = true
+
+func _wait_for_i_agree() -> void:
+	_i_agree_pressed_flag = false
+	if i_agree_button:
+		i_agree_button.grab_focus()
+	while not _i_agree_pressed_flag:
+		await get_tree().process_frame
+
+func _advance_to_menu() -> void:
 	intro_transition_layer.hide()
 	menu_ui.show()
 	
