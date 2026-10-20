@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>godot-mcp-enhanced 面板入口</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#16181d;color:#d7dce3;margin:0;display:flex;min-height:100vh;align-items:center;justify-content:center}
+.box{max-width:520px;padding:32px}
+h1{font-size:18px;margin:0 0 12px}
+p{font-size:14px;line-height:1.7;color:#9aa3ad;margin:8px 0}
+code{background:#22262d;padding:2px 6px;border-radius:4px;font-size:13px}
+ul{padding-left:0;list-style:none}
+a.btn{display:inline-block;margin:6px 8px 6px 0;padding:8px 16px;background:#2d6cdf;color:#fff;border-radius:6px;text-decoration:none;font-size:14px}
+.status{margin-top:16px;font-size:13px;color:#6f7882}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>godot-mcp-enhanced 监控面板</h1>
+<div id="list"></div>
+<div id="dead" style="display:none">
+<p>当前没有运行中的面板服务(godot-mcp server 未启动)。</p>
+<p>启动方式:打开任一 AI 客户端会话(面板随 godot-mcp server 自动启动),或运行<br><code>npx godot-mcp-enhanced dashboard --web</code></p>
+<p>启动后<a href="#" onclick="location.reload();return false">刷新本页</a>即可自动进入。</p>
+</div>
+<p class="status" id="status">正在扫描本机面板服务…</p>
+</div>
+<script>
+var TOKEN = "";
+// 2B (2026-09-19 安全加固批2): token 经 hash(#token=)传递而非 query——hash 不发给服务器
+// (访问日志/Referer 不含 token),面板侧读 hash 握手 cookie 后 replaceState 连 hash 清除,
+// session/history 最终为干净 URL。query 通道由 CLI 打开旧链保留,portal 不再使用。
+function withToken(url) {
+  return TOKEN ? url + '#token=' + encodeURIComponent(TOKEN) : url;
+}
+function probe(port) {
+  return new Promise(function (resolve) {
+    fetch('http://127.0.0.1:' + port + '/', { mode: 'no-cors' })
+      .then(function () { resolve(port); })
+      .catch(function () { resolve(-1); });
+  });
+}
+var probes = [];
+for (var p = 9550; p <= 9569; p++) probes.push(probe(p));
+Promise.all(probes).then(function (alive) {
+  var found = alive.filter(function (p) { return p >= 0; });
+  var st = document.getElementById('status');
+  var list = document.getElementById('list');
+  if (found.length === 0) {
+    document.getElementById('dead').style.display = 'block';
+    st.textContent = '扫描完成:9550-9569 无响应。';
+    return;
+  }
+  st.textContent = '发现 ' + found.length + ' 个实例,正在进入最新的一个…';
+  for (var i = 0; i < found.length; i++) {
+    var a = document.createElement('a');
+    a.className = 'btn';
+    a.href = withToken('http://127.0.0.1:' + found[i] + '/');
+    a.textContent = '实例 :' + found[i];
+    list.appendChild(a);
+  }
+  // 自动进入第一个活实例(探测序即端口序;点击上方按钮可选其他实例);
+  // 内嵌 token 时 URL 带 ?token= → 首次即过鉴权,前端握手种 cookie 后长期免带。
+  location.replace(withToken('http://127.0.0.1:' + found[0] + '/'));
+});
+</script>
+</body>
+</html>
